@@ -131,6 +131,7 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('consultor-email-coletivo/{id}', [ComercialController::class, 'emailColetivo'])->name('admin.consultores.email.coletivo');
 
     Route::get('encomendas', [EncomendasController::class, 'index'])->name('admin.encomendas');
+    Route::get('faturados', [EncomendasController::class, 'faturados'])->name('admin.faturas');
     Route::get('encomendas/download/{id}', [EncomendasController::class, 'download'])->name('admin.encomendas.download');
     Route::any('user/order/status/{id}', [EncomendasController::class, 'status']);
     Route::any('user/produto/status', [EncomendasController::class, 'statusProduto'])->name('admin.status.produto');

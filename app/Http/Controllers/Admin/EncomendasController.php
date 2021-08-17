@@ -21,10 +21,15 @@ class EncomendasController extends Controller
     public function index()
     {
 
-        $orders = UserOrder::with('payimage')->orderBy('created_at', 'desc')->get();
+        $orders = UserOrder::with('payimage')->whereNull('fatura')->orderBy('created_at', 'desc')->get();
         return view('painel.pages.encomendas.index', compact('orders'));
     }
 
+    public function faturados()
+    {
+        $orders = UserOrder::with('payimage')->where('fatura', 1)->orderBy('created_at', 'desc')->get();
+        return view('painel.pages.encomendas.faturados', compact('orders'));
+    }
     public function pedidoDatalheUser($id)
     {
         $arrayGeral = new \stdCLass();

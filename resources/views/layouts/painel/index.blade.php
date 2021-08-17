@@ -161,6 +161,14 @@
                         @endif
                         @if (auth()->user()->permission == 10)
                             <li class="nav-item">
+                                <a href="{{ route('admin.faturas') }}" class="nav-link @if (Request::is('admin/faturados')) active @endif">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>Faturados</p>
+                                </a>
+                            </li>
+                        @endif
+                        @if (auth()->user()->permission == 10)
+                            <li class="nav-item">
                                 <a href="{{ route('admin.clientes') }}" class="nav-link @if (Request::is('admin/cliente')) active @endif">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>Clientes</p>
