@@ -27,6 +27,17 @@
                             Porto de Registo
                         </label>
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1"></label>
+                        <input type="checkbox" name="veterinario" id="veterinario">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Controle Veterinario
+                        </label>
+                    </div>
+                    <div id="cientifico" class="form-group d-none col-md-12">
+                        <label for="exampleInputEmail1">Numero do Controle Veterinario</label>
+                        <input type="text" class="form-control" name="controle_veterinario">
+                    </div>
                     <div class=" col-md-6">
                         <label for="exampleInputEmail1"></label>
                         <input name="descarga" type="checkbox" id="descarga">
@@ -34,13 +45,9 @@
                             Porto de Descarga
                         </label>
                     </div>
-                    <div id="cientifico" class="form-group d-none col-md-12">
-                        <label for="exampleInputEmail1">Controle Veterinario</label>
-                        <input type="text" class="form-control" name="controle_veterinario">
-                    </div>
                     <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Espécies do Porto</label>
-                        <select class="js-example-basic-multiple" required name="especies[]" multiple="multiple">
+                        <select class="select2" required name="especies[]" multiple>
                             @foreach ($especies as $especie)
                                 <option value="{{ $especie->id }}">{{ $especie->nome_portugues }}</option>
                             @endforeach

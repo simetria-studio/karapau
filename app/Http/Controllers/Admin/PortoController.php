@@ -57,7 +57,7 @@ class PortoController extends Controller
             'nome' => $data['nome'],
             'registro' => $request->input('registro'),
             'descarga' => $request->input('descarga'),
-            'controle_veterinario' => $data['controle_veterinario'],
+            'controle_veterinario' => $data['veterinario'] ? $data['controle_veterinario'] : null,
             'image' => $name,
             'sigla' => $request->input('sigla'),
             'codigo_postal' => $request->input('codigo_postal'),
@@ -107,7 +107,12 @@ class PortoController extends Controller
     {
         $porto = Porto::findOrFail($id);
         $especies = Especie::all();
-        return view('painel.pages.porto.edit', compact('porto', 'especies'));
+        $especiePortos = EspecieToPorto::where('porto_id', $id)->get();
+        $especieDePorto = [];
+        foreach($especiePortos as $especiePorto){
+            $especieDePorto[$especiePorto->especie_id] = $especiePorto->especie_id;
+        }
+        return view('painel.pages.porto.edit', compact('porto', 'especies', 'especieDePorto'));
     }
 
     /**
@@ -150,7 +155,7 @@ class PortoController extends Controller
         $porto->nome =     $request->get('nome');
         $porto->registro = $request->get('registro');
         $porto->descarga = $request->get('descarga');
-        $porto->controle_veterinario = $request->get('controle_veterinario');
+        $porto->controle_veterinario = $request->get('veterinario') ? $request->get('controle_veterinario') : null;
         // $porto->especies = $request->get('especies');
         $porto->sigla = $request->get('sigla');
         $porto->codigo_postal = $request->get('codigo_postal');

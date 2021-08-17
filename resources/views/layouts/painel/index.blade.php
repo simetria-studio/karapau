@@ -27,7 +27,7 @@
     <!-- DateRangerPicker -->
     <link rel="stylesheet" href="{{ asset('plugin/daterangepicker/daterangepicker.css') }}">
     <!-- Select2 -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('plugin/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('plugin/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     {{-- Colopicker --}}
     <link rel="stylesheet" href="{{ asset('plugin/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
@@ -229,10 +229,10 @@
     <script src="{{ asset('plugin/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('plugin/summernote/summernote-bs4.min.js') }}"></script>
     <!-- overlayScrollbars -->
+    <script src="{{asset('plugin/select2/js/select2.full.min.js')}}"></script>
     <script src="{{ asset('plugin/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('plugin/AdminLTE/js/adminlte.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     {{-- fullcalendar --}}
 
     <script src="{{ url('tarefa/fullcalendar/js/scripts.js') }}"></script>

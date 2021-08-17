@@ -5,6 +5,8 @@ $(document).ready(function(){
         }
     });
 
+    $('.select2').select2();
+
     $(document).on('click', '.btn_entrega_aceito', function(){
         var btn = $(this);
 
@@ -132,5 +134,13 @@ $(document).ready(function(){
                 $(modal).find('.overlay').remove();
             }
         });
+    });
+
+    $(document).on('click', '#veterinario', function(){
+        if($(this).prop('checked')){
+            $('#cientifico').removeClass('d-none');
+        }else{
+            $('#cientifico').addClass('d-none');
+        }
     });
 });

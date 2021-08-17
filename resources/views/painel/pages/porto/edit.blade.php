@@ -28,6 +28,17 @@
                             Porto de Registo
                         </label>
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1"></label>
+                        <input type="checkbox" name="veterinario" id="veterinario" @if ($porto->controle_veterinario) checked @endif>
+                        <label class="form-check-label" for="defaultCheck1">
+                            Controle Veterinario
+                        </label>
+                    </div>
+                    <div id="cientifico" class="form-group @if ($porto->controle_veterinario == null) d-none @endif col-md-12">
+                        <label for="exampleInputEmail1">Numero do Controle Veterinario</label>
+                        <input type="text" class="form-control" name="controle_veterinario" value="{{$porto->controle_veterinario}}">
+                    </div>
                     <div class=" col-md-6">
                         <label for="exampleInputEmail1"></label>
                         <input name="descarga" type="checkbox" id="descarga" @if ($porto->descarga == 'on') checked @else @endif>
@@ -35,16 +46,11 @@
                             Porto de Descarga
                         </label>
                     </div>
-                    <div id="cientifico" class="form-group d-none col-md-12">
-                        <label for="exampleInputEmail1">Controle Veterinario</label>
-                        <input type="text" class="form-control" value="{{ $porto->controle_veterinario }}"
-                            name="controle_veterinario">
-                    </div>
                     <div class="form-group col-md-8">
                         <label for="exampleInputEmail1">Espécies do Porto</label>
                         <select class="js-example-basic-multiple" name="especies[]" multiple="multiple">
                             @foreach ($especies as $especie)
-                                <option value="{{ $especie->id }}">{{ $especie->nome_portugues }}</option>
+                                <option value="{{ $especie->id }}" @if(isset($especieDePorto[$especie->id])) selected @endif>{{ $especie->nome_portugues }}</option>
                             @endforeach
 
                         </select>
