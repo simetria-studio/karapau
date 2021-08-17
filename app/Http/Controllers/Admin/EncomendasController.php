@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Produto;
 use App\Models\PayImage;
 use App\Models\Comprador;
