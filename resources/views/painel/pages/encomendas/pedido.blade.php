@@ -37,7 +37,7 @@
                                             <td>
                                                 @if ($user_order->fatura)
                                                     <button type="button"
-                                                        class="btn btn-dark btn-sm ml-2">Faturarado</button>
+                                                        class="btn btn-dark btn-sm ml-2">Faturado</button>
                                                 @else
 
                                                     <form action="{{ route('admin.status.fatura', $user_order->id) }}"
@@ -256,7 +256,7 @@
         </div>
     </div>
 
-    
+
     <div class="modal fade" id="entregadorModal" tabindex="-1" aria-labelledby="entregadorModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
