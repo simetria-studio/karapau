@@ -21,7 +21,7 @@ class EncomendasController extends Controller
     public function index()
     {
 
-        $orders = UserOrder::with('payimage')->whereNull('fatura')->orderBy('created_at', 'desc')->get();
+        $orders = UserOrder::with('payimage')->where('fatura', 0)->orderBy('created_at', 'desc')->get();
         return view('painel.pages.encomendas.index', compact('orders'));
     }
 
