@@ -30,6 +30,7 @@ class EncomendasController extends Controller
         $arrayGeral->itens = 0;
         $arrayGeral->caixas = 0;
         $user_order = UserOrder::with('enderecos')->find($id);
+        $entregadores = User::where('permission', '3')->get();
         $orders  = PescadorPedido::where('order_id', $id)->with('adresses', 'pescador', 'orders', 'products', 'products2')->first();
         $comprador = Comprador::find($user_order->user_id);
         $address = AdressBuyer::find($user_order->adress);
@@ -39,7 +40,7 @@ class EncomendasController extends Controller
                 $arrayGeral->caixas += $products->caixas;
             }
         }
-        return view('painel.pages.encomendas.pedido', compact('orders', 'user_order', 'arrayGeral', 'comprador', 'address'));
+        return view('painel.pages.encomendas.pedido', compact('orders', 'user_order', 'arrayGeral', 'comprador', 'address', 'entregadores'));
     }
 
     public function download($id)

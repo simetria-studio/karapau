@@ -27,6 +27,7 @@ class UserProduct extends Model
         'status',
         'pescador_id',
         'fatura',
+        'deliveryman',
     ];
 
 

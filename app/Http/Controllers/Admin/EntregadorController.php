@@ -54,4 +54,10 @@ class EntregadorController extends Controller
         $userProduct = UserProduct::find($request->id)->update(['status' => '3']);
         return response()->json($userProduct);
     }
+
+    public function entregadorAtribuir(Request $request)
+    {
+        $userProduct = UserProduct::find($request->id)->update(['deliveryman' => $request->deliveryman]);
+        return response()->json($userProduct);
+    }
 }

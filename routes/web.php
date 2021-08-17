@@ -72,6 +72,7 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::post('/entregador/aceito', [EntregadorController::class, 'entregaAceito'])->name('entregador.aceito');
     Route::post('/entregador/caixa_devolvida', [EntregadorController::class, 'caixaDevolvida'])->name('entregador.caixa_devolvida');
     Route::post('/entregador/entregue', [EntregadorController::class, 'entregue'])->name('entregador.entregue');
+    Route::post('/entregador/atribuir', [EntregadorController::class, 'entregadorAtribuir'])->name('entregador.atribuir');
 
     Route::get('usuarios', [UserController::class, 'index'])->name('admin.users');
     Route::post('usuarios/create', [UserController::class, 'create'])->name('admin.users.create');
