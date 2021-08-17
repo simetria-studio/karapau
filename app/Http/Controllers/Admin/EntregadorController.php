@@ -20,8 +20,11 @@ class EntregadorController extends Controller
     {
         $orders  = PescadorPedido::with('adresses', 'pescador', 'orders', 'products')->get();
         $userOrders = UserOrder::all();
-        $userProducts = UserProduct::with('orders')->get();
-        // dd($userProducts);
+        if(auth()->user()->permission == 10){
+            $userProducts = UserProduct::with('orders')->get();
+        }else{
+            $userProducts = UserProduct::where('deliveryman', auth()->user()->id)->with('orders')->get();
+        }
         return view('painel.pages.entregadores.index', compact('orders', 'userOrders', 'userProducts'));
     }
 
