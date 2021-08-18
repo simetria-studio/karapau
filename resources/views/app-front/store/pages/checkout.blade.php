@@ -19,7 +19,9 @@
                 <div class="endereco">
                     <p>{{ $adresses->morada }}, {{ $adresses->codigo_postal }}, {{ $adresses->distrito }}</p>
                     <div class="mt-3">
-                        <button class="btn btn-editar-morada">EDITAR MORADA</button>
+                        <a href="{{route('store.adress')}}">
+                            <button type="button" class="btn btn-editar-morada">EDITAR MORADA</button>
+                        </a>
                     </div>
                 </div>
             </div>
