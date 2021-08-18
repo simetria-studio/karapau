@@ -36,4 +36,9 @@ class Comprador extends Authenticatable
     {
         return $this->belongsTo(Consultor::class, 'user_id');
     }
+
+    public function pedidosConsultor()
+    {
+        return $this->hasMany(UserOrder::class, 'user_id', 'id');
+    }
 }

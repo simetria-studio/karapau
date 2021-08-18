@@ -175,7 +175,8 @@ Route::middleware(['auth:consultor'])->group(function () {
         Route::get('consultor-lead-form2', [ComercialPainelController::class, 'leadForm2'])->name('consultor.lead.coletivo');
         Route::any('teste', [TesteController::class, 'index']);
 
-        Route::get('extractos', [ComercialPainelController::class, 'extracto'])->name('consultor.extracto');
+        Route::get('extractos/{filter?}', [ComercialPainelController::class, 'extracto'])->name('consultor.extracto');
+        Route::get('ver-extractos/{id}', [ComercialPainelController::class, 'ver-Extracto'])->name('consultor.extracto.ver');
     });
 
 

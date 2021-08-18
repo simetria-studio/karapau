@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BuyerColective;
 use App\Models\BuyerInduvidual;
 use App\Models\WalletCom;
+use App\Models\UserOrder;
 
 class ComercialPainelController extends Controller
 {
@@ -221,8 +222,25 @@ class ComercialPainelController extends Controller
         return redirect()->route('consultor')->with('success', 'Comprador alterado com sucesso!');
     }
 
-    public function extracto()
+    public function extracto($filter = null)
     {
-        return view('comercial.pages.extracto');
+        $compradores = Comprador::where('user_id', auth()->guard('consultor')->user()->id)->get();
+        $ids = [];
+        foreach($compradores as $comprador){
+            $ids[] = $comprador->id;
+        }
+
+        if($filter){
+            if($filter == 'novos'){
+                $status = ['0','1'];
+            }else{
+                $status = ['2'];
+            }
+            $user_orders = UserOrder::whereIn('status', $status)->whereIn('user_id', $ids)->paginate(4);
+        }else{
+            $user_orders = UserOrder::whereIn('user_id', $ids)->paginate(4);
+        }
+
+        return view('comercial.pages.extracto', compact('user_orders'));
     }
 }

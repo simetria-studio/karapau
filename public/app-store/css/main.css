@@ -20,6 +20,14 @@ div#collapseExample {
   width: 100%;
 }
 
+.top {
+  padding: 20px 0;
+}
+
+.filtro-btn {
+  margin-left: 30%;
+}
+
 .icons {
   padding-top: 30%;
   -webkit-box-pack: end;
@@ -782,5 +790,69 @@ body {
   line-height: 35px;
   /* identical to box height */
   color: #03568a;
+}
+
+.status a {
+  text-decoration: none;
+  color: #000;
+}
+
+.pedido {
+  background: #0075ad;
+  padding: 10px 0;
+  border-radius: 2%;
+  text-transform: uppercase;
+}
+
+.pedido .pedidos-header {
+  background: #DEF1F5;
+  padding: 10px 8px;
+  margin: 0 20px;
+  font-size: 15px;
+  border-radius: 10%;
+}
+
+.pedido .pedidos-header h4 {
+  font-size: 16px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.pedido .pedidos-body {
+  background: #DEF1F5;
+  padding: 10px 8px;
+  margin: 0 20px;
+  margin-top: 10px;
+  border-radius: 10%;
+}
+
+.pedido .pedidos-body h4 {
+  font-size: 12px;
+  white-space: pre-line;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.pedidos-single {
+  background: #0075ad;
+  padding: 10px 0;
+}
+
+.pedidos-single .pedidos-body {
+  background: #DEF1F5;
+  padding: 10px 8px;
+  margin: 0 20px;
+  margin-top: 10px;
+}
+
+.pedidos-single .pedidos-body h4 {
+  font-size: 12px;
+  white-space: pre-line;
 }
 /*# sourceMappingURL=main.css.map */
