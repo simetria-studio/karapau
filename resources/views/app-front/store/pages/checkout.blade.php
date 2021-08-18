@@ -124,7 +124,7 @@
             </div>
             @php
                 $pegarValor = getValue($porto[2]);
-               
+               echo $pegarValor;
                 $totalporto += $porto[1] * $pegarValor;
 
             @endphp
