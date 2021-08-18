@@ -36,8 +36,7 @@
                                             <td>{{ $arrayGeral->caixas }}</td>
                                             <td>
                                                 @if ($user_order->fatura)
-                                                    <button type="button"
-                                                        class="btn btn-dark btn-sm ml-2">Faturado</button>
+                                                    <button type="button" class="btn btn-dark btn-sm ml-2">Faturado</button>
                                                 @else
 
                                                     <form action="{{ route('admin.status.fatura', $user_order->id) }}"
@@ -95,7 +94,8 @@
                                                                 <td>{{ $userProduct->caixas }}</td>
                                                                 <td>{{ $userProduct->name }}</td>
                                                                 <td>{{ $userProduct->quantity }} Kg</td>
-                                                                <td>€ {{ number_format($userProduct->price, 2, ',', '.') }}
+                                                                <td>€
+                                                                    {{ number_format($userProduct->price, 2, ',', '.') }}
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -147,13 +147,21 @@
                                                                 <td><button type="button"
                                                                         class="btn {{ $userProduct->status == 0 ? 'btn-dark' : 'btn-success' }} btn-sm @if ($userProduct->status == 1) btn_liberar_pedido @endif"
                                                                         data-route="{{ route('admin.status.produto') }}"
-                                                                        data-id="{{ $userProduct->id }}">{{ $userProduct->status == 1 ? 'A LIBERAR' : 'LIBERADO' }}</button>
+                                                                        data-id="{{ $userProduct->id }}">@if ($userProduct->status == 1)
+                                                                        A LIBERAR @elseif($userProduct->status == 0)
+                                                                            AGUARDANDO
+                                                                        @else
+                                                                            LIBERADO
+                                                                        @endif</button>
                                                                 </td>
                                                                 <td><button type="button"
                                                                         class="btn btn-dark btn-sm">ENVIAR</button></td>
                                                                 <td><button type="button"
                                                                         class="btn btn-dark btn-sm">GERAR</button></td>
-                                                                        <td><button type="button" data-id="{{$userProduct->id}}" @if($userProduct->deliveryman == 0) data-toggle="modal" data-target="#entregadorModal" @endif  class="btn {{$userProduct->deliveryman !== 0 ? 'btn-info' : 'btn-dark'}} btn-sm">{{$userProduct->deliveryman !== 0 ? 'ENTREGADOR ATRIBUIDO' : 'ESCOLHER ENTREGADOR'}}</button></td>
+                                                                <td><button type="button" data-id="{{ $userProduct->id }}"
+                                                                        @if ($userProduct->deliveryman == 0) data-toggle="modal" data-target="#entregadorModal" @endif
+                                                                        class="btn {{ $userProduct->deliveryman !== 0 ? 'btn-info' : 'btn-dark' }} btn-sm">{{ $userProduct->deliveryman !== 0 ? 'ENTREGADOR ATRIBUIDO' : 'ESCOLHER ENTREGADOR' }}</button>
+                                                                </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -242,7 +250,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12 py-2 px-3"><b>Nome:</b> {{ $comprador->name }} {{ $comprador->lastname }}</div>
+                        <div class="col-12 py-2 px-3"><b>Nome:</b> {{ $comprador->name }} {{ $comprador->lastname }}
+                        </div>
                         <div class="col-12 py-2 px-3"><b>Email:</b> {{ $comprador->email }}</div>
                         <div class="col-12 py-2 px-3"><b>Telemóvel:</b> {{ $comprador->telemovel }}</div>
                         <div class="col-12 py-2 px-3"><b>Morada:</b> {{ $address->morada }}, {{ $address->porta }} /
@@ -266,7 +275,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('entregador.atribuir')}}" method="post">
+                <form action="{{ route('entregador.atribuir') }}" method="post">
                     <input type="hidden" name="id">
                     <div class="modal-body">
                         <div class="form-group">
@@ -274,13 +283,14 @@
                             <select name="deliveryman" class="form-control">
                                 <option value="">- Escolha um Entregador -</option>
                                 @foreach ($entregadores as $entregador)
-                                    <option value="{{$entregador->id}}">{{$entregador->name}}</option>
+                                    <option value="{{ $entregador->id }}">{{ $entregador->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-success btn-save" data-save_target="#entregadorModal">Salvar</button>
+                        <button type="button" class="btn btn-success btn-save"
+                            data-save_target="#entregadorModal">Salvar</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </form>
