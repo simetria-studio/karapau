@@ -19,9 +19,7 @@
                 <div class="endereco">
                     <p>{{ $adresses->morada }}, {{ $adresses->codigo_postal }}, {{ $adresses->distrito }}</p>
                     <div class="mt-3">
-                        <a href="{{route('store.adress')}}">
-                            <button type="button" class="btn btn-editar-morada">EDITAR MORADA</button>
-                        </a>
+                        <button class="btn btn-editar-morada">EDITAR MORADA</button>
                     </div>
                 </div>
             </div>
@@ -41,10 +39,11 @@
             $portos = [];
 
         @endphp
-        @foreach ($array as $bitem)
+        @foreach ($array as $key => $bitem)
             @php
                 $nomePorto = '';
                 $totalQty = 0;
+                $portoId = $key;
             @endphp
             @forelse ($bitem as $item)
                 @php
@@ -112,7 +111,7 @@
                 <h3>Carrinho Vazinho!</h3>
             @endforelse
             @php
-                $portos[] = [$nomePorto, $totalQty];
+                $portos[] = [$nomePorto, $totalQty, $portoId];
             @endphp
 
         @endforeach
@@ -124,16 +123,17 @@
                 <h2 class="titulo">PORTO: {{ $porto[0] }}</h2>
             </div>
             @php
-
+                $pegarValor = getValue($porto[2]);
                 $shipRand = number_format(mt_rand(5, 15) / mt_rand(9, 15) + mt_rand(1, 10), 2, '.', '');
-                $totalporto += $porto[1] * $shipping->value + $shipRand;
+                $totalporto += $porto[1] * $pegarValor;
 
             @endphp
+
             <div class="top_3">
                 <div class="container">
                     <div class="total-price">
                         <div class="euros">
-                            <h1> {{ '€ ' . number_format($porto[1] * $shipping->value + $shipRand, 2, ',', '.') }}</h1>
+                            <h1> {{ '€ ' . number_format($porto[1] * $pegarValor, 2, ',', '.') }}</h1>
                         </div>
 
                     </div>
@@ -142,7 +142,7 @@
         @endforeach
 
         <div class="container">
-            <h2 class="titulo">TAXA DE ENTREGA TOTAL</h2>
+            <h2 class="titulo">TOTAL FRETE</h2>
         </div>
         <div class="top_3">
             <div class="container">
