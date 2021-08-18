@@ -59,9 +59,11 @@
                     @endphp
 
                 @else
-                   @php
-                       $qty = 1;
-                   @endphp
+                    @php
+                        $qty = 1;
+                        $totalQty += $qty;
+                        $nomePorto = $item->attributes->porto;
+                    @endphp
                 @endif
 
                 <div class="top_2 mt-3">
@@ -126,7 +128,7 @@
                 $pegarValor = getValue($porto[2]);
 
                 $totalporto += $porto[1] * $pegarValor;
-                echo $porto[1] ;
+                echo $porto[1];
             @endphp
 
             <div class="top_3">
