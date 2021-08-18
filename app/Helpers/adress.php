@@ -24,8 +24,8 @@ function getValue($portoId)
     $mnH = $distC * 1.609;
     // print_r($adress);
     // print_r($url);
-    // print_r($collection);
-    return $mnH;
+ 
+    return $mnH * 0.65;
 
 
 }
