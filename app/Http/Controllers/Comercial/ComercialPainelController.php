@@ -220,4 +220,9 @@ class ComercialPainelController extends Controller
 
         return redirect()->route('consultor')->with('success', 'Comprador alterado com sucesso!');
     }
+
+    public function extracto()
+    {
+        return view('comercial.pages.extracto');
+    }
 }

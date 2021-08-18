@@ -88,7 +88,7 @@
                         </a>
                   </div>
                   <div class="col-5 text-center altura pl">
-                        <a href=""><span class="iconify mb-2 pt-2" data-inline="false" data-icon="vaadin:piggy-bank"
+                        <a href="{{route('consultor.extracto')}}"><span class="iconify mb-2 pt-2" data-inline="false" data-icon="vaadin:piggy-bank"
                                     style="color: #36a6d4; font-size: 56px;"></span>
                               <p>VER SEU
                                     EXTRACTO</p>
