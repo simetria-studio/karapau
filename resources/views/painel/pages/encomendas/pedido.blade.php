@@ -147,7 +147,7 @@
                                                                 <td><button type="button"
                                                                         class="btn {{ $userProduct->status == 0 ? 'btn-dark' : 'btn-success' }} btn-sm @if ($userProduct->status == 1) btn_liberar_pedido @endif"
                                                                         data-route="{{ route('admin.status.produto') }}"
-                                                                        data-id="{{ $userProduct->id }}">{{ $userProduct->status == 1 ? 'A LIBERAR' : 'LIBERAR' }}</button>
+                                                                        data-id="{{ $userProduct->id }}">{{ $userProduct->status == 1 ? 'A LIBERAR' : 'LIBERADO' }}</button>
                                                                 </td>
                                                                 <td><button type="button"
                                                                         class="btn btn-dark btn-sm">ENVIAR</button></td>
