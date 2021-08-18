@@ -124,7 +124,7 @@
             </div>
             @php
                 $pegarValor = getValue($porto[2]);
-                $shipRand = number_format(mt_rand(5, 15) / mt_rand(9, 15) + mt_rand(1, 10), 2, '.', '');
+               
                 $totalporto += $porto[1] * $pegarValor;
 
             @endphp
