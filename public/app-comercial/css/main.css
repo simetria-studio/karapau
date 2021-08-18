@@ -712,4 +712,56 @@ table th {
   letter-spacing: -0.015em;
   color: #BF1414;
 }
+
+.text-custom-f1 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17.4933px;
+  line-height: 131.5%;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+  padding: 18px 32px;
+}
+
+.div-plus-item {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 46.4933px;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+  position: relative;
+  bottom: 10px;
+  cursor: pointer;
+}
+
+.btn-custom-informativo {
+  background: #BF1414;
+  border-radius: 10px;
+  color: #fff;
+  padding: 9px 30px;
+  margin: 10px 10px;
+  color: #fff;
+}
+
+.text-pedido-item {
+  font-family: Poppins;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 134.5%;
+  letter-spacing: -.015em;
+}
+
+.text-custom-comissao {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17.4933px;
+  line-height: 131.5%;
+  text-align: center;
+  letter-spacing: -0.015em;
+}
 /*# sourceMappingURL=main.css.map */

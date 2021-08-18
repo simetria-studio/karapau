@@ -12,6 +12,7 @@ use App\Models\BuyerColective;
 use App\Models\BuyerInduvidual;
 use App\Models\WalletCom;
 use App\Models\UserOrder;
+use App\Models\PescadorPedido;
 
 class ComercialPainelController extends Controller
 {
@@ -242,5 +243,13 @@ class ComercialPainelController extends Controller
         }
 
         return view('comercial.pages.extracto', compact('user_orders'));
+    }
+
+    public function verExtracto($id)
+    {
+        $user_order = UserOrder::with('enderecos')->find($id);
+        $orders  = PescadorPedido::where('order_id', $id)->with('adresses', 'pescador', 'orders', 'products', 'products2')->first();
+
+        return view('comercial.pages.verExtracto', compact('orders', 'user_order'));
     }
 }
