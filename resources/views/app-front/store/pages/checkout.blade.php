@@ -128,7 +128,7 @@
                 $pegarValor = getValue($porto[2]);
 
                 $totalporto += $porto[1] * $pegarValor;
-                echo $porto[1];
+           
             @endphp
 
             <div class="top_3">
