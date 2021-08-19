@@ -6,145 +6,145 @@ $medium-color: rgb(84, 103, 117);
 $standard-font: normal 400 18px "PT Sans", sans-serif;
 body,
 html {
-  height: 100%;
+    height: 100%;
 }
 main {
-  background-color: #03568a;
-  // height: 100vh;
-  font-family: "Poppins", sans-serif;
-  a {
-    text-decoration: none !important;
-  }
+    background-color: #03568a;
+    // height: 100vh;
+    font-family: "Poppins", sans-serif;
+    a {
+        text-decoration: none !important;
+    }
 }
 
 .header {
-  background: #36a6d4;
+    background: #36a6d4;
 }
 
 .title {
-  h4 {
-    color: white;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 1.5em;
-  }
+    h4 {
+        color: white;
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 1.5em;
+    }
 }
 .wallet {
-  background: #36a6d4 !important;
-  border-radius: 15px;
-  height: 136px;
-  a {
-    color: white;
-    font-size: 21.3333px;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
-  h3 {
-    color: white;
-    font-size: 26px;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
+    background: #36a6d4 !important;
+    border-radius: 15px;
+    height: 136px;
+    a {
+        color: white;
+        font-size: 21.3333px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+    h3 {
+        color: white;
+        font-size: 26px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
 }
 .ativos {
-  background: #0472b7;
-  border-radius: 15px;
-  height: 136px;
-  a {
-    font-weight: 800;
-    font-size: 21.3333px;
-    color: white;
-    text-transform: uppercase;
-  }
-  h3 {
-    color: white;
-    font-size: 41.8667px;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
+    background: #0472b7;
+    border-radius: 15px;
+    height: 136px;
+    a {
+        font-weight: 800;
+        font-size: 21.3333px;
+        color: white;
+        text-transform: uppercase;
+    }
+    h3 {
+        color: white;
+        font-size: 41.8667px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
 }
 .inativos {
-  background: #e90202;
-  border-radius: 15px;
-  height: 136px;
-  a {
-    font-weight: 800;
-    font-size: 21.3333px;
-    color: white;
-    text-transform: uppercase;
-  }
-  h3 {
-    color: white;
-    font-size: 41.8667px;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
+    background: #e90202;
+    border-radius: 15px;
+    height: 136px;
+    a {
+        font-weight: 800;
+        font-size: 21.3333px;
+        color: white;
+        text-transform: uppercase;
+    }
+    h3 {
+        color: white;
+        font-size: 41.8667px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
 }
 .incompletos {
-  background: #35a40e;
-  border-radius: 15px;
-  height: 136px;
-  a {
-    font-weight: 800;
-    font-size: 21.3333px;
-    color: white;
-    text-transform: uppercase;
-  }
-  h3 {
-    color: white;
-    font-size: 41.8667px;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
+    background: #35a40e;
+    border-radius: 15px;
+    height: 136px;
+    a {
+        font-weight: 800;
+        font-size: 21.3333px;
+        color: white;
+        text-transform: uppercase;
+    }
+    h3 {
+        color: white;
+        font-size: 41.8667px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
 }
 .menu {
-  justify-content: space-evenly;
-  .pl {
-    background: #ffffff;
-    border-radius: 15.8571px;
-    padding: 15px;
-  }
-  a {
-    color: #03568a;
-    font-weight: 800;
-    font-size: 17.5855px;
-    line-height: 15px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    justify-content: space-evenly;
+    .pl {
+        background: #ffffff;
+        border-radius: 15.8571px;
+        padding: 15px;
+    }
+    a {
+        color: #03568a;
+        font-weight: 800;
+        font-size: 17.5855px;
+        line-height: 15px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 .voltar {
-  background: #0472b7;
-  a {
+    background: #0472b7;
+    a {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 32px;
+        color: white;
+    }
     font-weight: 800;
     font-size: 18px;
     line-height: 32px;
     color: white;
-  }
-  font-weight: 800;
-  font-size: 18px;
-  line-height: 32px;
-  color: white;
 }
 .cadastro {
-  height: 100%;
+    height: 100%;
 }
 .cad {
-  background: #ffffff;
-  border-radius: 15.8571px;
-  height: 148px;
-  padding: 35px 0;
-  margin: 50px 0;
-  p {
-    font-weight: 800;
-    font-size: 17.5855px;
-    line-height: 15px;
-    text-align: center;
+    background: #ffffff;
+    border-radius: 15.8571px;
+    height: 148px;
+    padding: 35px 0;
+    margin: 50px 0;
+    p {
+        font-weight: 800;
+        font-size: 17.5855px;
+        line-height: 15px;
+        text-align: center;
 
-    color: #03568a;
-  }
+        color: #03568a;
+    }
 }
 
 // VARIABLES // ============================== //
@@ -157,671 +157,692 @@ $width: 320px;
 *,
 :before,
 :after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  background: $bg-color;
+    background: $bg-color;
 }
 
 // FORM // ============================== //
 form {
-  width: $width;
-  margin: 45px auto;
+    width: $width;
+    margin: 45px auto;
 
-  h1 {
-    font-size: 3em;
-    font-weight: 300;
-    text-align: center;
-    color: $hl-color;
-  }
-  h5 {
-    text-align: center;
-    text-transform: uppercase;
-    color: $muted-color;
-  }
-  hr.sep {
-    background: $hl-color;
-    box-shadow: none;
-    border: none;
-    height: 2px;
-    width: 25%;
-    margin: 0px auto 45px auto;
-  }
-  .emoji {
-    font-size: 1.2em;
-  }
+    h1 {
+        font-size: 3em;
+        font-weight: 300;
+        text-align: center;
+        color: $hl-color;
+    }
+    h5 {
+        text-align: center;
+        text-transform: uppercase;
+        color: $muted-color;
+    }
+    hr.sep {
+        background: $hl-color;
+        box-shadow: none;
+        border: none;
+        height: 2px;
+        width: 25%;
+        margin: 0px auto 45px auto;
+    }
+    .emoji {
+        font-size: 1.2em;
+    }
 }
 
 .group {
-  position: relative;
-  margin: 45px 0;
+    position: relative;
+    margin: 45px 0;
 }
 
 // INPUTS // ============================== //
 textarea {
-  resize: none;
+    resize: none;
 }
 
 input,
 textarea {
-  background: none;
-  color: $muted-color;
-  font-size: 18px;
-  padding: 10px 10px 10px 5px;
-  display: block;
-  width: $width;
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid $muted-color;
-  &:focus {
-    outline: none;
-  }
-  &:focus ~ label,
-  &:valid ~ label {
-    top: -14px;
-    font-size: 12px;
-    color: $hl-color;
-  }
-  &:focus ~ .bar:before {
+    background: none;
+    color: $muted-color;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
     width: $width;
-  }
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid $muted-color;
+    &:focus {
+        outline: none;
+    }
+    &:focus ~ label,
+    &:valid ~ label {
+        top: -14px;
+        font-size: 12px;
+        color: $hl-color;
+    }
+    &:focus ~ .bar:before {
+        width: $width;
+    }
 }
 
 input[type="password"] {
-  letter-spacing: 0.3em;
+    letter-spacing: 0.3em;
 }
 
 label {
-  color: $muted-color;
-  font-size: 16px;
-  font-weight: normal;
-  position: absolute;
-  pointer-events: none;
-  left: 5px;
-  top: 10px;
-  transition: $trans-time ease all;
-}
-
-.bar {
-  position: relative;
-  display: block;
-  width: $width;
-  &:before {
-    content: "";
-    height: 2px;
-    width: 0;
-    bottom: 0px;
-    position: absolute;
-    background: $hl-color;
-    transition: $trans-time ease all;
-    left: 0%;
-  }
-}
-
-// BUTTONS // ============================== //
-.btn {
-  background: #fff;
-  color: mix(black, $muted-color, 25%);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 3px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  outline: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  &:hover {
-    color: mix(black, $muted-color, 30%);
-    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
-  }
-  &.btn-link {
-    background: $hl-color;
-    color: mix(white, $hl-color, 80%);
-    &:hover {
-      background: darken($hl-color, 5%);
-      color: mix(white, $hl-color, 85%);
-    }
-  }
-  &.btn-submit {
-    background: $hl-color;
-    color: mix(white, $hl-color, 70%);
-    &:hover {
-      background: darken($hl-color, 5%);
-      color: mix(white, $hl-color, 85%);
-    }
-  }
-  &.btn-cancel {
-    background: #eee;
-    &:hover {
-      background: darken(#eee, 5%);
-      color: mix(black, $muted-color, 30%);
-    }
-  }
-}
-
-.btn-box {
-  text-align: center;
-  margin: 50px 0;
-}
-
-
-// radio
-.mdc-form-field {
-  label {
-    position: relative;
-    top: 6px;
-  }
-}
-
-table {
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  table-layout: fixed;
-}
-
-table caption {
-  font-size: 1.5em;
-  margin: 0.5em 0 0.75em;
-}
-
-table tr {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  padding: 0.35em;
-}
-
-table th,
-table td {
-  padding: 0.625em;
-  text-align: center;
-}
-
-table th {
-  font-size: 0.85em;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-@media screen and (max-width: 600px) {
-  table {
-    border: 0;
-  }
-
-  table caption {
-    font-size: 1.3em;
-  }
-
-  table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-
-  table tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: 0.625em;
-  }
-
-  table td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: 0.8em;
-    text-align: right;
-  }
-
-  table td::before {
-    /*
-    * aria-label has no advantage, it won't be read inside a table
-    content: attr(aria-label);
-    */
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  table td:last-child {
-    border-bottom: 0;
-  }
-}
-
-.login-px {
-  padding: 80px 0;
-}
-.login-py {
-  padding-bottom: 80px;
-}
-.altura {
-  height: 148px;
-}
-.pad {
-  padding-bottom: 150px;
-}
-
-.dia {
-  p {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-.inativo {
-  padding: 50px 0;
-  background-color: #0472b7;
-  color: white;
-  font-weight: 500;
-  font-size: 15.5798px;
-  line-height: 23px;
-  a {
-    text-decoration: none;
-    color: white;
-  }
-  span {
-    background-color: red;
-    padding: 8px;
-    border-radius: 15px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-.ativo {
-  padding: 50px 0;
-  background-color: #0472b7;
-  color: white;
-  font-weight: 500;
-  font-size: 15.5798px;
-  line-height: 23px;
-  a {
-    text-decoration: none;
-    color: white;
-  }
-  span {
-    background-color: #3eed00;
-    padding: 8px;
-    border-radius: 15px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-.in-p {
-  p {
-    color: white;
-    font-weight: 600;
-    font-size: 15.5798px;
-    line-height: 23px;
-    text-transform: uppercase;
-  }
-}
-.form-group.input-material {
-  // variables (normally global variables in Bootstrap scss)
-  $gray-400: #ffffff;
-  $primary: #ffffff;
-  $danger: #dc3545;
-  $black: rgb(255, 255, 255);
-  // local variables
-  $inactive-color: $gray-400;
-
-  position: relative;
-  margin-top: 50px;
-  margin-bottom: 25px;
-
-  label {
-    color: darken($inactive-color, 10%);
+    color: $muted-color;
     font-size: 16px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
     left: 5px;
-    bottom: 1px;
-    transition: 0.1s ease all;
-    -moz-transition: 0.1s ease all;
-    -webkit-transition: 0.1s ease all;
-  }
+    top: 10px;
+    transition: $trans-time ease all;
+}
 
-  /* textarea label */
-  textarea.form-control {
-    & ~ label {
-      bottom: 90%; // fallback for browsers that do not support calc()
-      bottom: calc(100% - 38px);
+.bar {
+    position: relative;
+    display: block;
+    width: $width;
+    &:before {
+        content: "";
+        height: 2px;
+        width: 0;
+        bottom: 0px;
+        position: absolute;
+        background: $hl-color;
+        transition: $trans-time ease all;
+        left: 0%;
     }
-  }
+}
 
-  .form-control,
-  .form-select {
+// BUTTONS // ============================== //
+.btn {
+    background: #fff;
+    color: mix(black, $muted-color, 25%);
     border: none;
-    border-bottom: 2px solid $inactive-color;
-    border-radius: 0px;
-    background-color: transparent;
-    padding-left: 5px;
-    box-shadow: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    &:hover {
+        color: mix(black, $muted-color, 30%);
+        box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+    }
+    &.btn-link {
+        background: $hl-color;
+        color: mix(white, $hl-color, 80%);
+        &:hover {
+            background: darken($hl-color, 5%);
+            color: mix(white, $hl-color, 85%);
+        }
+    }
+    &.btn-submit {
+        background: $hl-color;
+        color: mix(white, $hl-color, 70%);
+        &:hover {
+            background: darken($hl-color, 5%);
+            color: mix(white, $hl-color, 85%);
+        }
+    }
+    &.btn-cancel {
+        background: #eee;
+        &:hover {
+            background: darken(#eee, 5%);
+            color: mix(black, $muted-color, 30%);
+        }
+    }
+}
 
-    /* required fields */
-    &:required ~ label::after {
-      content: "*";
-      color: $danger;
-      padding-left: 2px;
-      font-size: 0.8em;
+.btn-box {
+    text-align: center;
+    margin: 50px 0;
+}
+
+// radio
+.mdc-form-field {
+    label {
+        position: relative;
+        top: 6px;
+    }
+}
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table caption {
+    font-size: 1.5em;
+    margin: 0.5em 0 0.75em;
+}
+
+table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 0.35em;
+}
+
+table th,
+table td {
+    padding: 0.625em;
+    text-align: center;
+}
+
+table th {
+    font-size: 0.85em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
     }
 
-    /* active state */
-    &:focus,
-    &[value]:not([value=""]) {
-      border-bottom-color: $primary;
-      color: $black;
+    table caption {
+        font-size: 1.3em;
     }
 
-    &:focus ~ label,
-    &[value]:not([value=""]) ~ label {
-      top: unset;
-      bottom: 100%; // fallback for browsers without calc() support
-      bottom: calc(100% - 16px);
-      font-size: 14px;
-      color: $primary;
-      font-weight: 500;
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
     }
 
-    /* invalid state */
-    &:focus.invalid,
-    &.invalid,
-    &:focus.parsley-error,
-    &[value]:not([value=""]).parsley-error {
-      border-bottom-color: $danger;
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: 0.625em;
     }
 
-    &:focus.invalid ~ label,
-    &.invalid ~ label,
-    &:focus.parsley-error ~ label,
-    &[value]:not([value=""]).parsley-error ~ label {
-      color: $danger;
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 0.8em;
+        text-align: right;
     }
-  }
 
-  .form-select {
-    background-position: right 0 center;
-    padding-left: 0;
-  }
+    table td::before {
+        /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
 
-  .parsley-errors-list {
-    color: $danger;
-    list-style: none;
-    font-size: 0.7em;
-    padding-left: 5px;
-    position: absolute;
-    top: 107%;
-  }
+    table td:last-child {
+        border-bottom: 0;
+    }
+}
+
+.login-px {
+    padding: 80px 0;
+}
+.login-py {
+    padding-bottom: 80px;
+}
+.altura {
+    height: 148px;
+}
+.pad {
+    padding-bottom: 150px;
+}
+
+.dia {
+    p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+.inativo {
+    padding: 50px 0;
+    background-color: #0472b7;
+    color: white;
+    font-weight: 500;
+    font-size: 15.5798px;
+    line-height: 23px;
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    span {
+        background-color: red;
+        padding: 8px;
+        border-radius: 15px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+.ativo {
+    padding: 50px 0;
+    background-color: #0472b7;
+    color: white;
+    font-weight: 500;
+    font-size: 15.5798px;
+    line-height: 23px;
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    span {
+        background-color: #3eed00;
+        padding: 8px;
+        border-radius: 15px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+.in-p {
+    p {
+        color: white;
+        font-weight: 600;
+        font-size: 15.5798px;
+        line-height: 23px;
+        text-transform: uppercase;
+    }
+}
+.form-group.input-material {
+    // variables (normally global variables in Bootstrap scss)
+    $gray-400: #ffffff;
+    $primary: #ffffff;
+    $danger: #dc3545;
+    $black: rgb(255, 255, 255);
+    // local variables
+    $inactive-color: $gray-400;
+
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 25px;
+
+    label {
+        color: darken($inactive-color, 10%);
+        font-size: 16px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        bottom: 1px;
+        transition: 0.1s ease all;
+        -moz-transition: 0.1s ease all;
+        -webkit-transition: 0.1s ease all;
+    }
+
+    /* textarea label */
+    textarea.form-control {
+        & ~ label {
+            bottom: 90%; // fallback for browsers that do not support calc()
+            bottom: calc(100% - 38px);
+        }
+    }
+
+    .form-control,
+    .form-select {
+        border: none;
+        border-bottom: 2px solid $inactive-color;
+        border-radius: 0px;
+        background-color: transparent;
+        padding-left: 5px;
+        box-shadow: none;
+
+        /* required fields */
+        &:required ~ label::after {
+            content: "*";
+            color: $danger;
+            padding-left: 2px;
+            font-size: 0.8em;
+        }
+
+        /* active state */
+        &:focus,
+        &[value]:not([value=""]) {
+            border-bottom-color: $primary;
+            color: $black;
+        }
+
+        &:focus ~ label,
+        &[value]:not([value=""]) ~ label {
+            top: unset;
+            bottom: 100%; // fallback for browsers without calc() support
+            bottom: calc(100% - 16px);
+            font-size: 14px;
+            color: $primary;
+            font-weight: 500;
+        }
+
+        /* invalid state */
+        &:focus.invalid,
+        &.invalid,
+        &:focus.parsley-error,
+        &[value]:not([value=""]).parsley-error {
+            border-bottom-color: $danger;
+        }
+
+        &:focus.invalid ~ label,
+        &.invalid ~ label,
+        &:focus.parsley-error ~ label,
+        &[value]:not([value=""]).parsley-error ~ label {
+            color: $danger;
+        }
+    }
+
+    .form-select {
+        background-position: right 0 center;
+        padding-left: 0;
+    }
+
+    .parsley-errors-list {
+        color: $danger;
+        list-style: none;
+        font-size: 0.7em;
+        padding-left: 5px;
+        position: absolute;
+        top: 107%;
+    }
 }
 .eye {
-  font-size: 40px;
-  color: white;
-  text-align: center;
-  margin-left: 35px;
-  span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    margin-left: 35px;
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 .eye-close {
-  font-size: 40px;
-  color: white;
-  text-align: center;
-  margin-left: 35px;
-  span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    margin-left: 35px;
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 .accordition-container {
     padding: 1px;
 }
 
 .acc {
-  padding: 10px;
+    padding: 10px;
 }
 
 .accordition-header {
-
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .accordition-body {
-  display: none;
-  background: #fff;
-  p{
-      color: black !important;
-  }
+    display: none;
+    background: #fff;
+    p {
+        color: black !important;
+    }
 }
 
 .btn-custom {
-  border-radius: 10px;
-  font-family: Poppins;
-  font-style: normal;
-  line-height: 131.5%;
-  padding: 12px 25px;
-  border-radius: 16px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 22px;
+    border-radius: 10px;
+    font-family: Poppins;
+    font-style: normal;
+    line-height: 131.5%;
+    padding: 12px 25px;
+    border-radius: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
 }
 .btn-custom.btnc-success {
-  background-color: #06CC32 !important;
-  color: #FFFFFF !important;
+    background-color: #06cc32 !important;
+    color: #ffffff !important;
 }
 
 .btn-custom.btnc-info {
-  background-color: #36A6D4 !important;
-  color: #FFFFFF !important;
+    background-color: #36a6d4 !important;
+    color: #ffffff !important;
 }
 
 .btn-filter-novo {
-  background: #06CC32;
-  border-radius: 10px;
-  padding: 14px 32px 14px 32px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 131.5%;
-  letter-spacing: -0.015em;
-  color: #FFFFFF;
+    background: #06cc32;
+    border-radius: 10px;
+    padding: 14px 32px 14px 32px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 131.5%;
+    letter-spacing: -0.015em;
+    color: #ffffff;
 }
 .btn-filter-concluido {
-  background: #36A6D4;
-  border-radius: 10px;
-  padding: 14px 32px 14px 32px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 131.5%;
-  letter-spacing: -0.015em;
-  color: #FFFFFF;
+    background: #36a6d4;
+    border-radius: 10px;
+    padding: 14px 32px 14px 32px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 131.5%;
+    letter-spacing: -0.015em;
+    color: #ffffff;
 }
 .btn-filter-detalhe {
-  background: #06CC32;
-  border-radius: 10px;
-  padding: 14px 32px 14px 32px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 131.5%;
-  letter-spacing: -0.015em;
-  color: #FFFFFF;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%);
-  bottom: -24px;
-  margin-top: -26px;
+    background: #06cc32;
+    border-radius: 10px;
+    padding: 14px 32px 14px 32px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 131.5%;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: -24px;
+    margin-top: -26px;
 }
 
 .text-codigo-pedido {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 131.5%;
-  letter-spacing: -0.015em;
-  color: #4F3A57;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 131.5%;
+    letter-spacing: -0.015em;
+    color: #4f3a57;
 }
 
 .text-informativo-pedido {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 131.5%;
-  letter-spacing: -0.015em;
-  color: #BF1414;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 131.5%;
+    letter-spacing: -0.015em;
+    color: #bf1414;
 }
 
 .text-custom-f1 {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 17.4933px;
-  line-height: 131.5%;
-  text-align: center;
-  letter-spacing: -0.015em;
-  color: #FFFFFF;
-  padding: 18px 32px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 17.4933px;
+    line-height: 131.5%;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    padding: 18px 32px;
 }
 
 .div-plus-item {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 46.4933px;
-  text-align: center;
-  letter-spacing: -0.015em;
-  color: #FFFFFF;
-  position: relative;
-  bottom: 10px;
-  cursor: pointer;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 46.4933px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    position: relative;
+    bottom: 10px;
+    cursor: pointer;
 }
 
 .btn-custom-informativo {
-  background: #BF1414;
-  border-radius: 10px;
-  color: #fff;
-  padding: 9px 30px;
-  margin: 10px 10px;
-  color: #fff;
+    background: #bf1414;
+    border-radius: 10px;
+    color: #fff;
+    padding: 9px 30px;
+    margin: 10px 10px;
+    color: #fff;
 }
 
 .text-pedido-item {
-  font-family: Poppins;
-  font-style: normal;
-  font-size: 22px;
-  line-height: 134.5%;
-  letter-spacing: -.015em;
+    font-family: Poppins;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 134.5%;
+    letter-spacing: -0.015em;
 }
 
 .text-custom-comissao {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 17.4933px;
-  line-height: 131.5%;
-  text-align: center;
-  letter-spacing: -0.015em;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 17.4933px;
+    line-height: 131.5%;
+    text-align: center;
+    letter-spacing: -0.015em;
 }
 
 .text-label {
-  text-align: center;
-  color: #fff;
-  font-weight: 900;
-  font-size: 19px;
+    text-align: center;
+    color: #fff;
+    font-weight: 900;
+    font-size: 19px;
 }
 
 .text-label2 {
-  color: #fff;
-  font-weight: 900;
-  font-size: 19px;
+    color: #fff;
+    font-weight: 900;
+    font-size: 19px;
 }
 
 .btn-multi-step {
-  background-color: #36A6D4;
-  color: #fff;
+    background-color: #36a6d4;
+    color: #fff;
 }
 
 .btn-multi-step:hover {
-  color: #fff;
+    color: #fff;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #fff !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #fff !important;
+
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #fff !important;
+
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #fff !important;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #fff !important;
 }
 
-.input-especial input {
-  margin: 0 10px;
+::placeholder { /* Most modern browsers support this now. */
+   color:    #fff !important;
 }
+.input-especial {
 
+
+    input {
+        margin: 0 10px;
+    }
+}
 .input-especial button {
-  padding: 0 10px;
-  color: #fff;
-  background-color: #0472B7;
+    padding: 0 10px;
+    color: #fff;
+    background-color: #0472b7;
 }
 
 select {
-  color: #fff;
-  background: 0 0;
-  font-size: 18px;
-  padding: 10px 10px 10px 5px;
-  display: block;
-  width: 320px;
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid #c6c6c6;
+    color: #fff;
+    background: 0 0;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 320px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #c6c6c6;
 }
 
 select option {
-  color: #000;
+    color: #000;
 }
 
 /* Hide all steps by default: */
 .tab {
-  display: none;
+    display: none;
 }
 
 .invalid {
-  border-bottom-color: #f00;
+    border-bottom-color: #f00;
 }
 
 /* Make circles that indicate the steps of the form: */
 .step {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbbbbb;
-  border: none;
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 0.5;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
 }
 
 /* Mark the active step: */
 .step.active {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-  background-color: #04AA6D;
+    background-color: #04aa6d;
 }
