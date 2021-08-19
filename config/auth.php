@@ -96,7 +96,7 @@ return [
             'model' => App\Models\Pescador::class,
         ],
 
-  
+
         'buyers' => [
             'driver' => 'eloquent',
             'model' => App\Models\Comprador::class,
@@ -145,6 +145,6 @@ return [
     |
     */
 
-    'password_timeout' => 10800,
+    'password_timeout' => 4000000,
 
 ];
