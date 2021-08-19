@@ -648,6 +648,29 @@ table th {
   color: black !important;
 }
 
+.btn-custom {
+  border-radius: 10px;
+  font-family: Poppins;
+  font-style: normal;
+  line-height: 131.5%;
+  padding: 12px 25px;
+  border-radius: 16px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.btn-custom.btnc-success {
+  background-color: #06CC32 !important;
+  color: #FFFFFF !important;
+}
+
+.btn-custom.btnc-info {
+  background-color: #36A6D4 !important;
+  color: #FFFFFF !important;
+}
+
 .btn-filter-novo {
   background: #06CC32;
   border-radius: 10px;
@@ -763,5 +786,84 @@ table th {
   line-height: 131.5%;
   text-align: center;
   letter-spacing: -0.015em;
+}
+
+.text-label {
+  text-align: center;
+  color: #0472B7;
+  font-weight: 900;
+  font-size: 19px;
+}
+
+.text-label2 {
+  color: #fff;
+  font-weight: 900;
+  font-size: 19px;
+}
+
+.btn-multi-step {
+  background-color: #36A6D4;
+  color: #fff;
+}
+
+.btn-multi-step:hover {
+  color: #fff;
+}
+
+.input-especial input {
+  margin: 0 10px;
+}
+
+.input-especial button {
+  padding: 0 10px;
+  color: #fff;
+  background-color: #0472B7;
+}
+
+select {
+  color: #fff;
+  background: 0 0;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 320px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+select option {
+  color: #000;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+.invalid {
+  border-bottom-color: #f00;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #04AA6D;
 }
 /*# sourceMappingURL=main.css.map */

@@ -12,10 +12,10 @@
 <div>
       <div class="d-flex justify-content-between container voltar py-4 mb-5">
             <div>
-                  <a href="javascript:history.back()"> <i class="fas fa-chevron-left"></i> Voltar</a>
+                  <a href="{{route('consultor')}}"> <i class="fas fa-chevron-left"></i> Voltar</a>
             </div>
             <div>
-                  <span>CADASTRO DE COMPRADOR</span>
+                  <span>COMPRADOR COLETIVO</span>
             </div>
       </div>
 </div>
@@ -29,137 +29,210 @@
 </div>
 @endif
 <div class="container login-py">
-      <form action="{{ route('consultor.comprador-coletivo.store') }}" method="POST">
+
+      <form id="regForm" action="{{ route('consultor.comprador-coletivo.store') }}" method="POST">
             @csrf
-            <div class="form-group input-material">
-                  <input type="text" class="form-control" name="name" id="name-field">
-                  <label for="name-field">Nome da Empresa</label>
+            <div class="tab">
+                  <h2 class="mt-2 mb-5 text-white"><b>VAMOS COMEÇAR O CADASTRO</b></h2>
+                  <div class="text-label">NOME DO ESTABELECIMENTO</div>
+                  <div class="form-group mt-4 mb-5 input-material">
+                        <input type="text" placeholder="Nome do Estabelecimento" name="name_empresa" oninput="this.className = ''">
+                  </div>
             </div>
-          
-            <div class="form-group input-material">
-                  <input type="text" class="form-control" name="telefone" id="name-field">
-                  <label for="name-field">Telefone da Empresa</label>
-            </div>
-          
-            <div class="form-group input-material">
-                  <input type="text" class="form-control" name="telemovel_empresa" id="name-field">
-                  <label for="name-field">Telemovel da Empresa</label>
-            </div>
-          
-            <div class="form-group input-material">
-                  <input type="email" class="form-control" name="email"  id="name-field">
-                  <label for="name-field">E-mail</label>
-            </div>
-            <div class="form-group input-material">
-                  <input type="text" class="form-control" name="morada" id="name-field">
-                  <label for="name-field">Morada</label>
-            </div>
-          
-            <div class="form-group input-material">
-                  <input type="text" class="form-control" name="nif" id="name-field">
-                  <label for="name-field">Nif da Empresa</label>
-            </div>
-            <div class="form-group input-material">
-                  <input type="text" class="form-control" name="contato" id="name-field">
-                  <label for="name-field">Contato</label>
-            </div>
-            <div class="form-group input-material">
-                  <input type="number" class="form-control" name="telemovel" id="name-field">
-                  <label for="name-field">Telemóvel</label>
-            </div>
-          
 
-            <div class="row">
-                  <div class="col-6">
-                        <div class="mdc-form-field">
-                              <div class="mdc-radio">
-                                    <input class="mdc-radio__native-control" value="peixaria" type="radio" id="radio-1"
-                                          name="tipo">
-                                    <div class="mdc-radio__background">
-                                          <div class="mdc-radio__outer-circle"></div>
-                                          <div class="mdc-radio__inner-circle"></div>
-                                    </div>
-                                    <div class="mdc-radio__ripple"></div>
-                              </div>
-                              <label class="" for="radio-1">PEIXARIA</label>
-                        </div>
+            <div class="tab">
+                  <h2 class="mt-2 mb-5 text-white"><b>CONTINUE COM O CADASTRO</b></h2>
+                  <div class="text-label">TIPO DE ESTABELECIMENTO</div>
+                  <div class="form-group mt-4 mb-5 input-material">
+                        <select name="tipo" oninput="this.className = ''">
+                              <option value="">Selecione</option>
+                              <option value="peixaria">PEIXARIA</option>
+                              <option value="retalho">RETALHO</option>
+                              <option value="outros">OUTROS</option>
+                              <option value="restauracao">RESTAURAÇÃO</option>
+                              <option value="varina">VARINA</option>
+                              <option value="hotelaria">HOTELARIA</option>
+                        </select>
                   </div>
-                  <div class="col-6">
-                        <div class="mdc-form-field">
-                              <div class="mdc-radio">
-                                    <input class="mdc-radio__native-control" value="retalho" type="radio" id="radio-1"
-                                          name="tipo">
-                                    <div class="mdc-radio__background">
-                                          <div class="mdc-radio__outer-circle"></div>
-                                          <div class="mdc-radio__inner-circle"></div>
-                                    </div>
-                                    <div class="mdc-radio__ripple"></div>
-                              </div>
-                              <label class="" for="radio-1">RETALHO</label>
-                        </div>
+            </div>
+
+            <div class="tab">
+                  <h2 class="mt-2 mb-5 text-white"><b>CONTINUE COM O CADASTRO</b></h2>
+                  <div class="text-label">NIPC DO ESTABELECIMENTO</div>
+                  <div class="form-group mt-4 mb-5 input-material">
+                        <input type="text" placeholder="Nipc do Estabelecimento" name="nif" oninput="this.className = ''">
                   </div>
-                  <div class="col-6">
-                        <div class="mdc-form-field">
-                              <div class="mdc-radio">
-                                    <input class="mdc-radio__native-control" value="outros" type="radio" id="radio-1"
-                                          name="tipo">
-                                    <div class="mdc-radio__background">
-                                          <div class="mdc-radio__outer-circle"></div>
-                                          <div class="mdc-radio__inner-circle"></div>
-                                    </div>
-                                    <div class="mdc-radio__ripple"></div>
-                              </div>
-                              <label class="" for="radio-1">OUTROS</label>
-                        </div>
-                  </div>
-                  <div class="col-6">
-                        <div class="mdc-form-field">
-                              <div class="mdc-radio">
-                                    <input class="mdc-radio__native-control" value="restauracao" type="radio"
-                                          id="radio-1" name="tipo">
-                                    <div class="mdc-radio__background">
-                                          <div class="mdc-radio__outer-circle"></div>
-                                          <div class="mdc-radio__inner-circle"></div>
-                                    </div>
-                                    <div class="mdc-radio__ripple"></div>
-                              </div>
-                              <label class="" for="radio-1">RESTAURAÇÃO</label>
-                        </div>
-                  </div>
-                  <div class="col-6">
-                        <div class="mdc-form-field">
-                              <div class="mdc-radio">
-                                    <input class="mdc-radio__native-control" value="varina" type="radio" id="radio-1"
-                                          name="tipo">
-                                    <div class="mdc-radio__background">
-                                          <div class="mdc-radio__outer-circle"></div>
-                                          <div class="mdc-radio__inner-circle"></div>
-                                    </div>
-                                    <div class="mdc-radio__ripple"></div>
-                              </div>
-                              <label class="" for="radio-1">VARINA</label>
-                        </div>
-                  </div>
-                  <div class="col-6">
-                        <div class="mdc-form-field">
-                              <div class="mdc-radio">
-                                    <input class="mdc-radio__native-control" value="hotelaria" type="radio" id="radio-1"
-                                          name="tipo">
-                                    <div class="mdc-radio__background">
-                                          <div class="mdc-radio__outer-circle"></div>
-                                          <div class="mdc-radio__inner-circle"></div>
-                                    </div>
-                                    <div class="mdc-radio__ripple"></div>
-                              </div>
-                              <label class="" for="radio-1">HOTELARIA</label>
-                        </div>
+            </div>
+
+            <div class="tab">
+                  <div class="text-label">TELEMÓVEL DO ESTABELECIMENTO</div>
+                  <div class="form-group mt-4 mb-5 input-material">
+                        <input type="text" placeholder="+000 000000000" name="telemovel_empresa" oninput="this.className = ''">
                   </div>
 
-            </div>
-            <div class="btn-box py-4"><button class="btn btn-submit" type="submit">Cadastrar</button>
+                  <div class="text-label">TELEFONE FIXO DO ESTABELECIMENTO</div>
+                  <div class="form-group mt-4 mb-5 input-material">
+                        <input type="text" placeholder="+000 000000000" name="telefone_empresa" oninput="this.className = ''">
+                  </div>
 
+                  <div class="text-label">NOME DO CONTATO DO PROPIETÁRIO</div>
+                  <div class="form-group mt-4 mb-5 input-material">
+                        <input type="text" placeholder="Nome do Contato" name="contato" oninput="this.className = ''">
+                  </div>
+            </div>
+
+            <div class="tab">
+                  <div class="text-label">NOME DO PROPIETÁRIO DO ESTABELECIMENTO</div>
+                  <div class="form-group mt-4 mb-5 input-material">
+                        <input type="text" placeholder="Nome do Proprietário" name="name" oninput="this.className = ''">
+                  </div>
+
+                  <div class="text-label">EMAIL DO PROPIETÁRIO DO ESTABELECIMENTO</div>
+                  <div class="form-group mt-4 mb-5 input-material">
+                        <input type="text" placeholder="Email do Proprietário" name="email" oninput="this.className = ''">
+                  </div>
+
+                  <div class="text-label">TELEMOVEL DO PROPIETÁRIO DO ESTABELECIMENTO</div>
+                  <div class="form-group mt-4 mb-5 input-material">
+                        <input type="text" placeholder="Telemovel do Propietário" name="telemovel_propietario" oninput="this.className = ''">
+                  </div>
+            </div>
+
+            <div class="tab">
+                  <div class="text-label2">CÓDIGO POSTAL</div>
+                  <div class="form-group mt-4 mb-5 d-flex input-material input-especial">
+                        <input type="text" id="ceping" name="codigo_postal">
+
+                        <button type="button" id="buscaring" class="btn">Buscar</button>
+                  </div>
+
+                  <div class="text-label2">MORADA</div>
+                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                        <input type="text" id="morada" name="morada">
+                  </div>
+
+                  <div class="text-label2">REGIÃO</div>
+                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                        <input type="text" id="regiao" name="regiao">
+                  </div>
+
+                  <div class="text-label2">PORTA</div>
+                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                        <input type="text" id="porta" name="porta">
+                  </div>
+
+                  <div class="text-label2">DISTRITO</div>
+                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                        <input type="text" id="distrito" name="distrito">
+                  </div>
+
+                  <div class="text-label2">CONSELHO</div>
+                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                        <input type="text" id="conselho" name="conselho">
+                  </div>
+
+                  <div class="text-label2">FREGUESIA</div>
+                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                        <input type="text" id="freguesia" name="freguesia">
+                  </div>
+
+                  <input type="hidden" id="latitude" name="latitude">
+                  <input type="hidden" id="longitude" name="longitude">
+            </div>
+            
+            <div class="mt-3">
+                  <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-multi-step mr-2" id="prevBtn" onclick="nextPrev(-1)">VOLTAR</button>
+                        <button type="button" class="btn btn-multi-step ml-2" id="nextBtn" onclick="nextPrev(1)">PRÓXIMO</button>
+                  </div>
+            </div>
+            
+            <!-- Circles which indicates the steps of the form: -->
+            <div class="d-none" style="text-align:center;margin-top:40px;">
+                  <span class="step"></span>
+                  <span class="step"></span>
+                  <span class="step"></span>
+                  <span class="step"></span>
+                  <span class="step"></span>
+                  <span class="step"></span>
             </div>
       </form>
-
 </div>
+@endsection
+
+@section('script')
+      <script>
+            var currentTab = 0; // Current tab is set to be the first tab (0)
+            showTab(currentTab); // Display the current tab
+
+            function showTab(n) {
+            // This function will display the specified tab of the form ...
+                  var x = document.getElementsByClassName("tab");
+                  x[n].style.display = "block";
+                  // ... and fix the Previous/Next buttons:
+                  if (n == 0) {
+                        document.getElementById("prevBtn").style.display = "none";
+                  } else {
+                        document.getElementById("prevBtn").style.display = "inline";
+                  }
+                  if (n == (x.length - 1)) {
+                        document.getElementById("nextBtn").innerHTML = "SALVAR";
+                  } else {
+                        document.getElementById("nextBtn").innerHTML = "PRÓXIMO";
+                  }
+                  // ... and run a function that displays the correct step indicator:
+                  fixStepIndicator(n)
+            }
+
+            function nextPrev(n) {
+                  // This function will figure out which tab to display
+                  var x = document.getElementsByClassName("tab");
+                  // Exit the function if any field in the current tab is invalid:
+                  if (n == 1 && !validateForm()) return false;
+                  // Hide the current tab:
+                  x[currentTab].style.display = "none";
+                  // Increase or decrease the current tab by 1:
+                  currentTab = currentTab + n;
+                  // if you have reached the end of the form... :
+                  if (currentTab >= x.length) {
+                        //...the form gets submitted:
+                        document.getElementById("regForm").submit();
+                        return false;
+                  }
+                  // Otherwise, display the correct tab:
+                  showTab(currentTab);
+            }
+
+            function validateForm() {
+                  // This function deals with validation of the form fields
+                  var x, y, i, valid = true;
+                  x = document.getElementsByClassName("tab");
+                  y = x[currentTab].getElementsByTagName("input");
+                  // A loop that checks every input field in the current tab:
+                  for (i = 0; i < y.length; i++) {
+                        // If a field is empty...
+                        if (y[i].value == "") {
+                              // add an "invalid" class to the field:
+                              y[i].className += " invalid";
+                              // and set the current valid status to false:
+                              valid = false;
+                        }
+                  }
+                  // If the valid status is true, mark the step as finished and valid:
+                  if (valid) {
+                        document.getElementsByClassName("step")[currentTab].className += " finish";
+                  }
+                  return valid; // return the valid status
+            }
+
+            function fixStepIndicator(n) {
+                  // This function removes the "active" class of all steps...
+                  var i, x = document.getElementsByClassName("step");
+                  for (i = 0; i < x.length; i++) {
+                        x[i].className = x[i].className.replace(" active", "");
+                  }
+                  //... and adds the "active" class to the current step:
+                  x[n].className += " active";
+            }
+      </script>
 @endsection

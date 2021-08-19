@@ -55,9 +55,9 @@ class CompradorColetivoController extends Controller
       
         $comprador = Comprador::create([
             'user_id' => $user,
-            'name' =>  $dados['name'],
+            'name' =>  $request->name,
             'lastname' => 'coletivo',
-            'telemovel' => $request->telemovel,
+            'telemovel' => $request->telemovel_propietario,
             'email' => $request->email,
             'password' => Hash::make($random),
             'codigo' =>  $random,
@@ -66,17 +66,26 @@ class CompradorColetivoController extends Controller
 
         $save = BuyerColective::create([
             'comprador_id' => $comprador->id,
+            'name' =>  $request->name_empresa,
+            'codigo_postal' => $request->codigo_postal,
             'morada' => $request->morada,
+            'regiao' => $request->regiao,
+            'distrito' => $request->distrito,
+            'conselho' => $request->conselho,
+            'freguesia' => $request->freguesia,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'porta' => $request->porta,
             'nif' => $request->nif,
             'contato' => $request->contato,
-            'telefone' => $request->telefone,
+            'telefone' => $request->telefone_empresa,
             'telemovel_empresa' => $request->telemovel_empresa,
             'tipo' => $request->tipo,
         ]);
 
 
 
-        return redirect()->route('consultor')->with('success', 'Comprador criado com sucesso!');
+        return redirect()->route('consultor.comprador-coletivo.informativo');
     }
 
     /**
@@ -122,5 +131,10 @@ class CompradorColetivoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function coletivoInformativo()
+    {
+        return view('auth.comprador-coletivo.informativo');
     }
 }

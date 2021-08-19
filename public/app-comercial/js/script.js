@@ -36,8 +36,31 @@ function show() {
       $('.eye-close').addClass('d-none');
 }
 $(document).ready(function() {
-    $('.accordition-header').on('click',function() {
-      $('.accordition-header').not(this).next().slideUp();
-      $(this).next().slideToggle();
-    });
-  });
+      $('.accordition-header').on('click',function() {
+            $('.accordition-header').not(this).next().slideUp();
+            $(this).next().slideToggle();
+      });
+
+      $('[name="telemovel_empresa"], [name="telefone_empresa"], [name="telemovel_propietario"]').mask('+000 000000000');
+});
+
+$('#buscaring').on('click', function() {
+      $value = $('#ceping').val();
+      $.ajax({
+            type: 'get',
+            url: '/consultor/adress/cep',
+            data: {
+                  'search': $value
+            },
+            success: function(data) {
+                  console.log(data);
+                  $('#morada').val(data.Morada);
+                  $('#regiao').val(data.Localidade);
+                  $('#distrito').val(data.Distrito);
+                  $('#conselho').val(data.Concelho);
+                  $('#freguesia').val(data.Freguesia);
+                  $('#latitude').val(data.Latitude);
+                  $('#longitude').val(data.Longitude);
+            }
+      });
+});

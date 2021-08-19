@@ -155,6 +155,7 @@ Route::middleware(['auth:consultor'])->group(function () {
 
         Route::get('comprador-coletivo-create', [CompradorColetivoController::class, 'index'])->name('consultor.comprador-coletivo.create');
         Route::post('comprador-coletivo-store', [CompradorColetivoController::class, 'store'])->name('consultor.comprador-coletivo.store');
+        Route::get('comprador-coletivo-informativo', [CompradorColetivoController::class, 'coletivoInformativo'])->name('consultor.comprador-coletivo.informativo');
 
         Route::get('consultor-compradores-ativos', [ComercialPainelController::class, 'compradorListAtivo'])->name('consultor.compradores.ativo');
         Route::get('consultor-compradores-inativos', [ComercialPainelController::class, 'compradorListInativo'])->name('consultor.compradores.inativo');
@@ -179,6 +180,8 @@ Route::middleware(['auth:consultor'])->group(function () {
 
         Route::get('extractos/{filter?}', [ComercialPainelController::class, 'extracto'])->name('consultor.extracto');
         Route::get('ver-extractos/{id}', [ComercialPainelController::class, 'verExtracto'])->name('consultor.extracto.ver');
+
+        Route::get('consultor/adress/cep', [AdressController::class, 'buscaCep']);
     });
 
 

@@ -17,6 +17,14 @@ class BuyerColective extends Model
         'telefone',
         'telemovel_empresa',
         'tipo',
-       
+        'name',
+        'codigo_postal',
+        'regiao',
+        'distrito',
+        'conselho',
+        'freguesia',
+        'latitude',
+        'longitude',
+        'porta',
     ];
 }
