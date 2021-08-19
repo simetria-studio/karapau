@@ -18,7 +18,7 @@ class AdressController extends Controller
      */
     public function index()
     {
-        return view('store.pages.user.adress');
+        return view('app-front.store.pages.adress-edit');
     }
 
     /**

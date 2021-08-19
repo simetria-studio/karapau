@@ -101,6 +101,19 @@ class CompradorIndividualController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $rules = [
+            'name' => 'required|min:3|max:50',
+            'email' => 'email',
+            'password' => 'confirmed',
+        ];
+
+        $customMessages = [
+            'required' => 'Este campo e requerido, por favor preencha!',
+            'confirmed' => 'As senhas não são iguais'
+        ];
+        $this->validate($request, $rules, $customMessages);
+
         $compradorDados['name'] = $request->name;
         $compradorDados['lastname'] = $request->lastname;
         $compradorDados['telemovel'] = $request->telemovel;

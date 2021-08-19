@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Buyer;
 
 use App\Models\Comprador;
+use App\Models\AdressBuyer;
 use Illuminate\Http\Request;
 use App\Models\CompradorIndividual;
 use App\Http\Controllers\Controller;
@@ -13,11 +14,13 @@ class BuyerController extends Controller
     public function individual($id)
     {
         $user = Comprador::find($id);
-        return view('store.pages.user.edit-ind', compact('user'));
+        $adress = AdressBuyer::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
+        return view('app-front.store.pages.perfil', compact('user', 'adress'));
     }
-    public function coletivo()
+    public function edit($id)
     {
-        return view('store.pages.user.edit-col');
+        $user = Comprador::with('adresses')->find($id);
+        return view('app-front.store.pages.info-edit', compact('user'));
     }
     public function logout()
     {

@@ -17,11 +17,11 @@
                 <p>1000{{ auth()->user()->id }}</p>
             </div>
         </div>
-
         <div class="title">
             <p>Olá, {{ auth()->user()->name }}</p>
-            <a href="">SAIR</a>
+            <a href="{{ route('user.logout') }}">SAIR</a>
         </div>
+
     </div>
     <div class="top mt-3">
         <div class="container">

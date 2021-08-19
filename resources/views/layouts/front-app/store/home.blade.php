@@ -25,9 +25,34 @@
         @yield('content')
     </main>
 
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $('#buscar').on('click', function() {
+            $value = $('#cep').val();
+            $.ajax({
+                type: 'get',
+                url: '{{ url('adress/cep') }}',
+                data: {
+                    'search': $value
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('#morada').val(data.Morada);
+                    $('#regiao').val(data.Localidade);
+                    $('#distrito').val(data.Distrito);
+                    $('#conselho').val(data.Concelho);
+                    $('#freguesia').val(data.Freguesia);
+                    $('#latitude').val(data.Latitude);
+                    $('#longitude').val(data.Longitude);
+                }
+            });
+        })
+    </script>
 </body>
 
 </html>

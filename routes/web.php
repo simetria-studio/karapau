@@ -224,7 +224,7 @@ Route::group(['middleware' => ['auth:buyer']], function(){
     Route::get('store/checkout', [CheckoutController::class, 'index'])->name('store.checkout');
 
     Route::get('store/user/edit-ind/{id}', [BuyerController::class, 'individual'])->name('store.user.edit-ind');
-    Route::get('store/user/edit-col', [BuyerController::class, 'coletivo'])->name('store.user.edit-col');
+    Route::get('store/user/edit/{id}', [BuyerController::class, 'edit'])->name('store.user.edit');
 
     Route::post('store/user/update-ind/{id}', [CompradorIndividualController::class, 'update'])->name('store.user.update');
 
