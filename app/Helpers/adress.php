@@ -12,6 +12,7 @@ function getValue($portoId)
 
     $adress = App\Models\AdressBuyer::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
     $porto = App\Models\Porto::find($portoId);
+    $kmValor = App\Models\Km::orderBy('created_at', 'desc')->first();
 // print_r($porto);
     $url =  Illuminate\Support\Facades\Http::get("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=$porto->latitude,$porto->longitude&destinations=$adress->latitude,$adress->longitude&key=AIzaSyCcTnukB7zVZVr3T-Pk6-Lptswge0BDOXg");
 
@@ -25,7 +26,7 @@ function getValue($portoId)
     // print_r($adress);
     // print_r($url);
 
-    return 0;
+    return $mnH * (float)$kmValor->km;
 
 
 }

@@ -3,14 +3,14 @@
 use App\Models\CompradorIndividual;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TesteController;
+use App\Http\Controllers\Admin\KmController;
 use App\Http\Controllers\Cart\CartController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PortoController;
 use App\Http\Controllers\Buyer\BuyerController;
 use App\Http\Controllers\Store\StoreController;
-use App\Http\Controllers\Admin\PainelController;
-use App\Http\Controllers\Admin\EntregadorController;
 
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PainelController;
 
 use App\Http\Controllers\Admin\ClienteController;
 
@@ -21,6 +21,7 @@ use App\Http\Controllers\Pedidos\PedidoController;
 use App\Http\Controllers\Admin\ComercialController;
 use App\Http\Controllers\Auth\StoreLoginController;
 use App\Http\Controllers\Admin\EncomendasController;
+use App\Http\Controllers\Admin\EntregadorController;
 use App\Http\Controllers\Auth\PescadorRegController;
 use App\Http\Controllers\Pescador\ProdutoController;
 use App\Http\Controllers\Checkout\CheckoutController;
@@ -97,7 +98,8 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('pedidos/completo/{id}', [EncomendasController::class, 'pedidoDatalheUser'])->name('admin.pedidos.completo');
 
 
-
+    Route::get('km/cadastro', [KmController::class, 'index'])->name('admin.km');
+    Route::post('km/cadastro/store', [KmController::class, 'store'])->name('admin.km.store');
 
     Route::get('porto/create', [PortoController::class, 'create'])->name('admin.porto.create');
     Route::post('porto/store', [PortoController::class, 'store'])->name('admin.porto.store');

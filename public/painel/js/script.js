@@ -103,7 +103,7 @@ $(document).ready(function(){
             $('#modalUsersEdit').find('[name="'+key+'"]').val(value);
         });
     });
-    
+
     $(document).on('click', '[data-target="#entregadorModal"]', function(){
         $('#entregadorModal').find('[name="id"]').val($(this).data('id'));
     });
@@ -144,3 +144,5 @@ $(document).ready(function(){
         }
     });
 });
+
+

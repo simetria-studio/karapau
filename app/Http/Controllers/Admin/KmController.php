@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Km;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class KmController extends Controller
 {
@@ -14,7 +15,8 @@ class KmController extends Controller
      */
     public function index()
     {
-        //
+        $kms = Km::orderBy('created_at', 'desc')->get();
+       return view('painel.pages.cadastros.kmcadastro', compact('kms'));
     }
 
     /**
@@ -35,7 +37,11 @@ class KmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $save = Km::create($request->all());
+
+        return redirect()->back()->with('success', 'Sucesso');
+
     }
 
     /**
