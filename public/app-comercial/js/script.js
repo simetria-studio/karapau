@@ -41,7 +41,7 @@ $(document).ready(function() {
             $(this).next().slideToggle();
       });
 
-      $('[name="telemovel_empresa"], [name="telefone_empresa"], [name="telemovel_propietario"]').mask('+000 000000000');
+      $('[name="telemovel_empresa"], [name="telefone_empresa"], [name="telemovel_propietario"], [name="telemovel"]').mask('+000 000000000');
 });
 
 $('#buscaring').on('click', function() {

@@ -13,5 +13,13 @@ class BuyerInduvidual extends Model
         'comprador_id', 
         'morada', 
         'nif',
+        'codigo_postal',
+        'regiao',
+        'distrito',
+        'conselho',
+        'freguesia',
+        'latitude',
+        'longitude',
+        'porta',
     ];
 }

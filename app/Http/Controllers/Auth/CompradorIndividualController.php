@@ -50,7 +50,7 @@ class CompradorIndividualController extends Controller
         $dados = $request->all();
         $comprador = Comprador::create([
             'user_id' => $user,
-            'name' => $request->nome,
+            'name' => $request->name,
             'lastname' => $request->sobrenome,
             'email' => $request->email,
             'password' => Hash::make($random),
@@ -63,11 +63,20 @@ class CompradorIndividualController extends Controller
             'comprador_id' => $comprador->id,
             'morada' => $request->morada,
             'nif' => $request->nif,
+            'codigo_postal' => $request->codigo_postal,
+            'morada' => $request->morada,
+            'regiao' => $request->regiao,
+            'distrito' => $request->distrito,
+            'conselho' => $request->conselho,
+            'freguesia' => $request->freguesia,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'porta' => $request->porta,
         ]);
 
 
 
-        return redirect()->route('consultor')->with('success', 'Comprador criado com sucesso!');
+        return redirect()->route('consultor.comprador-individual.informativo');
     }
 
     /**
@@ -133,5 +142,10 @@ class CompradorIndividualController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function individualInformativo()
+    {
+        return view('auth.comprador-individual.informativo');
     }
 }
