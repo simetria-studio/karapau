@@ -176,7 +176,7 @@ Route::middleware(['auth:consultor'])->group(function () {
         Route::any('teste', [TesteController::class, 'index']);
 
         Route::get('extractos/{filter?}', [ComercialPainelController::class, 'extracto'])->name('consultor.extracto');
-        Route::get('ver-extractos/{id}', [ComercialPainelController::class, 'ver-Extracto'])->name('consultor.extracto.ver');
+        Route::get('ver-extractos/{id}', [ComercialPainelController::class, 'verExtracto'])->name('consultor.extracto.ver');
     });
 
 
