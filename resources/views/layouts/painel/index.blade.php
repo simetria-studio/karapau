@@ -147,10 +147,7 @@
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Portos</p>
                                         </a>
-                                        <a href="{{ route('admin.km') }}" class="nav-link @if (Request::is('km/cadastro')) active @endif">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>KM</p>
-                                        </a>
+
                                     </li>
                                 </ul>
                             </li>

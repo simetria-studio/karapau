@@ -101,7 +101,7 @@ class CompradorIndividualController extends Controller
 
         $dados = $request->all();
         $comprador = Comprador::create([
-            'user_id' => 2,
+            'user_id' => 71,
             'name' => $request->name,
             'lastname' => $request->sobrenome,
             'email' => $request->email,
