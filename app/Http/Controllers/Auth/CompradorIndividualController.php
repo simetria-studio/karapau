@@ -4,15 +4,16 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\Mails;
 use App\Mail\AdminMail;
+use App\Models\Comprador;
+use App\Models\AdressBuyer;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\BuyerInduvidual;
 use App\Models\CompradorIndividual;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CompradorIndividualMail;
-use App\Models\BuyerInduvidual;
-use App\Models\Comprador;
 
 class CompradorIndividualController extends Controller
 {
@@ -22,6 +23,10 @@ class CompradorIndividualController extends Controller
         return view('auth.comprador-individual.create');
     }
 
+    public function home()
+    {
+        return view('auth.comprador-individual.home-create');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -42,14 +47,14 @@ class CompradorIndividualController extends Controller
     {
         $validated = $request->validate([
             'email' => 'required|unique:comprador_individuals|max:255',
-            'nome' => 'required',
+
         ]);
 
         $random = Str::random(9);
         $user = auth()->guard('consultor')->user()->id;
         $dados = $request->all();
         $comprador = Comprador::create([
-            'user_id' => $user,
+            'user_id' => $user ? $user : 26,
             'name' => $request->name,
             'lastname' => $request->sobrenome,
             'email' => $request->email,
@@ -59,10 +64,15 @@ class CompradorIndividualController extends Controller
             'type' => 'individual',
         ]);
 
+
         $save = BuyerInduvidual::create([
             'comprador_id' => $comprador->id,
             'morada' => $request->morada,
             'nif' => $request->nif,
+        ]);
+
+        $save = AdressBuyer::create([
+            'user_id' => $comprador->id,
             'codigo_postal' => $request->codigo_postal,
             'morada' => $request->morada,
             'regiao' => $request->regiao,
@@ -76,9 +86,53 @@ class CompradorIndividualController extends Controller
 
 
 
+
         return redirect()->route('consultor.comprador-individual.informativo');
     }
 
+    public function storeHome(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required|unique:comprador_individuals|max:255',
+
+        ]);
+
+        $random = Str::random(9);
+
+        $dados = $request->all();
+        $comprador = Comprador::create([
+            'user_id' => 26,
+            'name' => $request->name,
+            'lastname' => $request->sobrenome,
+            'email' => $request->email,
+            'password' => Hash::make($random),
+            'telemovel' => $request->telemovel,
+            'codigo' =>  $random,
+            'type' => 'individual',
+        ]);
+
+        $save = BuyerInduvidual::create([
+            'comprador_id' => $comprador->id,
+            'morada' => $request->morada,
+            'nif' => $request->nif,
+        ]);
+
+        $save = AdressBuyer::create([
+            'user_id' => $comprador->id,
+            'codigo_postal' => $request->codigo_postal,
+            'morada' => $request->morada,
+            'regiao' => $request->regiao,
+            'distrito' => $request->distrito,
+            'conselho' => $request->conselho,
+            'freguesia' => $request->freguesia,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'porta' => $request->porta,
+        ]);
+
+
+        return redirect()->route('store.login');
+    }
     /**
      * Display the specified resource.
      *

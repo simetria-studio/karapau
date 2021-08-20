@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Models\Mails;
 use App\Mail\AdminMail;
 use App\Models\Comprador;
+use App\Models\AdressBuyer;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\BuyerColective;
 use App\Models\CompradorColetivo;
 use App\Mail\CompradorColetivoMail;
 use App\Http\Controllers\Controller;
-use App\Models\BuyerColective;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -52,7 +53,7 @@ class CompradorColetivoController extends Controller
         $random = Str::random(9);
         $user = auth()->guard('consultor')->user()->id;
         $dados = $request->all();
-      
+
         $comprador = Comprador::create([
             'user_id' => $user,
             'name' =>  $request->name,
@@ -83,6 +84,18 @@ class CompradorColetivoController extends Controller
             'tipo' => $request->tipo,
         ]);
 
+        $save = AdressBuyer::create([
+            'user_id' => $comprador->id,
+            'codigo_postal' => $request->codigo_postal,
+            'morada' => $request->morada,
+            'regiao' => $request->regiao,
+            'distrito' => $request->distrito,
+            'conselho' => $request->conselho,
+            'freguesia' => $request->freguesia,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'porta' => $request->porta,
+        ]);
 
 
         return redirect()->route('consultor.comprador-coletivo.informativo');

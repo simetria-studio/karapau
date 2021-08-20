@@ -189,7 +189,7 @@ Route::middleware(['auth:consultor'])->group(function () {
         Route::get('extractos/{filter?}', [ComercialPainelController::class, 'extracto'])->name('consultor.extracto');
         Route::get('ver-extractos/{id}', [ComercialPainelController::class, 'verExtracto'])->name('consultor.extracto.ver');
 
-        Route::get('consultor/adress/cep', [AdressController::class, 'buscaCep']);
+
     });
 
 
@@ -263,8 +263,9 @@ Route::group(['middleware' => ['auth:buyer']], function(){
     Route::get('user-logout', [BuyerController::class, 'logout'])->name('user.logout');
 });
 
-
-
+Route::get('consultor/adress/cep', [AdressController::class, 'buscaCep']);
+Route::get('comprador-create', [CompradorIndividualController::class, 'home'])->name('comprador.create');
+Route::post('comprador-create-store', [CompradorIndividualController::class, 'storeHome'])->name('comprador.create.store');
 
 Route::get('front/status', function(){
 return view('store.pages.user.status');
