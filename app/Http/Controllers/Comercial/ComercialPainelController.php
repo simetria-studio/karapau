@@ -252,4 +252,37 @@ class ComercialPainelController extends Controller
 
         return view('comercial.pages.verExtracto', compact('orders', 'user_order'));
     }
+
+    public function compradorStatus($filter = null)
+    {
+        if($filter){
+            if($filter == 'ativos'){
+                $status = '1';
+            }else{
+                $status = '0';
+            }
+            $compradores = Comprador::with(['coletivo'])->where('user_id', auth()->guard('consultor')->user()->id)->where('status', $status)->paginate(4);
+        }else{
+            $compradores = Comprador::with(['coletivo'])->where('user_id', auth()->guard('consultor')->user()->id)->paginate(4);
+        }
+
+        return view('comercial.pages.compradores', compact('compradores'));
+    }
+
+    public function compradorDetalhe($id, $filter = null)
+    {
+        $comprador = Comprador::with(['adresses', 'coletivo'])->where('id', $id)->where('user_id', auth()->guard('consultor')->user()->id)->first();
+        if($filter){
+            if($filter == 'novos'){
+                $status = ['0','1'];
+            }else{
+                $status = ['2'];
+            }
+            $user_orders = UserOrder::whereIn('status', $status)->where('user_id', $comprador->id)->paginate(4);
+        }else{
+            $user_orders = UserOrder::where('user_id', $comprador->id)->paginate(4);
+        }
+
+        return view('comercial.pages.comprador-detalhe', compact('comprador', 'user_orders', 'filter'));
+    }
 }
