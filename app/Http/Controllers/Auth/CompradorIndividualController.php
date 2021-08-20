@@ -51,10 +51,10 @@ class CompradorIndividualController extends Controller
         $comprador = Comprador::create([
             'user_id' => $user,
             'name' => $request->name,
-            'lastname' => $request->sobrenome,
+            'lastname' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($random),
-            'telemovel' => $request->telemovel,
+            'telemovel' => $request->ddd_telemovel.' '.$request->telemovel,
             'codigo' =>  $random,
             'type' => 'individual',
         ]);

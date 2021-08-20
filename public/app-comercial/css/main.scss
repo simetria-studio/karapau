@@ -746,7 +746,6 @@ table th {
 }
 
 .text-label {
-    text-align: center;
     color: #fff;
     font-weight: 900;
     font-size: 19px;
@@ -761,6 +760,14 @@ table th {
 .btn-multi-step {
     background-color: #36a6d4;
     color: #fff;
+}
+
+.input-telemovel {
+    display: flex;
+
+    :nth-child(1) {
+        width: 55px;
+    }
 }
 
 .btn-multi-step:hover {
@@ -788,16 +795,11 @@ table th {
    color:    #fff !important;
 }
 .input-especial {
-
-
-    input {
-        margin: 0 10px;
+    button {
+        padding: 0 10px;
+        color: #fff;
+        background-color: #0472b7;
     }
-}
-.input-especial button {
-    padding: 0 10px;
-    color: #fff;
-    background-color: #0472b7;
 }
 
 select {
@@ -810,10 +812,10 @@ select {
     border: none;
     border-radius: 0;
     border-bottom: 1px solid #c6c6c6;
-}
 
-select option {
-    color: #000;
+    option {
+        color: #000;
+    }
 }
 
 /* Hide all steps by default: */
