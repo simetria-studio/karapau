@@ -66,6 +66,14 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
         Route::get('especies', [PainelController::class, 'especies'])->name('admin.especies');
         Route::get('porto', [PainelController::class, 'porto'])->name('admin.porto');
     });
+
+    Route::prefix('configs')->group( function () {
+
+        Route::get('km/cadastro', [KmController::class, 'index'])->name('admin.km');
+        Route::post('km/cadastro/store', [KmController::class, 'store'])->name('admin.km.store');
+
+    });
+
     Route::get('/home', [PainelController::class, 'index']);
 
     Route::get('/entregadores', [EntregadorController::class, 'index'])->name('entregador');
@@ -98,8 +106,7 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('pedidos/completo/{id}', [EncomendasController::class, 'pedidoDatalheUser'])->name('admin.pedidos.completo');
 
 
-    Route::get('km/cadastro', [KmController::class, 'index'])->name('admin.km');
-    Route::post('km/cadastro/store', [KmController::class, 'store'])->name('admin.km.store');
+
 
     Route::get('porto/create', [PortoController::class, 'create'])->name('admin.porto.create');
     Route::post('porto/store', [PortoController::class, 'store'])->name('admin.porto.store');

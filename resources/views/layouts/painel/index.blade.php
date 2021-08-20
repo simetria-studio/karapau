@@ -155,6 +155,22 @@
                                 </ul>
                             </li>
                         @endif
+                        @if (auth()->user()->permission == 10)
+                            <li class="nav-item @if (Request::is('admin/configs/*')) menu-open @endif">
+                                <a href="#" class="nav-link @if (Request::is('admin/configs/*')) active @endif">
+                                    <i class="nav-icon fas fa-cogs"></i>
+                                    <p>Configurações <i class="fas fa-angle-left right"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.km') }}" class="nav-link @if (Request::is('km/cadastro')) active @endif">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>KM</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
                         @if (auth()->user()->permission == 3 || auth()->user()->permission == 10)
                             <li class="nav-item">
                                 <a href="{{ route('entregador') }}" class="nav-link @if (Request::is('admin/entregadores') || Request::is('admin/entregador/*')) active @endif">
