@@ -24,6 +24,10 @@ class Comprador extends Authenticatable
         'type'
     ];
 
+    public function coletivo()
+    {
+        return $this->hasOne(BuyerColective::class, 'comprador_id');
+    }
     public function coletivos()
     {
         return $this->hasMany(BuyerColective::class, 'comprador_id');

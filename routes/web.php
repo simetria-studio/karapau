@@ -165,6 +165,9 @@ Route::middleware(['auth:consultor'])->group(function () {
         Route::post('comprador-coletivo-store', [CompradorColetivoController::class, 'store'])->name('consultor.comprador-coletivo.store');
         Route::get('comprador-coletivo-informativo', [CompradorColetivoController::class, 'coletivoInformativo'])->name('consultor.comprador-coletivo.informativo');
 
+        Route::get('comprador-status/{filter?}', [ComercialPainelController::class, 'compradorStatus'])->name('comprador.status');
+        Route::get('comprador-detalhe/{id}/{filter?}', [ComercialPainelController::class, 'compradorDetalhe'])->name('comprador.detalhe');
+
         Route::get('consultor-compradores-ativos', [ComercialPainelController::class, 'compradorListAtivo'])->name('consultor.compradores.ativo');
         Route::get('consultor-compradores-inativos', [ComercialPainelController::class, 'compradorListInativo'])->name('consultor.compradores.inativo');
 

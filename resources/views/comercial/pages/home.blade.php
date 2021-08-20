@@ -94,24 +94,25 @@
                                     EXTRACTO</p>
                         </a>
                   </div>
-                  <div class="col-5 text-center mt-3  altura pl">
+                  <div class="text-center mt-3 altura pl" style="max-width: 89%; flex: 0 0 89%; position: relative;">
+                        <a href="{{ route('comprador.status') }}"> <img class="mb-3" src="{{ url('app-comercial/img/ind.svg') }}" alt="">
+                              <p>STATUS DOS COMPRADORES</p>
+                        </a>
+                  </div>
+                  {{-- <div class="col-5 text-center mt-3  altura pl">
                         <a href="{{ route('consultor.compradores.ativo') }}"><i style="color: #36a6d4; font-size: 56px;"
                                     class="fas fa-thumbs-up mb-2 pb-2"></i>
                               <p>VER ATIVOS</p>
                         </a>
-                        {{-- <a href="#"><i style="color: #36a6d4; font-size: 56px;"
-                                    class="fas fa-thumbs-up mb-2 pb-2"></i>
-                              <p>VER ATIVOS</p>
-                        </a> --}}
-                  </div>
+                  </div> --}}
 
-                  <div class="col-5 text-center mt-3 pt-4 altura pl">
+                  {{-- <div class="col-5 text-center mt-3 pt-4 altura pl">
                         <a class="py-4" href="{{ route('consultor.compradores.inativo') }}"><span class="iconify mb-2" data-inline="false"
                                     data-icon="fluent:thumb-dislike-24-filled"
                                     style="color: #de1313; font-size: 53px;"></span>
                               <p>VER INATIVOS</p>
                         </a>
-                  </div>
+                  </div> --}}
 
                   <div class="col-5 text-center mt-3  altura pl">
                         <a href="{{ route('consultor.list.incompletos') }}"><i style="color: #35A40E; font-size: 56px;" class="fas fa-ban"></i></i>
