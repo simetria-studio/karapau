@@ -54,7 +54,7 @@ class CompradorIndividualController extends Controller
         $user = auth()->guard('consultor')->user()->id;
         $dados = $request->all();
         $comprador = Comprador::create([
-            'user_id' => $user ? $user : 26,
+            'user_id' => $user,
             'name' => $request->name,
             'lastname' => $request->name,
             'email' => $request->email,
@@ -101,7 +101,7 @@ class CompradorIndividualController extends Controller
 
         $dados = $request->all();
         $comprador = Comprador::create([
-            'user_id' => 26,
+            'user_id' => 2,
             'name' => $request->name,
             'lastname' => $request->sobrenome,
             'email' => $request->email,
