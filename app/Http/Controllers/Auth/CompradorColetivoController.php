@@ -57,7 +57,7 @@ class CompradorColetivoController extends Controller
             'user_id' => $user,
             'name' =>  $request->name,
             'lastname' => 'coletivo',
-            'telemovel' => $request->telemovel_propietario,
+            'telemovel' => $request->ddd_telemovel_propietario.' '.$request->telemovel_propietario,
             'email' => $request->email,
             'password' => Hash::make($random),
             'codigo' =>  $random,
@@ -78,8 +78,8 @@ class CompradorColetivoController extends Controller
             'porta' => $request->porta,
             'nif' => $request->nif,
             'contato' => $request->contato,
-            'telefone' => $request->telefone_empresa,
-            'telemovel_empresa' => $request->telemovel_empresa,
+            'telefone' => $request->ddd_telefone_empresa.' '.$request->telefone_empresa,
+            'telemovel_empresa' => $request->ddd_telemovel_empresa.' '.$request->telemovel_empresa,
             'tipo' => $request->tipo,
         ]);
 
