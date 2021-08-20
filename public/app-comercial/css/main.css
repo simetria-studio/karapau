@@ -655,24 +655,24 @@ table th {
   line-height: 131.5%;
   padding: 12px 25px;
   border-radius: 16px;
-  letter-spacing: .06em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 22px;
 }
 
 .btn-custom.btnc-success {
-  background-color: #06CC32 !important;
-  color: #FFFFFF !important;
+  background-color: #06cc32 !important;
+  color: #ffffff !important;
 }
 
 .btn-custom.btnc-info {
-  background-color: #36A6D4 !important;
-  color: #FFFFFF !important;
+  background-color: #36a6d4 !important;
+  color: #ffffff !important;
 }
 
 .btn-filter-novo {
-  background: #06CC32;
+  background: #06cc32;
   border-radius: 10px;
   padding: 14px 32px 14px 32px;
   font-family: Poppins;
@@ -681,11 +681,11 @@ table th {
   font-size: 20px;
   line-height: 131.5%;
   letter-spacing: -0.015em;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .btn-filter-concluido {
-  background: #36A6D4;
+  background: #36a6d4;
   border-radius: 10px;
   padding: 14px 32px 14px 32px;
   font-family: Poppins;
@@ -694,11 +694,11 @@ table th {
   font-size: 20px;
   line-height: 131.5%;
   letter-spacing: -0.015em;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .btn-filter-detalhe {
-  background: #06CC32;
+  background: #06cc32;
   border-radius: 10px;
   padding: 14px 32px 14px 32px;
   font-family: Poppins;
@@ -707,7 +707,7 @@ table th {
   font-size: 20px;
   line-height: 131.5%;
   letter-spacing: -0.015em;
-  color: #FFFFFF;
+  color: #ffffff;
   position: relative;
   left: 50%;
   -webkit-transform: translate(-50%);
@@ -723,7 +723,7 @@ table th {
   font-size: 20px;
   line-height: 131.5%;
   letter-spacing: -0.015em;
-  color: #4F3A57;
+  color: #4f3a57;
 }
 
 .text-informativo-pedido {
@@ -733,7 +733,7 @@ table th {
   font-size: 20px;
   line-height: 131.5%;
   letter-spacing: -0.015em;
-  color: #BF1414;
+  color: #bf1414;
 }
 
 .text-custom-f1 {
@@ -744,7 +744,7 @@ table th {
   line-height: 131.5%;
   text-align: center;
   letter-spacing: -0.015em;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 18px 32px;
 }
 
@@ -755,14 +755,14 @@ table th {
   font-size: 46.4933px;
   text-align: center;
   letter-spacing: -0.015em;
-  color: #FFFFFF;
+  color: #ffffff;
   position: relative;
   bottom: 10px;
   cursor: pointer;
 }
 
 .btn-custom-informativo {
-  background: #BF1414;
+  background: #bf1414;
   border-radius: 10px;
   color: #fff;
   padding: 9px 30px;
@@ -775,7 +775,7 @@ table th {
   font-style: normal;
   font-size: 22px;
   line-height: 134.5%;
-  letter-spacing: -.015em;
+  letter-spacing: -0.015em;
 }
 
 .text-custom-comissao {
@@ -789,7 +789,6 @@ table th {
 }
 
 .text-label {
-  text-align: center;
   color: #fff;
   font-weight: 900;
   font-size: 19px;
@@ -802,22 +801,48 @@ table th {
 }
 
 .btn-multi-step {
-  background-color: #36A6D4;
+  background-color: #36a6d4;
   color: #fff;
+}
+
+.input-telemovel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.input-telemovel :nth-child(1) {
+  width: 55px;
 }
 
 .btn-multi-step:hover {
   color: #fff;
 }
 
-.input-especial input {
-  margin: 0 10px;
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #fff !important;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #fff !important;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #fff !important;
+}
+
+::placeholder {
+  /* Most modern browsers support this now. */
+  color: #fff !important;
 }
 
 .input-especial button {
   padding: 0 10px;
   color: #fff;
-  background-color: #0472B7;
+  background-color: #0472b7;
 }
 
 select {
@@ -864,6 +889,6 @@ select option {
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
 }
 /*# sourceMappingURL=main.css.map */

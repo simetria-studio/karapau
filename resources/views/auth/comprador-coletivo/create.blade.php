@@ -66,13 +66,15 @@
 
             <div class="tab">
                   <div class="text-label">TELEMÓVEL DO ESTABELECIMENTO</div>
-                  <div class="form-group mt-4 mb-5 input-material">
-                        <input type="text" placeholder="+000 000000000" name="telemovel_empresa" oninput="this.className = ''">
+                  <div class="form-group mt-4 mb-5 input-material input-telemovel">
+                        <input type="text" placeholder="+000" name="ddd_telemovel_empresa" value="+351" oninput="this.className = ''">
+                        <input type="text" placeholder="000000000" name="telemovel_empresa" oninput="this.className = ''">
                   </div>
 
                   <div class="text-label">TELEFONE FIXO DO ESTABELECIMENTO</div>
-                  <div class="form-group mt-4 mb-5 input-material">
-                        <input type="text" placeholder="+000 000000000" name="telefone_empresa" oninput="this.className = ''">
+                  <div class="form-group mt-4 mb-5 input-material input-telemovel">
+                        <input type="text" placeholder="+000" name="ddd_telefone_empresa" value="+351" oninput="this.className = ''">
+                        <input type="text" placeholder="000000000" name="telefone_empresa" oninput="this.className = ''">
                   </div>
 
                   <div class="text-label">NOME DO CONTATO DO PROPIETÁRIO</div>
@@ -93,8 +95,9 @@
                   </div>
 
                   <div class="text-label">TELEMOVEL DO PROPIETÁRIO DO ESTABELECIMENTO</div>
-                  <div class="form-group mt-4 mb-5 input-material">
-                        <input type="text" placeholder="Telemovel do Propietário" name="telemovel_propietario" oninput="this.className = ''">
+                  <div class="form-group mt-4 mb-5 input-material input-telemovel">
+                        <input type="text" placeholder="+000" value="+351" name="ddd_telemovel_propietario" oninput="this.className = ''">
+                        <input type="text" placeholder="000000000" name="telemovel_propietario" oninput="this.className = ''">
                   </div>
             </div>
 

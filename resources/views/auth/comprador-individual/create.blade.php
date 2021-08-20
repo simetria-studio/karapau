@@ -34,20 +34,15 @@
             <div class="tab">
                   <h2 class="mt-2 mb-5 text-white"><b>VAMOS COMEÇAR O CADASTRO</b></h2>
                   <div class="text-label">NOME DO COMPRADOR</div>
-                  <div class="form-group mt-4 mb-5 input-material">
+                  <div class="form-group mt-3 mb-5 input-material">
                         <input type="text" placeholder="Nome do Comprador" name="name" oninput="this.className = ''">
-                  </div>
-
-                  <div class="text-label">SOBRENOME DO COMPRADOR</div>
-                  <div class="form-group mt-4 mb-5 input-material">
-                        <input type="text" placeholder="Sobrenome do Comprador" name="sobrenome" oninput="this.className = ''">
                   </div>
             </div>
 
             <div class="tab">
                   <h2 class="mt-2 mb-5 text-white"><b>CONTINUE COM O CADASTRO</b></h2>
                   <div class="text-label">NIF DO COMPRADOR</div>
-                  <div class="form-group mt-4 mb-5 input-material">
+                  <div class="form-group mt-3 mb-5 input-material">
                         <input type="text" placeholder="Nif do Comprador" name="nif" oninput="this.className = ''">
                   </div>
             </div>
@@ -55,54 +50,55 @@
             <div class="tab">
                   <h2 class="mt-2 mb-5 text-white"><b>CONTINUE COM O CADASTRO</b></h2>
                   <div class="text-label">TELEMÓVEL DO COMPRADOR</div>
-                  <div class="form-group mt-4 mb-5 input-material">
-                        <input type="text" placeholder="+000 000000000" name="telemovel" oninput="this.className = ''">
+                  <div class="form-group mt-3 mb-5 input-material input-telemovel">
+                        <input type="text" placeholder="+000" name="ddd_telemovel" value="+351" oninput="this.className = ''">
+                        <input type="text" placeholder="000000000" name="telemovel" oninput="this.className = ''">
                   </div>
             </div>
 
             <div class="tab">
                   <h2 class="mt-2 mb-5 text-white"><b>CONTINUE COM O CADASTRO</b></h2>
                   <div class="text-label">EMAIL DO COMPRADOR</div>
-                  <div class="form-group mt-4 mb-5 input-material">
+                  <div class="form-group mt-3 mb-5 input-material">
                         <input type="email" placeholder="exemplod@exemplo.com.br" name="email" oninput="this.className = ''">
                   </div>
             </div>
 
             <div class="tab">
                   <div class="text-label2">CÓDIGO POSTAL</div>
-                  <div class="form-group mt-4 mb-5 d-flex input-material input-especial">
+                  <div class="form-group mt-3 mb-5 d-flex input-material input-especial">
                         <input type="text" id="ceping" name="codigo_postal">
 
-                        <button type="button" id="buscaring" class="btn">Buscar</button>
+                        <button type="button" id="buscaring" class="btn ml-2">Buscar</button>
                   </div>
 
                   <div class="text-label2">MORADA</div>
-                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                  <div class="form-group mt-3 mb-5 d-flex input-material">
                         <input type="text" id="morada" name="morada">
                   </div>
 
                   <div class="text-label2">REGIÃO</div>
-                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                  <div class="form-group mt-3 mb-5 d-flex input-material">
                         <input type="text" id="regiao" name="regiao">
                   </div>
 
                   <div class="text-label2">PORTA</div>
-                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                  <div class="form-group mt-3 mb-5 d-flex input-material">
                         <input type="text" id="porta" name="porta">
                   </div>
 
                   <div class="text-label2">DISTRITO</div>
-                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                  <div class="form-group mt-3 mb-5 d-flex input-material">
                         <input type="text" id="distrito" name="distrito">
                   </div>
 
                   <div class="text-label2">CONSELHO</div>
-                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                  <div class="form-group mt-3 mb-5 d-flex input-material">
                         <input type="text" id="conselho" name="conselho">
                   </div>
 
                   <div class="text-label2">FREGUESIA</div>
-                  <div class="form-group mt-4 mb-5 d-flex input-material">
+                  <div class="form-group mt-3 mb-5 d-flex input-material">
                         <input type="text" id="freguesia" name="freguesia">
                   </div>
 
