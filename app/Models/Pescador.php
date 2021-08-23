@@ -28,6 +28,14 @@ class Pescador extends Authenticatable
         'nome_embarcacao',
         'nome_embarcacao2',
         'nome_embarcacao3',
+        'codigo_postal',
+        'regiao',
+        'distrito',
+        'conselho',
+        'freguesia',
+        'porta',
+        'latitude',
+        'longitude',
     ];
 
     public function produtos()

@@ -92,15 +92,23 @@ class PescadorController extends Controller
     {
         $pescador = Pescador::find($id);
 
-        $pescador->name =     $request->get('name');
-        $pescador->lastname = $request->get('lastname');
-        $pescador->email = $request->get('email');
-        $pescador->password = Hash::make($request->get('password'));
-        $pescador->telefone = $request->get('telefone');
-        $pescador->morada = $request->get('morada');
-        $pescador->nif = $request->get('nif');
-        $pescador->iban = $request->get('iban');
-        $pescador->nome_embarcacao = $request->get('nome_embarcacao');
+        $pescador->name             = $request->get('name');
+        $pescador->lastname         = $request->get('lastname');
+        $pescador->email            = $request->get('email');
+        if($request->get('password')) $pescador->password = Hash::make($request->get('password'));
+        $pescador->telefone         = $request->get('telefone');
+        $pescador->morada           = $request->get('morada');
+        $pescador->nif              = $request->get('nif');
+        $pescador->iban             = $request->get('iban');
+        $pescador->nome_embarcacao  = $request->get('nome_embarcacao');
+        $pescador->codigo_postal    = $request->get('codigo_postal');
+        $pescador->regiao           = $request->get('regiao');
+        $pescador->porta            = $request->get('porta');
+        $pescador->distrito         = $request->get('distrito');
+        $pescador->conselho         = $request->get('conselho');
+        $pescador->freguesia        = $request->get('freguesia');
+        $pescador->latitude         = $request->get('latitude');
+        $pescador->longitude        = $request->get('longitude');
 
         $pescador->save();
 

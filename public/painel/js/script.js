@@ -5,6 +5,8 @@ $(document).ready(function(){
         }
     });
 
+    $('#ceping').mask('0000-000');
+
     $('.select2').select2();
 
     $(document).on('click', '.btn_entrega_aceito', function(){
