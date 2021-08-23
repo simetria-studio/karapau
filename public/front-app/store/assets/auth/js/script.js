@@ -30,7 +30,7 @@ $(document).ready(function(){
 
                 Swal.fire({
                     icon: 'error',
-                    title: 'Email ou Senha invalidos'
+                    title: err.responseJSON.invalid
                 });
             }
         });

@@ -38,6 +38,11 @@ class PescadorController extends Controller
      */
     public function store(Request $request)
     {
+        if(Auth::guard('pescador')->validate(['email' => $request->email, 'password' => $request->password, 'status' => 0])){
+            // return response()->json(['invalid' => 'Cadastro inativo!'], 422);
+            return redirect('login-pescador');
+        }
+
         if (Auth::guard('pescador')->attempt(['email' => $request->email, 'password' => $request->password])) {
 
             return redirect()->intended('pescador');

@@ -35,6 +35,10 @@ class StoreLoginController extends Controller
 
     public function login(Request $request)
     {
+        if(Auth::guard('buyer')->validate(['email' => $request->email, 'password' => $request->password, 'status' => 0])){
+            return response()->json(['invalid' => 'Cadastro inativo!'], 422);
+        }
+
         $authValid = Auth::guard('buyer')->validate(['email' => $request->email, 'password' => $request->password]);
 
         if($authValid){
