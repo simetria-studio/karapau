@@ -13,6 +13,7 @@ use App\Models\PescadorPedido;
 use App\Models\UserOrder;
 use App\Models\UserProduct;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class PescadorController extends Controller
 {
@@ -178,5 +179,38 @@ class PescadorController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function pecadorCadastroProduto($id)
+    {
+        $id_pescador = $id;
+        $portos = Porto::all();
+        $especies = Especie::all();
+        $pescador = Pescador::find($id);
+
+        return view('painel.pages.pescador.cadastro-produto', compact('portos', 'especies', 'pescador', 'id_pescador'));
+    }
+
+    public function pecadorCadastroProdutoStore(Request $request)
+    {
+        $user = $request->id_pescador;
+
+        $produto = Produto::create([
+            'pescador_id' => $user,
+            'especie_id' => $request->especie_id,
+            'porto_id' => $request->porto_id,
+            'embarcacao' => $request->embarcacao,
+            'zona' => $request->zona,
+            'tamanho' => $request->tamanho,
+            'quantidade_kg' => $request->quantidade_kg ? $request->quantidade_kg : $request->total_kg,
+            'quantidade_unidade' => $request->quantidade_unidade,
+            'arte' => $request->arte,
+            'preco' => $request->preco,
+            'unidade' => $request->unidade,
+            // 'kg' => $request->kg,
+            // 'image' => $request->image,
+            // 'status' => $request->status,
+        ]);
+        return redirect()->route('admin.pescador')->with('success', 'Produto criado com sucesso!');
     }
 }

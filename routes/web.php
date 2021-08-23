@@ -101,6 +101,9 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('pescador/pedidos/{id}', [AdminPescadorController::class, 'pedidos'])->name('admin.pescador.pedidos');
     Route::get('pedidos/completo/{id}', [EncomendasController::class, 'pedidoDatalheUser'])->name('admin.pedidos.completo');
 
+    Route::get('/pescador-cadastro-produto/{id}', [AdminPescadorController::class, 'pecadorCadastroProduto'])->name('admin.pescador.cadastro.produto');
+    Route::post('/pescador-cadastro-produto/store', [AdminPescadorController::class, 'pecadorCadastroProdutoStore'])->name('admin.pescador.produto.store');
+
     Route::get('porto/create', [PortoController::class, 'create'])->name('admin.porto.create');
     Route::post('porto/store', [PortoController::class, 'store'])->name('admin.porto.store');
     Route::any('porto/delete/{id}', [PortoController::class, 'destroy'])->name('admin.porto.delete');
@@ -141,11 +144,8 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::any('user/fatura/{id}', [EncomendasController::class, 'fatura'])->name('admin.status.fatura');
 });
 
-
 Route::get('consultor-login', [LoginConsultorController::class, 'index'])->name('consultor.login-page');
 Route::post('consultor-entrar', [LoginConsultorController::class, 'login'])->name('consultor.login');
-
-
 
 Route::middleware(['auth:consultor'])->group(function () {
         Route::get('consultor', [ComercialPainelController::class, 'index'])->name('consultor');
@@ -186,9 +186,7 @@ Route::middleware(['auth:consultor'])->group(function () {
         Route::get('ver-extractos/{id}', [ComercialPainelController::class, 'verExtracto'])->name('consultor.extracto.ver');
 });
 
-
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 /*  Login Pescador */
 
@@ -196,7 +194,6 @@ Route::get('login-pescador', [PescadorController::class, 'index'])->name('login.
 Route::get('pescador-create', [PescadorRegController::class, 'index']);
 Route::post('pescadores-store', [PescadorRegController::class, 'store'])->name('pescador.store');
 Route::post('pescador-login', [PescadorController::class, 'store'])->name('pescador.login');
-
 
 Route::middleware('auth:pescador')->group(function(){
     Route::get('pescador', [PainelPescadorController::class, 'index'])->name('pescador.index');
