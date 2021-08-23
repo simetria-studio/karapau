@@ -4,9 +4,12 @@ $primary-color: rgb(12, 112, 180);
 $secondary-color: rgb(240, 139, 59);
 $medium-color: rgb(84, 103, 117);
 $standard-font: normal 400 18px "PT Sans", sans-serif;
-body,
+body{
+    background: #03568a;
+}
 html {
     height: 100%;
+
 }
 main {
     background-color: #03568a;
@@ -160,9 +163,6 @@ $width: 320px;
     box-sizing: border-box;
 }
 
-body {
-    background: $bg-color;
-}
 
 // FORM // ============================== //
 form {
@@ -773,26 +773,30 @@ table th {
 .btn-multi-step:hover {
     color: #fff;
 }
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #fff !important;
+::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #fff !important;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #fff !important;
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #fff !important;
+}
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #fff !important;
+}
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #fff !important;
+}
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #fff !important;
+}
 
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #fff !important;
-
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #fff !important;
-}
-::-ms-input-placeholder { /* Microsoft Edge */
-   color:    #fff !important;
-}
-
-::placeholder { /* Most modern browsers support this now. */
-   color:    #fff !important;
+::placeholder {
+    /* Most modern browsers support this now. */
+    color: #fff !important;
 }
 .input-especial {
     button {

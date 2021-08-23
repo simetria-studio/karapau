@@ -12,7 +12,7 @@
 <div>
       <div class="d-flex justify-content-between container voltar py-4 mb-5">
             <div>
-                  <a href="{{route('consultor')}}"> <i class="fas fa-chevron-left"></i> Voltar</a>
+                  <a href="{{route('store.login')}}"> <i class="fas fa-chevron-left"></i> Voltar</a>
             </div>
             <div>
                   <span>COMPRADOR</span>
@@ -38,9 +38,9 @@
                         <input type="text" placeholder="Nome do Comprador" name="name" oninput="this.className = ''">
                   </div>
 
-                  <div class="text-label">SOBRENOME DO COMPRADOR</div>
+                  <div class="text-label">APELIDO DO COMPRADOR</div>
                   <div class="form-group mt-4 mb-5 input-material">
-                        <input type="text" placeholder="Sobrenome do Comprador" name="sobrenome" oninput="this.className = ''">
+                        <input type="text" placeholder="Apelido do Comprador" name="sobrenome" oninput="this.className = ''">
                   </div>
             </div>
 
@@ -48,7 +48,7 @@
                   <h2 class="mt-2 mb-5 text-white"><b>CONTINUE COM O CADASTRO</b></h2>
                   <div class="text-label">NIF DO COMPRADOR</div>
                   <div class="form-group mt-4 mb-5 input-material">
-                        <input type="text" placeholder="Nif do Comprador" name="nif" oninput="this.className = ''">
+                        <input type="number" placeholder="Nif do Comprador" name="nif" oninput="this.className = ''">
                   </div>
             </div>
 
@@ -56,7 +56,7 @@
                   <h2 class="mt-2 mb-5 text-white"><b>CONTINUE COM O CADASTRO</b></h2>
                   <div class="text-label">TELEMÓVEL DO COMPRADOR</div>
                   <div class="form-group mt-4 mb-5 input-material">
-                        <input type="text" placeholder="+000 000000000" name="telemovel" oninput="this.className = ''">
+                        <input type="number" placeholder="+000 000000000" name="telemovel" oninput="this.className = ''">
                   </div>
             </div>
 
@@ -64,7 +64,7 @@
                   <h2 class="mt-2 mb-5 text-white"><b>CONTINUE COM O CADASTRO</b></h2>
                   <div class="text-label">EMAIL DO COMPRADOR</div>
                   <div class="form-group mt-4 mb-5 input-material">
-                        <input type="email" placeholder="exemplod@exemplo.com.br" name="email" oninput="this.className = ''">
+                        <input type="email" placeholder="exemplo@exemplo.com" name="email" oninput="this.className = ''">
                   </div>
             </div>
 
