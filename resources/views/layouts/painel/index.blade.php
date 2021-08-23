@@ -85,12 +85,6 @@
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="{{ asset('/admin/home') }}" class="brand-link text-center">
-                <img src="{{ asset('painel/img/logo.svg') }}" alt="LeiloSoc Logo" class="brand-image-logo"
-                    style="opacity: .8">
-            </a>
-
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
