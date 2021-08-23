@@ -43,7 +43,7 @@
                                           </form>
                                     </div>
                                     <div class="mx-1">
-                                         <a href="{{ route('admin.pescador.pedidos', $pescador->id) }}"> <i class="fas fa-pallet"></i></a>
+                                          <a href="{{ route('admin.pescador.pedidos', $pescador->id) }}"> <i class="fas fa-shopping-cart"></i></a>
                                     </div>
                               </div>
                         </td>

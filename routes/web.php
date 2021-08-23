@@ -62,16 +62,13 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     });
 
     Route::prefix('cadastro')->group( function () {
-
         Route::get('especies', [PainelController::class, 'especies'])->name('admin.especies');
         Route::get('porto', [PainelController::class, 'porto'])->name('admin.porto');
     });
 
     Route::prefix('configs')->group( function () {
-
         Route::get('km/cadastro', [KmController::class, 'index'])->name('admin.km');
         Route::post('km/cadastro/store', [KmController::class, 'store'])->name('admin.km.store');
-
     });
 
     Route::get('/home', [PainelController::class, 'index']);
@@ -93,7 +90,6 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::post('especies/update/{id}', [EspecieController::class, 'update'])->name('admin.especies.update');
     Route::any('especies/delete/{id}', [EspecieController::class, 'destroy'])->name('admin.especies.delete');
 
-
     Route::get('pescador', [AdminPescadorController::class, 'index'])->name('admin.pescador');
     Route::get('pescador/produtos/{id}', [AdminPescadorController::class, 'showProducts'])->name('admin.pescador.produtos');
     Route::get('pescador/edit/{id}', [AdminPescadorController::class, 'show'])->name('admin.pescador.edit');
@@ -104,9 +100,6 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::post('pescador/update/produto/{id}', [AdminPescadorController::class, 'updateProduto'])->name('admin.pescador.produto.update');
     Route::get('pescador/pedidos/{id}', [AdminPescadorController::class, 'pedidos'])->name('admin.pescador.pedidos');
     Route::get('pedidos/completo/{id}', [EncomendasController::class, 'pedidoDatalheUser'])->name('admin.pedidos.completo');
-
-
-
 
     Route::get('porto/create', [PortoController::class, 'create'])->name('admin.porto.create');
     Route::post('porto/store', [PortoController::class, 'store'])->name('admin.porto.store');
@@ -191,9 +184,7 @@ Route::middleware(['auth:consultor'])->group(function () {
 
         Route::get('extractos/{filter?}', [ComercialPainelController::class, 'extracto'])->name('consultor.extracto');
         Route::get('ver-extractos/{id}', [ComercialPainelController::class, 'verExtracto'])->name('consultor.extracto.ver');
-
-
-    });
+});
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
