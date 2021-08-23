@@ -71,7 +71,7 @@
             <div class="tab">
                   <div class="text-label2">CÓDIGO POSTAL</div>
                   <div class="form-group mt-4 mb-5  d-flex input-material input-especial">
-                        <input class="cep-input" type="text" id="ceping" name="codigo_postal">
+                        <input class="cep-input" type="number" id="ceping" name="codigo_postal">
                         <button type="button" id="buscaring" class="btn">Buscar</button>
                   </div>
                   <div class="text-label2">MORADA</div>
