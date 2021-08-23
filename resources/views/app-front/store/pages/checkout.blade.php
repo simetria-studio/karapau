@@ -54,7 +54,7 @@
                         $qty = substr($quantity, 0, -1);
                         $caixaDiv = $qty / 3;
                         $ceil = ceil($caixaDiv);
-                        $totalQty += $ceil;
+                        $totalQty += 1;
                         $nomePorto = $item->attributes->porto;
                     @endphp
 
@@ -128,7 +128,7 @@
                 $pegarValor = getValue($porto[2]);
 
                 $totalporto += $porto[1] * $pegarValor;
-           
+
             @endphp
 
             <div class="top_3">
