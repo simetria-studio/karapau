@@ -41,14 +41,14 @@
                 <form action="{{ route('store.cart.add') }}" method="POST">
                     @csrf
                     @if (!$produto->quantidade_unidade)
-                    <div>
-                        <span class="input-number-decrement qty-count--minus" data-action="minus">–</span>
-                        <input name="quantity" class="input-number" type="number" value="10" min="10"
-                            max="{{ $produto->quantidade_kg - $value }}">
-                        <span class="input-number-increment qty-count--add" data-action="add">+</span>
-                    </div>
+                        <div>
+                            <span class="input-number-decrement qty-count--minus" data-action="minus">–</span>
+                            <input name="quantity" class="input-number" type="number" value="10" min="10"
+                                max="{{ $produto->quantidade_kg - $value }}">
+                            <span class="input-number-increment qty-count--add" data-action="add">+</span>
+                        </div>
                     @else
-                    <input name="quantity"  class="input-number" type="hidden" value="{{ $produto->quantidade_kg}}">
+                        <input name="quantity" class="input-number" type="hidden" value="{{ $produto->quantidade_kg }}">
                     @endif
 
                     <div class="d-none">
@@ -122,6 +122,12 @@
                     Tamanho 3 (T3)
                 @elseif($produto->tamanho == 'tamanho4')
                     Tamanho 4 (T4)
+                @elseif($produto->tamanho == 'pequeno')
+                    Pequeno
+                @elseif($produto->tamanho == 'medio')
+                    Médio
+                @elseif($produto->tamanho == 'grande')
+                    Grande
                 @endif
             </h6>
         </div>
@@ -129,11 +135,11 @@
             <h4>ZONA DE PESCA</h4>
             <h6>{{ $produto->zona }}</h6>
         </div>
-        @if ( $produto->quantidade_unidade)
-        <div class="zona">
-            <h4>UNIDADES</h4>
-            <h6>{{ $produto->quantidade_unidade }} - {{ $produto->quantidade_kg }}Kg </h6>
-        </div>
+        @if ($produto->quantidade_unidade)
+            <div class="zona">
+                <h4>UNIDADES</h4>
+                <h6>{{ $produto->quantidade_unidade }} - {{ $produto->quantidade_kg }}Kg </h6>
+            </div>
 
         @endif
         <div class="embarcação">
