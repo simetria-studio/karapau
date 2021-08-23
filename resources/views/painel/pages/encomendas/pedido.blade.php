@@ -238,6 +238,30 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="especieModal" tabindex="-1" aria-labelledby="pescadorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pescadorModalLabel">Dados da Espécie</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 py-2 px-3"><b>Nome:</b> {{ $userProduct->pescador->name }}
+                            {{ $userProduct->pescador->lastname }}</div>
+                        <div class="col-12 py-2 px-3"><b>Email:</b> {{ $userProduct->pescador->email }}</div>
+                        <div class="col-12 py-2 px-3"><b>Telemóvel:</b> {{ $userProduct->pescador->telefone }}</div>
+                        <div class="col-12 py-2 px-3"><b>Morada:</b> {{ $userProduct->pescador->morada }}</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="compradorModal" tabindex="-1" aria-labelledby="compradorModalLabel" aria-hidden="true">
         <div class="modal-dialog">
