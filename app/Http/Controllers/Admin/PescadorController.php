@@ -144,7 +144,7 @@ class PescadorController extends Controller
         $pescador->embarcacao = $request->get('embarcacao');
         $pescador->zona = $request->get('zona');
         $pescador->tamanho = $request->get('tamanho');
-        $pescador->quantidade = $request->get('quantidade');
+        $pescador->quantidade_kg = $request->get('quantidade_kg');
         $pescador->preco = $request->get('preco');
         $pescador->unidade = $request->get('unidade');
 

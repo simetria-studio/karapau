@@ -53,7 +53,7 @@
                   </div>
                   <div class="form-group col-md-8">
                         <label for="exampleInputEmail1">Quantidade</label>
-                        <input type="text" class="form-control" value="{{ $produto->quantidade }}" name="quantidade">
+                        <input type="text" class="form-control" value="{{ $produto->quantidade_kg }}" name="quantidade_kg">
                   </div>
                   @php $arr2 = ['kg','unid']; @endphp
                   <div class="form-group col-md-8">
