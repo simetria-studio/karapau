@@ -49,4 +49,8 @@ class Comprador extends Authenticatable
     {
         return $this->hasOne(AdressBuyer::class, 'user_id');
     }
+    public function adresses2()
+    {
+        return $this->hasMany(AdressBuyer::class, 'user_id');
+    }
 }

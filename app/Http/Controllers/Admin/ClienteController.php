@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Comprador;
+use App\Models\AdressBuyer;
 use Illuminate\Http\Request;
 use App\Models\BuyerColective;
 use App\Models\BuyerInduvidual;
@@ -28,12 +29,12 @@ class ClienteController extends Controller
 
     public function editInd($id)
     {
-        $comprador = Comprador::with('individuais', 'coletivos', 'comercial')->find($id);
+        $comprador = Comprador::with('individuais', 'coletivos', 'comercial', 'adresses2')->find($id);
         return view('painel.pages.clientes.edit-ind', compact('comprador'));
     }
     public function editCol($id)
     {
-        $comprador = Comprador::with('individuais', 'coletivos', 'comercial')->find($id);
+        $comprador = Comprador::with('individuais', 'coletivos', 'comercial', 'adresses2')->find($id);
         return view('painel.pages.clientes.edit-col', compact('comprador'));
     }
 
@@ -46,7 +47,7 @@ class ClienteController extends Controller
         $comprador->name =     $request->get('name');
         $comprador->lastname = $request->get('lastname');
         $comprador->email = $request->get('email');
-        $comprador->password = Hash::make($request->get('password'));
+        if($request->get('password')) $comprador->password = Hash::make($request->get('password'));
         $comprador->telemovel = $request->get('telemovel');
         $comprador->save();
 
@@ -55,7 +56,18 @@ class ClienteController extends Controller
             'nif' => $request->get('nif'),
         ));
 
-
+        AdressBuyer::create([
+            'user_id' => $id,
+            'morada' => $request->morada,
+            'codigo_postal' => $request->codigo_postal,
+            'regiao' => $request->regiao,
+            'distrito' => $request->distrito,
+            'conselho' => $request->conselho,
+            'freguesia' => $request->freguesia,
+            'porta' => $request->porta,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
 
         return redirect()->back()->with('success', 'Comprador alterado com sucesso!');
     }
@@ -68,7 +80,7 @@ class ClienteController extends Controller
         $comprador->name =     $request->get('name');
         $comprador->email = $request->get('email');
         $comprador->telemovel = $request->get('telemovel');
-        $comprador->password = Hash::make($request->get('password'));
+        if($request->get('password')) $comprador->password = Hash::make($request->get('password'));
         $comprador->save();
 
 
@@ -81,6 +93,18 @@ class ClienteController extends Controller
             'tipo' => $request->get('tipo'),
         ));
 
+        AdressBuyer::create([
+            'user_id' => $id,
+            'morada' => $request->morada,
+            'codigo_postal' => $request->codigo_postal,
+            'regiao' => $request->regiao,
+            'distrito' => $request->distrito,
+            'conselho' => $request->conselho,
+            'freguesia' => $request->freguesia,
+            'porta' => $request->porta,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
 
         return redirect()->back()->with('success', 'Comprador alterado com sucesso!');
     }
