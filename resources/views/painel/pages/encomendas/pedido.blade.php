@@ -331,6 +331,7 @@
                     </button>
                 </div>
                 <form action="{{ route('admin.pedidos.anexar') }}" method="post" enctype="multipart/form-data">
+                    @csrf
                     <input type="hidden" name="id">
                     <div class="modal-body">
                         <div class="form-group">
