@@ -88,4 +88,32 @@ class EncomendasController extends Controller
         $porto->save();
         return redirect()->back();
     }
+
+    public function pedidoAnexar(Request $request)
+    {
+        $file = $request->file('anexo')->get();
+
+        $extension = explode('/', $request->file('anexo')->getMimeType());
+        $extension = '.'.$extension[1];
+        $name = time().$extension;
+        $file = $file;
+        $path = 'public/anexo-pedido/';
+        //envia o arquivo
+        Storage::put($path.$name, $file);
+
+        UserProduct::find($request->id)->update(['anexo' => 'anexo-pedido/'.$name]);
+
+        return response()->json(['success'], 200);
+    }
+
+    public function pedidoAnexo($id)
+    {
+        $userProduct = UserProduct::find($id);
+
+        $image      = Storage::get('public/'.$userProduct->anexo);
+        $mime_type  = Storage::mimeType('public/'.$userProduct->anexo);
+        $image      = 'data:'.$mime_type.';base64,'.base64_encode($image);
+
+        return response()->json(['anexo' => $image, 'status' => $userProduct->anexo ? true : false]);
+    }
 }

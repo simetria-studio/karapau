@@ -32,6 +32,9 @@
                                                         <div class="btn-group">
                                                             <a href="{{route('entregador.dados', $userProduct->id)}}" class="btn btn-info btn-sm">VER</a>
                                                             <button type="button" class="btn {{$userProduct->aceito == 0 ? 'btn-dark' : 'btn-success'}} btn-sm @if($userProduct->aceito == 0) btn_entrega_aceito @endif" data-route="{{route('entregador.aceito')}}" data-id="{{$userProduct->id}}">{{$userProduct->aceito == 0 ? 'ACEITAR' : 'ACEITO'}}</button>
+                                                            @if ($userProduct->anexo)
+                                                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#anexarPDF" data-url="{{route('admin.pedidos.anexo')}}" data-id="{{$userProduct->id}}">ANEXO</button></
+                                                            @endif
                                                         </div>
                                                     </td>
                                                     <td>
@@ -51,6 +54,27 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="anexarPDF" tabindex="-1" aria-labelledby="anexarPDFLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="anexarPDFLabel">Anexo PDF</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('admin.pedidos.anexar') }}" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div style="width: 100%" class="preview_anexo"></div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

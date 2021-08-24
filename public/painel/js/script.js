@@ -5,8 +5,6 @@ $(document).ready(function(){
         }
     });
 
-    
-
     $('[name="unidade"]').on('click', function () {
         var unidade = $(this).val();
         $("#kg").addClass("d-none");
@@ -24,7 +22,6 @@ $(document).ready(function(){
                 $("#price_div").removeClass("d-none");
         }
     });
-
 
     $('#ceping').mask('0000-000');
 
@@ -130,6 +127,26 @@ $(document).ready(function(){
     $(document).on('click', '[data-target="#entregadorModal"]', function(){
         $('#entregadorModal').find('[name="id"]').val($(this).data('id'));
     });
+    $(document).on('click', '[data-target="#anexarPDF"]', function(){
+        $('#anexarPDF').find('[name="id"]').val($(this).data('id'));
+
+        $.ajax({
+            url: $(this).data('url')+'/'+$(this).data('id'),
+            type: "GET",
+            success: (data) => {
+                // console.log(data);
+                if(data.status){
+                    $('.preview_anexo').html('<iframe src="'+data.anexo+'" width="100%" height="450px" style="border: none;"></iframe>');
+                    $('.anexo').addClass('d-none');
+                    $('.btn-save-pdf').addClass('d-none');
+                }else{
+                    $('.preview_anexo').empty();
+                    $('.anexo').removeClass('d-none');
+                    $('.btn-save-pdf').removeClass('d-none');
+                }
+            }
+        });
+    });
     // Função salva dados gerais
     $(document).on('click', '.btn-save', function(){
         // Pegamos os dados do data
@@ -165,6 +182,51 @@ $(document).ready(function(){
         }else{
             $('#cientifico').addClass('d-none');
         }
+    });
+
+    $('.anexo').on("change", function(){
+        var anexo = $(this);
+        $('.preview_anexo').empty();
+
+        var preview = $('.preview_anexo');
+        var files   = anexo.prop('files');
+
+        var reader  = new FileReader();
+        reader.onloadend = function () {
+            preview.html('<iframe src="'+reader.result+'" width="100%" height="450px" style="border: none;"></iframe>');
+        }
+        reader.readAsDataURL(files[0]);
+    });
+
+    // Função salva dados gerais
+    $(document).on('click', '.btn-save-pdf', function(){
+        // Pegamos os dados do data
+        let btn = $(this);
+        let save_target = $(this).data('save_target');
+        let save_route = $(save_target).find('form').attr('action');
+
+        // Pegamos o parente do id para adicionar um modelo de carregamento
+        let modal = $(save_target).find('.modal-content');
+        modal.append('<div class="overlay d-flex justify-content-center align-items-center"><i class="fas fa-2x fa-sync fa-spin"></i></div>');
+
+        $.ajax({
+            url: save_route,
+            type: "POST",
+            data: new FormData($(save_target).find('form')[0]),
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: (data) => {
+                // console.log(data);
+                // Procuramos a div adcionada recentemente para removemos e fechamos o modal
+                $(modal).find('.overlay').remove();
+                $(modal).parent().parent().modal('hide');
+            },
+            error: (err) => {
+                // console.log(err);
+                $(modal).find('.overlay').remove();
+            }
+        });
     });
 });
 

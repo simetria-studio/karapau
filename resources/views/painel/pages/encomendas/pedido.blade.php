@@ -157,7 +157,7 @@
                                                                 <td><button type="button"
                                                                         class="btn btn-dark btn-sm">ENVIAR</button></td>
                                                                 <td><button type="button"
-                                                                        class="btn btn-dark btn-sm">GERAR</button></td>
+                                                                        class="btn {{$userProduct->anexo ? 'btn-success' : 'btn-dark'}} btn-sm" data-toggle="modal" data-target="#anexarPDF" data-url="{{route('admin.pedidos.anexo')}}" data-id="{{$userProduct->id}}">{{$userProduct->anexo ? 'ANEXO' : 'ANEXAR'}}</button></td>
                                                                 <td><button type="button" data-id="{{ $userProduct->id }}"
                                                                         @if ($userProduct->deliveryman == 0) data-toggle="modal" data-target="#entregadorModal" @endif
                                                                         class="btn {{ $userProduct->deliveryman !== 0 ? 'btn-info' : 'btn-dark' }} btn-sm">{{ $userProduct->deliveryman !== 0 ? 'ENTREGADOR ATRIBUIDO' : 'ESCOLHER ENTREGADOR' }}</button>
@@ -289,7 +289,6 @@
         </div>
     </div>
 
-
     <div class="modal fade" id="entregadorModal" tabindex="-1" aria-labelledby="entregadorModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -315,6 +314,34 @@
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-success btn-save"
                             data-save_target="#entregadorModal">Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="anexarPDF" tabindex="-1" aria-labelledby="anexarPDFLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="anexarPDFLabel">Anexar Arquivo PDF</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('admin.pedidos.anexar') }}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="file" name="anexo" class="anexo">
+                        </div>
+
+                        <div style="width: 100%" class="preview_anexo"></div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-success btn-save-pdf"
+                            data-save_target="#anexarPDF">Salvar</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </form>

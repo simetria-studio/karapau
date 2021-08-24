@@ -28,6 +28,7 @@ class UserProduct extends Model
         'pescador_id',
         'fatura',
         'deliveryman',
+        'anexo',
     ];
 
 

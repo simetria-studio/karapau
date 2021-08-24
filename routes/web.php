@@ -101,6 +101,9 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('pescador/pedidos/{id}', [AdminPescadorController::class, 'pedidos'])->name('admin.pescador.pedidos');
     Route::get('pedidos/completo/{id}', [EncomendasController::class, 'pedidoDatalheUser'])->name('admin.pedidos.completo');
 
+    Route::post('pedidos/anexar', [EncomendasController::class, 'pedidoAnexar'])->name('admin.pedidos.anexar');
+    Route::get('pedidos/anexo/{id?}', [EncomendasController::class, 'pedidoAnexo'])->name('admin.pedidos.anexo');
+
     Route::get('/pescador-cadastro-produto/{id}', [AdminPescadorController::class, 'pecadorCadastroProduto'])->name('admin.pescador.cadastro.produto');
     Route::post('/pescador-cadastro-produto/store', [AdminPescadorController::class, 'pecadorCadastroProdutoStore'])->name('admin.pescador.produto.store');
 
