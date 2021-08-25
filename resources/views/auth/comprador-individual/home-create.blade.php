@@ -12,7 +12,7 @@
 <div>
       <div class="d-flex justify-content-between container voltar py-4 mb-5">
             <div>
-                  <a onclick="nextPrev(-1)"> <i class="fas fa-chevron-left"></i> Voltar</a>
+                  <a href="javascript:history.back()"> <i class="fas fa-chevron-left"></i> Voltar</a>
             </div>
             <div>
                   <span>COMPRADOR</span>
