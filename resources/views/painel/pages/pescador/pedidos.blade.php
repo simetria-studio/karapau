@@ -24,7 +24,7 @@
                         <td>{{ $pedido->orders->payment_mothod }}</td>
                         <td>{{ $pedido->orders->user_name }}</td>
                         <td>
-                            <a href="{{ route('admin.pescador.pedidos.completo', $pedido->id) }}"> <button
+                            <a href="{{ route('admin.pedidos.completo', $pedido->order_id) }}"> <button
                                     class="btn btn-dark">Ver Completo</button></a>
                         </td>
                     </tr>

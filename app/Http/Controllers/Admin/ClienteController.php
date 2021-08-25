@@ -19,9 +19,9 @@ class ClienteController extends Controller
 
             if($_GET['status'] !== '') $compradores = Comprador::where('status', $_GET['status']);
 
-            $compradores = $compradores->with('individuais', 'coletivos', 'comercial')->paginate(15);
+            $compradores = $compradores->with('individuais', 'coletivos', 'comercial')->orderBy('created_at', 'desc')->paginate(15);
         }else{
-            $compradores = Comprador::with('individuais', 'coletivos', 'comercial')->paginate(15);
+            $compradores = Comprador::with('individuais', 'coletivos', 'comercial')->orderBy('created_at', 'desc')->paginate(15);
         }
 
         return view('painel.pages.clientes.index', compact('compradores'));
