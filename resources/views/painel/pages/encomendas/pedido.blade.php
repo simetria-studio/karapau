@@ -26,6 +26,7 @@
                                             <th></th>
                                             <th>TOTAL</th>
                                             <th>Taxa Entrega</th>
+                                            <th>Hora do Pedido</th>
                                             <th>STATUS</th>
                                         </tr>
                                     </thead>
@@ -52,6 +53,7 @@
                                             </td>
                                             <td>€ {{ number_format($user_order->total, 2, ',', '.') }}</td>
                                             <td>€ {{ number_format($user_order->frete, 2, ',', '.') }}</td>
+                                            <td> {{ date('d/m/Y H:m:i', strtotime($user_order->created_at)) }}</td>
                                             <td>
 
                                                 <button type="button" data-toggle="modal" @if ($user_order->status == 3) disabled @endif data-target="#exampleModal" class="btn btn-dark">
