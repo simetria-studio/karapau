@@ -8,7 +8,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>200</h3>
+                  <h3>{{ $pescadores->count() }}</h3>
 
                   <p>PESCADORES</p>
                 </div>
@@ -38,7 +38,7 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>500</h3>
+                  <h3>{{ $clientes->count() }}</h3>
 
                   <p>USUÁRIOS</p>
                 </div>
