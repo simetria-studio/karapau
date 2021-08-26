@@ -76,13 +76,10 @@
                   <div class="form-group input-material">
                         <select class="form-control" name="tamanho" id="exampleFormControlSelect1">
                               <option>Escolha o Tamanho</option>
-                              <option value="tamanho1">Tamanho 1 (T1)</option>
-                              <option value="tamanho2">Tamanho 2 (T2)</option>
-                              <option value="tamanho3">Tamanho 3 (T3)</option>
-                              <option value="tamanho4">Tamanho 4 (T4)</option>
-                              <option value="pequeno">Pequeno</option>
-                              <option value="medio">Médio</option>
-                              <option value="grande">Grande</option>
+                              @foreach ($tamanhos as $tamanho)
+                              <option value="{{ $tamanho->name }}">{{ $tamanho->name }}</option>
+                              @endforeach
+
                         </select>
                   </div>
                   <div class="form-group input-material">

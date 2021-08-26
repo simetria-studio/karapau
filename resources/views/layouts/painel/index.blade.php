@@ -147,6 +147,10 @@
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Portos</p>
                                         </a>
+                                        <a href="{{ route('admin.tamanhos') }}" class="nav-link @if (Request::is('cadastro/tamanhos')) active @endif">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Tamanhos</p>
+                                        </a>
 
                                     </li>
                                 </ul>

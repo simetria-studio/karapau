@@ -128,6 +128,8 @@
                     Médio
                 @elseif($produto->tamanho == 'grande')
                     Grande
+                    @else
+                    {{ $produto->tamanho }}
                 @endif
             </h6>
         </div>

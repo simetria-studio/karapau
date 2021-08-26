@@ -5,15 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Porto;
 use App\Models\Especie;
 use App\Models\Produto;
+use App\Models\Tamanho;
 use App\Models\Pescador;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\AdressBuyer;
-use App\Models\PescadorPedido;
 use App\Models\UserOrder;
+use App\Models\AdressBuyer;
 use App\Models\UserProduct;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+use App\Models\PescadorPedido;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PescadorController extends Controller
 {
@@ -187,8 +188,9 @@ class PescadorController extends Controller
         $portos = Porto::all();
         $especies = Especie::all();
         $pescador = Pescador::find($id);
+        $tamanhos = Tamanho::all();
 
-        return view('painel.pages.pescador.cadastro-produto', compact('portos', 'especies', 'pescador', 'id_pescador'));
+        return view('painel.pages.pescador.cadastro-produto', compact('portos', 'especies', 'pescador', 'id_pescador', 'tamanhos'));
     }
 
     public function pecadorCadastroProdutoStore(Request $request)

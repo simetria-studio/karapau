@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Pescador;
 
-use App\Http\Controllers\Controller;
-use App\Models\Especie;
 use App\Models\Porto;
+use App\Models\Especie;
 use App\Models\Produto;
+use App\Models\Tamanho;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProdutoController extends Controller
 {
@@ -19,8 +20,8 @@ class ProdutoController extends Controller
     {
         $portos = Porto::all();
         $especies = Especie::all();
-
-        return view('pescador.pages.produto.create', compact('portos', 'especies'));
+        $tamanhos = Tamanho::all();
+        return view('pescador.pages.produto.create', compact('portos', 'especies', 'tamanhos'));
     }
 
     /**

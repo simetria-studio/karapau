@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\EspecieController;
 use App\Http\Controllers\Adress\AdressController;
 use App\Http\Controllers\Auth\PescadorController;
+use App\Http\Controllers\Admin\TamanhosController;
 use App\Http\Controllers\Pedidos\PedidoController;
 use App\Http\Controllers\Admin\ComercialController;
 use App\Http\Controllers\Auth\StoreLoginController;
@@ -49,24 +50,25 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('consultor-login', function(){
+Route::get('consultor-login', function () {
     return view('auth.consultor.login');
 });
 
 Auth::routes();
 
 /*  Painel Routes  */
-Route::middleware(['auth'])->prefix('admin')->group( function () {
-    Route::get('layout', function(){
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('layout', function () {
         return view('layouts.painel.index');
     });
 
-    Route::prefix('cadastro')->group( function () {
+    Route::prefix('cadastro')->group(function () {
         Route::get('especies', [PainelController::class, 'especies'])->name('admin.especies');
         Route::get('porto', [PainelController::class, 'porto'])->name('admin.porto');
+        Route::get('tamanhos', [TamanhosController::class, 'index'])->name('admin.tamanhos');
     });
 
-    Route::prefix('configs')->group( function () {
+    Route::prefix('configs')->group(function () {
         Route::get('km/cadastro', [KmController::class, 'index'])->name('admin.km');
         Route::post('km/cadastro/store', [KmController::class, 'store'])->name('admin.km.store');
     });
@@ -79,6 +81,12 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::post('/entregador/caixa_devolvida', [EntregadorController::class, 'caixaDevolvida'])->name('entregador.caixa_devolvida');
     Route::post('/entregador/entregue', [EntregadorController::class, 'entregue'])->name('entregador.entregue');
     Route::post('/entregador/atribuir', [EntregadorController::class, 'entregadorAtribuir'])->name('entregador.atribuir');
+
+    Route::get('tamanhos/create', [TamanhosController::class, 'create'])->name('admin.tamanhos.create');
+    Route::post('tamanhos/store', [TamanhosController::class, 'store'])->name('admin.tamanhos.store');
+    Route::post('tamanhos/update/{id}', [TamanhosController::class, 'update'])->name('admin.tamanhos.update');
+    Route::get('tamanhos/show/{id}', [TamanhosController::class, 'show'])->name('admin.tamanhos.show');
+    Route::any('tamanhos/delete/{id}', [TamanhosController::class, 'destroy'])->name('admin.tamanhos.delete');
 
     Route::get('usuarios', [UserController::class, 'index'])->name('admin.users');
     Route::post('usuarios/create', [UserController::class, 'create'])->name('admin.users.create');
@@ -151,42 +159,42 @@ Route::get('consultor-login', [LoginConsultorController::class, 'index'])->name(
 Route::post('consultor-entrar', [LoginConsultorController::class, 'login'])->name('consultor.login');
 
 Route::middleware(['auth:consultor'])->group(function () {
-        Route::get('consultor', [ComercialPainelController::class, 'index'])->name('consultor');
-        Route::get('comprador-cad', [ComercialPainelController::class, 'compradorCad']);
-        Route::get('comprador-individual-create', [CompradorIndividualController::class, 'index'])->name('consultor.comprador-individual.create');
-        Route::post('comprador-individual-store', [CompradorIndividualController::class, 'store'])->name('consultor.comprador-individual.store');
-        Route::get('comprador-individual-informativo', [CompradorIndividualController::class, 'individualInformativo'])->name('consultor.comprador-individual.informativo');
+    Route::get('consultor', [ComercialPainelController::class, 'index'])->name('consultor');
+    Route::get('comprador-cad', [ComercialPainelController::class, 'compradorCad']);
+    Route::get('comprador-individual-create', [CompradorIndividualController::class, 'index'])->name('consultor.comprador-individual.create');
+    Route::post('comprador-individual-store', [CompradorIndividualController::class, 'store'])->name('consultor.comprador-individual.store');
+    Route::get('comprador-individual-informativo', [CompradorIndividualController::class, 'individualInformativo'])->name('consultor.comprador-individual.informativo');
 
-        Route::get('comprador-coletivo-create', [CompradorColetivoController::class, 'index'])->name('consultor.comprador-coletivo.create');
-        Route::post('comprador-coletivo-store', [CompradorColetivoController::class, 'store'])->name('consultor.comprador-coletivo.store');
-        Route::get('comprador-coletivo-informativo', [CompradorColetivoController::class, 'coletivoInformativo'])->name('consultor.comprador-coletivo.informativo');
+    Route::get('comprador-coletivo-create', [CompradorColetivoController::class, 'index'])->name('consultor.comprador-coletivo.create');
+    Route::post('comprador-coletivo-store', [CompradorColetivoController::class, 'store'])->name('consultor.comprador-coletivo.store');
+    Route::get('comprador-coletivo-informativo', [CompradorColetivoController::class, 'coletivoInformativo'])->name('consultor.comprador-coletivo.informativo');
 
-        Route::get('comprador-status/{filter?}', [ComercialPainelController::class, 'compradorStatus'])->name('comprador.status');
-        Route::get('comprador-detalhe/{id}/{filter?}', [ComercialPainelController::class, 'compradorDetalhe'])->name('comprador.detalhe');
+    Route::get('comprador-status/{filter?}', [ComercialPainelController::class, 'compradorStatus'])->name('comprador.status');
+    Route::get('comprador-detalhe/{id}/{filter?}', [ComercialPainelController::class, 'compradorDetalhe'])->name('comprador.detalhe');
 
-        Route::get('consultor-compradores-ativos', [ComercialPainelController::class, 'compradorListAtivo'])->name('consultor.compradores.ativo');
-        Route::get('consultor-compradores-inativos', [ComercialPainelController::class, 'compradorListInativo'])->name('consultor.compradores.inativo');
+    Route::get('consultor-compradores-ativos', [ComercialPainelController::class, 'compradorListAtivo'])->name('consultor.compradores.ativo');
+    Route::get('consultor-compradores-inativos', [ComercialPainelController::class, 'compradorListInativo'])->name('consultor.compradores.inativo');
 
-        Route::get('consultor-list-individual/{id}', [ComercialPainelController::class, 'listIndividual'])->name('consultor.list.individual');
-        Route::get('consultor-list-coletivo/{id}', [ComercialPainelController::class, 'listColetivo'])->name('consultor.list.coletivo');
+    Route::get('consultor-list-individual/{id}', [ComercialPainelController::class, 'listIndividual'])->name('consultor.list.individual');
+    Route::get('consultor-list-coletivo/{id}', [ComercialPainelController::class, 'listColetivo'])->name('consultor.list.coletivo');
 
-        Route::any('consultor-logout', [LoginConsultorController::class, 'logout'])->name('consultor.logout');
+    Route::any('consultor-logout', [LoginConsultorController::class, 'logout'])->name('consultor.logout');
 
-        Route::get('consultor-incompletos', [ComercialPainelController::class, 'incompleto'])->name('consultor.list.incompletos');
+    Route::get('consultor-incompletos', [ComercialPainelController::class, 'incompleto'])->name('consultor.list.incompletos');
 
-        Route::get('consultor-ind-edit/{id}', [ComercialPainelController::class, 'editIndividual'])->name('consultor.edit.individual');
-        Route::get('consultor-col-edit/{id}', [ComercialPainelController::class, 'editColetivo'])->name('consultor.edit.coletivo');
+    Route::get('consultor-ind-edit/{id}', [ComercialPainelController::class, 'editIndividual'])->name('consultor.edit.individual');
+    Route::get('consultor-col-edit/{id}', [ComercialPainelController::class, 'editColetivo'])->name('consultor.edit.coletivo');
 
-        Route::post('consultor-ind-update/{id}', [ComercialPainelController::class, 'updateIndividual'])->name('consultor.update.individual');
-        Route::post('consultor-col-update/{id}', [ComercialPainelController::class, 'updateColetivo'])->name('consultor.update.coletivo');
+    Route::post('consultor-ind-update/{id}', [ComercialPainelController::class, 'updateIndividual'])->name('consultor.update.individual');
+    Route::post('consultor-col-update/{id}', [ComercialPainelController::class, 'updateColetivo'])->name('consultor.update.coletivo');
 
-        Route::get('consultor-lead', [ComercialPainelController::class, 'lead'])->name('consultor.lead');
-        Route::get('consultor-lead-form1', [ComercialPainelController::class, 'leadForm1'])->name('consultor.lead.individual');
-        Route::get('consultor-lead-form2', [ComercialPainelController::class, 'leadForm2'])->name('consultor.lead.coletivo');
-        Route::any('teste', [TesteController::class, 'index']);
+    Route::get('consultor-lead', [ComercialPainelController::class, 'lead'])->name('consultor.lead');
+    Route::get('consultor-lead-form1', [ComercialPainelController::class, 'leadForm1'])->name('consultor.lead.individual');
+    Route::get('consultor-lead-form2', [ComercialPainelController::class, 'leadForm2'])->name('consultor.lead.coletivo');
+    Route::any('teste', [TesteController::class, 'index']);
 
-        Route::get('extractos/{filter?}', [ComercialPainelController::class, 'extracto'])->name('consultor.extracto');
-        Route::get('ver-extractos/{id}', [ComercialPainelController::class, 'verExtracto'])->name('consultor.extracto.ver');
+    Route::get('extractos/{filter?}', [ComercialPainelController::class, 'extracto'])->name('consultor.extracto');
+    Route::get('ver-extractos/{id}', [ComercialPainelController::class, 'verExtracto'])->name('consultor.extracto.ver');
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -198,7 +206,7 @@ Route::get('pescador-create', [PescadorRegController::class, 'index']);
 Route::post('pescadores-store', [PescadorRegController::class, 'store'])->name('pescador.store');
 Route::post('pescador-login', [PescadorController::class, 'store'])->name('pescador.login');
 
-Route::middleware('auth:pescador')->group(function(){
+Route::middleware('auth:pescador')->group(function () {
     Route::get('pescador', [PainelPescadorController::class, 'index'])->name('pescador.index');
     Route::get('produto', [ProdutoController::class, 'index'])->name('pescador.produto');
     Route::post('produto-store', [ProdutoController::class, 'store'])->name('pescador.produto.store');
@@ -213,7 +221,7 @@ Route::middleware('auth:pescador')->group(function(){
 Route::get('store-login-page', [StoreLoginController::class, 'index'])->name('store.login');
 Route::post('store-login', [StoreLoginController::class, 'login'])->name('store.login.post');
 
-Route::group(['middleware' => ['auth:buyer']], function(){
+Route::group(['middleware' => ['auth:buyer']], function () {
     Route::get('store-index', [StoreController::class, 'index'])->name('store.index');
     Route::get('store-index-2', [StoreController::class, 'index'])->name('store.index.2');
     Route::get('store-porto', [StoreController::class, 'porto'])->name('store.porto');
@@ -261,9 +269,9 @@ Route::get('consultor/adress/cep', [AdressController::class, 'buscaCep']);
 Route::get('comprador-create', [CompradorIndividualController::class, 'home'])->name('comprador.create');
 Route::post('comprador-create-store', [CompradorIndividualController::class, 'storeHome'])->name('comprador.create.store');
 
-Route::get('front/status', function(){
-return view('store.pages.user.status');
+Route::get('front/status', function () {
+    return view('store.pages.user.status');
 });
-Route::get('front/encomenda', function(){
-return view('store.pages.user.encomenda');
+Route::get('front/encomenda', function () {
+    return view('store.pages.user.encomenda');
 });
