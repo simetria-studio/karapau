@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pescador;
 
+use App\Models\Arte;
 use App\Models\Porto;
 use App\Models\Especie;
 use App\Models\Produto;
@@ -21,7 +22,8 @@ class ProdutoController extends Controller
         $portos = Porto::all();
         $especies = Especie::all();
         $tamanhos = Tamanho::all();
-        return view('pescador.pages.produto.create', compact('portos', 'especies', 'tamanhos'));
+        $artes = Arte::all();
+        return view('pescador.pages.produto.create', compact('portos', 'especies', 'tamanhos', 'artes'));
     }
 
     /**
@@ -31,9 +33,9 @@ class ProdutoController extends Controller
      */
     public function list()
     {
-       $produtos = Produto::with('especies')->where('pescador_id', auth()->user()->id)->get();
-    //    dd($produtos);
-       return view('pescador.pages.produto.list', compact('produtos'));
+        $produtos = Produto::with('especies')->where('pescador_id', auth()->user()->id)->get();
+        //    dd($produtos);
+        return view('pescador.pages.produto.list', compact('produtos'));
     }
 
     /**

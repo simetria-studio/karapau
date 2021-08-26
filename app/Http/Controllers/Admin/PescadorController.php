@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Arte;
 use App\Models\Porto;
 use App\Models\Especie;
 use App\Models\Produto;
@@ -189,8 +190,9 @@ class PescadorController extends Controller
         $especies = Especie::all();
         $pescador = Pescador::find($id);
         $tamanhos = Tamanho::all();
+        $artes = Arte::all();
 
-        return view('painel.pages.pescador.cadastro-produto', compact('portos', 'especies', 'pescador', 'id_pescador', 'tamanhos'));
+        return view('painel.pages.pescador.cadastro-produto', compact('portos', 'especies', 'pescador', 'id_pescador', 'tamanhos', 'artes'));
     }
 
     public function pecadorCadastroProdutoStore(Request $request)

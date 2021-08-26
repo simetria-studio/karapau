@@ -4,32 +4,32 @@
 
 
     <div class="card m-5 col-md-10">
-   
+
         <div>
-            <a href="{{ route('admin.tamanhos.create') }}"><button class="btn btn-dark my-2">Adicionar
-                    Tamanho</button></a>
+            <a href="{{ route('admin.artes.create') }}"><button class="btn btn-dark my-2">Adicionar
+                    Arte</button></a>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Tamanho</th>
+                        <th scope="col">Arte</th>
                         <th scope="col">Acões</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tamanhos as $tamanho)
+                    @foreach ($artes as $arte)
                         <tr>
-                            <th scope="row">{{ $tamanho->id }}</th>
-                            <td>{{ $tamanho->name }}</td>
+                            <th scope="row">{{ $arte->id }}</th>
+                            <td>{{ $arte->name }}</td>
                             <td>
                                 <div class="d-flex">
                                     <div>
-                                        <a href="{{ route('admin.tamanhos.delete', $tamanho->id) }}"
+                                        <a href="{{ route('admin.artes.delete', $arte->id) }}"
                                             onclick="return confirm('Você tem certeza?');"> <button
                                                 class="btn btn-danger ">Apagar</button></a>
                                     </div>
                                     <div>
-                                        <a href="{{ route('admin.tamanhos.show', $tamanho->id) }}"> <button
+                                        <a href="{{ route('admin.artes.show', $arte->id) }}"> <button
                                                 class="btn btn-primary ml-2">Editar</button></a>
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
 
                 </tbody>
             </table>
-            {{ $tamanhos->links() }}
+            {{ $artes->links() }}
         </div>
     </div>
 @endsection

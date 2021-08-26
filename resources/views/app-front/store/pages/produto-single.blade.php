@@ -108,6 +108,9 @@
                     Envolventes arrastantes
                 @elseif($produto->arte == 'arte_xavega')
                     Arte Xávega
+                 @else
+                 {{ $produto->arte }}
+
                 @endif
             </h6>
         </div>

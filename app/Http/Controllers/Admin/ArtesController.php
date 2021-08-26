@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Tamanho;
+use App\Models\Arte;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class TamanhosController extends Controller
+class ArtesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class TamanhosController extends Controller
      */
     public function index()
     {
-        $tamanhos = Tamanho::orderBy('created_at', 'desc')->paginate(15);
-        return view('painel.pages.tamanho.index', compact('tamanhos'));
+        $artes = Arte::orderBy('created_at', 'desc')->paginate(15);
+        return view('painel.pages.artes.index', compact('artes'));
     }
 
     /**
@@ -26,7 +26,7 @@ class TamanhosController extends Controller
      */
     public function create()
     {
-        return view('painel.pages.tamanho.create');
+        return view('painel.pages.artes.create');
     }
 
     /**
@@ -37,9 +37,9 @@ class TamanhosController extends Controller
      */
     public function store(Request $request)
     {
-        $save = Tamanho::create($request->all());
+        $save = Arte::create($request->all());
 
-        return redirect()->route('admin.tamanhos')->with('success', "criado com sucesso!");;
+        return redirect()->route('admin.artes')->with('success', "criado com sucesso!");;
     }
 
     /**
@@ -50,8 +50,8 @@ class TamanhosController extends Controller
      */
     public function show($id)
     {
-        $tamanho = Tamanho::find($id);
-        return view('painel.pages.tamanho.show', compact('tamanho'));
+        $arte = Arte::find($id);
+        return view('painel.pages.artes.show', compact('arte'));
     }
 
     /**
@@ -74,12 +74,11 @@ class TamanhosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $arte = Arte::find($id);
+        $arte->name = $request->name;
+        $arte->save();
 
-        $tamanho = Tamanho::find($id);
-        $tamanho->name = $request->name;
-        $tamanho->save();
-
-        return redirect()->route('admin.tamanhos')->with('success', "Alterado com sucesso!");
+        return redirect()->route('admin.artes')->with('success', "Alterado com sucesso!");
     }
 
     /**
@@ -90,8 +89,8 @@ class TamanhosController extends Controller
      */
     public function destroy($id)
     {
-        $tamanho = Tamanho::find($id);
-        $tamanho->delete();
-        return redirect()->route('admin.tamanhos')->with('success', "Deletado com sucesso!");
+        $arte = Arte::find($id);
+        $arte->delete();
+        return redirect()->route('admin.artes')->with('success', "Deletado com sucesso!");
     }
 }

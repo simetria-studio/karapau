@@ -151,6 +151,10 @@
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Tamanhos</p>
                                         </a>
+                                        <a href="{{ route('admin.artes') }}" class="nav-link @if (Request::is('cadastro/artes')) active @endif">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Arte</p>
+                                        </a>
 
                                     </li>
                                 </ul>

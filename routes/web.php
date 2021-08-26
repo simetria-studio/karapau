@@ -6,14 +6,15 @@ use App\Http\Controllers\TesteController;
 use App\Http\Controllers\Admin\KmController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ArtesController;
 use App\Http\Controllers\Admin\PortoController;
 use App\Http\Controllers\Buyer\BuyerController;
+
 use App\Http\Controllers\Store\StoreController;
 
 use App\Http\Controllers\Admin\PainelController;
 
 use App\Http\Controllers\Admin\ClienteController;
-
 use App\Http\Controllers\Admin\EspecieController;
 use App\Http\Controllers\Adress\AdressController;
 use App\Http\Controllers\Auth\PescadorController;
@@ -66,6 +67,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::get('especies', [PainelController::class, 'especies'])->name('admin.especies');
         Route::get('porto', [PainelController::class, 'porto'])->name('admin.porto');
         Route::get('tamanhos', [TamanhosController::class, 'index'])->name('admin.tamanhos');
+        Route::get('artes', [ArtesController::class, 'index'])->name('admin.artes');
     });
 
     Route::prefix('configs')->group(function () {
@@ -87,6 +89,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('tamanhos/update/{id}', [TamanhosController::class, 'update'])->name('admin.tamanhos.update');
     Route::get('tamanhos/show/{id}', [TamanhosController::class, 'show'])->name('admin.tamanhos.show');
     Route::any('tamanhos/delete/{id}', [TamanhosController::class, 'destroy'])->name('admin.tamanhos.delete');
+
+    Route::get('artes/create', [ArtesController::class, 'create'])->name('admin.artes.create');
+    Route::post('artes/store', [ArtesController::class, 'store'])->name('admin.artes.store');
+    Route::post('artes/update/{id}', [ArtesController::class, 'update'])->name('admin.artes.update');
+    Route::get('artes/show/{id}', [ArtesController::class, 'show'])->name('admin.artes.show');
+    Route::any('artes/delete/{id}', [ArtesController::class, 'destroy'])->name('admin.artes.delete');
 
     Route::get('usuarios', [UserController::class, 'index'])->name('admin.users');
     Route::post('usuarios/create', [UserController::class, 'create'])->name('admin.users.create');

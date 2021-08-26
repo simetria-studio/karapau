@@ -58,17 +58,9 @@
                                     <div class="form-group col-12 col-md-4">
                                         <select class="form-control" name="arte" id="exampleFormControlSelect1">
                                             <option>Escolha a Arte</option>
-                                            <option value="rede">Rede</option>
-                                            <option value="vara">Vara</option>
-                                            <option value="cerco">Cerco</option>
-                                            <option value="arrasto">Arrasto</option>
-                                            <option value="redes_de_emalhar">Redes de emalhar</option>
-                                            <option value="redes_de_tresmalho">Redes de Tresmalho</option>
-                                            <option value="anzol">Anzol</option>
-                                            <option value="armadilhas">Armadilhas</option>
-                                            <option value="envolventes_arrastantes">Envolventes arrastantes</option>
-                                            <option value="arte_xavega">Arte Xávega</option>
-                                            <option value="apanha">Apanha</option>
+                                            @foreach ($artes as $arte)
+                                            <option value="{{ $arte->name }}">{{ $arte->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
 
