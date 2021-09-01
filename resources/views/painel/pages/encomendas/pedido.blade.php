@@ -56,7 +56,8 @@
                                             <td> {{ date('d/m/Y H:m:i', strtotime($user_order->created_at)) }}</td>
                                             <td>
 
-                                                <button type="button" data-toggle="modal" @if ($user_order->status == 3) disabled @endif data-target="#exampleModal" class="btn btn-dark">
+                                                <button type="button" data-toggle="modal" @if ($user_order->status == 3) disabled @endif
+                                                    data-target="#exampleModal" class="btn btn-dark">
                                                     @if ($user_order->status == 3)
                                                     CANCELADO @else STATUS
                                                     @endif
@@ -149,18 +150,25 @@
                                                                 <td><button type="button"
                                                                         class="btn {{ $userProduct->status == 0 ? 'btn-dark' : 'btn-success' }} btn-sm @if ($userProduct->status == 1) btn_liberar_pedido @endif"
                                                                         data-route="{{ route('admin.status.produto') }}"
-                                                                        data-id="{{ $userProduct->id }}">@if ($userProduct->status == 1)
+                                                                        data-id="{{ $userProduct->id }}">
+                                                                        @if ($userProduct->status == 1)
                                                                         A LIBERAR @elseif($userProduct->status == 0)
                                                                             AGUARDANDO
                                                                         @else
                                                                             LIBERADO
-                                                                        @endif</button>
+                                                                        @endif
+                                                                    </button>
                                                                 </td>
                                                                 <td><button type="button"
                                                                         class="btn btn-dark btn-sm">ENVIAR</button></td>
                                                                 <td><button type="button"
-                                                                        class="btn {{$userProduct->anexo ? 'btn-success' : 'btn-dark'}} btn-sm" data-toggle="modal" data-target="#anexarPDF" data-url="{{route('admin.pedidos.anexo')}}" data-id="{{$userProduct->id}}">{{$userProduct->anexo ? 'ANEXO' : 'ANEXAR'}}</button></td>
-                                                                <td><button type="button" data-id="{{ $userProduct->id }}"
+                                                                        class="btn {{ $userProduct->anexo ? 'btn-success' : 'btn-dark' }} btn-sm"
+                                                                        data-toggle="modal" data-target="#anexarPDF"
+                                                                        data-url="{{ route('admin.pedidos.anexo') }}"
+                                                                        data-id="{{ $userProduct->id }}">{{ $userProduct->anexo ? 'ANEXO' : 'ANEXAR' }}</button>
+                                                                </td>
+                                                                <td><button type="button"
+                                                                        data-id="{{ $userProduct->id }}"
                                                                         @if ($userProduct->deliveryman == 0) data-toggle="modal" data-target="#entregadorModal" @endif
                                                                         class="btn {{ $userProduct->deliveryman !== 0 ? 'btn-info' : 'btn-dark' }} btn-sm">{{ $userProduct->deliveryman !== 0 ? 'ENTREGADOR ATRIBUIDO' : 'ESCOLHER ENTREGADOR' }}</button>
                                                                 </td>
@@ -188,8 +196,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form action="{{ url('admin/user/order/status/' . $user_order->id) }}" method="post">
+                <form action="{{ url('admin/user/order/status/' . $user_order->id) }}" method="post">
+                    <div class="modal-body">
+
                         @csrf
 
                         <div>
@@ -207,11 +216,11 @@
                             </div>
                         </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-success">Alterar Status</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-success">Alterar Status</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -230,7 +239,8 @@
                         <div class="col-12 py-2 px-3"><b>Nome:</b> {{ $userProduct->pescador->name ?? '' }}
                             {{ $userProduct->pescador->lastname ?? '' }}</div>
                         <div class="col-12 py-2 px-3"><b>Email:</b> {{ $userProduct->pescador->email ?? '' }}</div>
-                        <div class="col-12 py-2 px-3"><b>Telemóvel:</b> {{ $userProduct->pescador->telefone ?? '' }}</div>
+                        <div class="col-12 py-2 px-3"><b>Telemóvel:</b> {{ $userProduct->pescador->telefone ?? '' }}
+                        </div>
                         <div class="col-12 py-2 px-3"><b>Morada:</b> {{ $userProduct->pescador->morada ?? '' }}</div>
                     </div>
                 </div>
@@ -268,7 +278,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="entregadorModal" tabindex="-1" aria-labelledby="entregadorModalLabel" aria-hidden="true">
+    <div class="modal fade" id="entregadorModal" tabindex="-1" aria-labelledby="entregadorModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
