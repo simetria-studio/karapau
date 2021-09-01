@@ -246,7 +246,7 @@
     <!-- SweetAlert2 -->
     <script src="{{ asset('plugin/sweetalert2/sweetalert2.min.js') }}"></script>
     <!-- Moment -->
-    <script src="{{ url('js/app.js') }}"></script>
+
     <script src="{{ asset('plugin/moment/moment.min.js') }}"></script>
     <!-- Colorpicker -->
     <script src="{{ asset('plugin/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
