@@ -21,7 +21,7 @@ class PainelPescadorController extends Controller
     public function pedidos()
     {
         $pedidos = PescadorPedido::with(['orders', 'adresses', 'products'])->where('pescador_id', auth()->user()->id)->get();
-        // dd($pedidos[0]->products);
+        // dd($pedidos);
         return view('pescador.pages.pedido.pedidos', compact('pedidos'));
     }
 

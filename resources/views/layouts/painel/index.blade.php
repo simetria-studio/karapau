@@ -63,7 +63,8 @@
 </head>
 
 <body class="sidebar-mini layout-fixed">
-    <div class="wrapper">
+    <div class="wrapper" id="app">
+
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
@@ -245,6 +246,7 @@
     <!-- SweetAlert2 -->
     <script src="{{ asset('plugin/sweetalert2/sweetalert2.min.js') }}"></script>
     <!-- Moment -->
+    <script src="{{ url('js/app.js') }}"></script>
     <script src="{{ asset('plugin/moment/moment.min.js') }}"></script>
     <!-- Colorpicker -->
     <script src="{{ asset('plugin/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
@@ -260,9 +262,9 @@
     <script src="{{ asset('plugin/AdminLTE/js/adminlte.min.js') }}"></script>
     {{-- fullcalendar --}}
 
-    <script src="{{ url('tarefa/fullcalendar/js/scripts.js') }}"></script>
+    {{-- <script src="{{ url('tarefa/fullcalendar/js/scripts.js') }}"></script> --}}
     {{-- Outros --}}
-    <script src="{{ url('tarefa/js/script.js') }}"></script>
+    {{-- <script src="{{ url('tarefa/js/script.js') }}"></script> --}}
 
     <script src="{{ url('painel/js/script.js') }}"></script>
 

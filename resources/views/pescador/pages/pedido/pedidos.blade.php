@@ -56,16 +56,16 @@
                         <div class="d-flex  justify-content-around text-center">
 
                               <div class="nome">
-                                    <h5>{{ $pedido->products->name }}</h5>
+                                    <h5>{{ $pedido->products->name ?? 'Sem produto'}}</h5>
                               </div>
                               <div>
-                                    <h5>{{ $pedido->products->quantity }} Kg</h5>
+                                    <h5>{{ $pedido->products->quantity ?? ''}} Kg</h5>
                               </div>
                               <div>
-                                    <h5>{{  '€ '.number_format($pedido->products->price, 2, ',', '.') }}</h5>
+                                    <h5>{{  '€ '.number_format($pedido->products->price ?? 0, 2, ',', '.') }}</h5>
                               </div>
                               <div>
-                                    <h5>{{  '€ '.number_format($pedido->products->value, 2, ',', '.') }}</h5>
+                                    <h5>{{  '€ '.number_format($pedido->products->value ?? 0, 2, ',', '.') }}</h5>
                               </div>
                         </div>
 
@@ -74,15 +74,18 @@
             </div>
             <div class="">
                   <div class="text-center mt-4 mb-4">
-                        <form action="{{ url('pescador/produto/status/'.$pedido->products->id) }}">
+                        <form action="{{ url('pescador/produto/status/'.($pedido->products->id ?? 0)   ) }}">
                             @csrf
-                              @if($pedido->products->status == 0)
-                              <input type="hidden" name="status" value="1">
-                              <button class="btn btn-danger bg-danger text-white">A PREPARAR</button>
-                              @elseif ($pedido->products->status == 1)
-                              <input type="hidden" name="status" value="2">
-                              <button class="btn btn-danger bg-danger text-white">A LIBERAR</button>
-                              @endif
+                            @if ($pedido->products)
+                            @if($pedido->products->status == 0)
+                            <input type="hidden" name="status" value="1">
+                            <button class="btn btn-danger bg-danger text-white">A PREPARAR</button>
+                            @elseif ($pedido->products->status == 1)
+                            <input type="hidden" name="status" value="2">
+                            <button class="btn btn-danger bg-danger text-white">A LIBERAR</button>
+                            @endif
+                            @endif
+
                         </form>
                   </div>
             </div>
