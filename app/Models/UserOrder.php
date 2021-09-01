@@ -21,7 +21,8 @@ class UserOrder extends Model
         'total',
         'sub_total',
         'frete',
-        'codigo'
+        'codigo',
+        'transaction_id'
 
     ];
 

@@ -46,6 +46,7 @@ use App\Http\Controllers\Admin\PescadorController as AdminPescadorController;
 |
 */
 
+Route::get('url-teste', [CheckoutController::class, 'urlTeste']);
 
 Route::get('/', function () {
     return view('auth.login');

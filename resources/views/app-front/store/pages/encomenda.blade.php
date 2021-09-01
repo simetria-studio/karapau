@@ -57,6 +57,7 @@
                                 Pago
                             @elseif ($order->status == 3)
                                 Cancelado
+                           
                             @endif
                         </h1>
                     </div>
