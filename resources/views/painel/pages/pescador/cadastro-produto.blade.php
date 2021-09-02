@@ -82,7 +82,7 @@
                                     <div id="kg" class="form-group d-none col-12">
                                         <div class="row justify-content-center">
                                             <div class="col-12 col-md-4">
-                                                <input type="number" class="form-control" name="quantidade_kg">
+                                                <input type="text" class="form-control" name="quantidade_kg">
                                                 <label for="name-field">Quantos Kg</label>
                                             </div>
                                         </div>
@@ -91,7 +91,7 @@
                                     <div id="unidade" class="form-group d-none col-12">
                                         <div class="row justify-content-center">
                                             <div class="col-12 col-md-4">
-                                                <input type="number" class="form-control" name="quantidade_unidade">
+                                                <input type="text" class="form-control" name="quantidade_unidade">
                                                 <label for="name-field">Quantos peixes tem</label>
                                             </div>
                                         </div>
@@ -99,7 +99,7 @@
                                     <div id="kg_total" class="form-group d-none col-12">
                                         <div class="row justify-content-center">
                                             <div class="col-12 col-md-4">
-                                                <input type="number" class="form-control" name="total_kg">
+                                                <input type="text" class="form-control" name="total_kg">
                                                 <label for="name-field">Total de Kg</label>
                                             </div>
                                         </div>
@@ -107,7 +107,7 @@
                                     <div id="price_div" class="form-group d-none col-12">
                                         <div class="row justify-content-center">
                                             <div class="col-12 col-md-4">
-                                                <input type="number" id="price" class="form-control"
+                                                <input type="text" id="price" class="form-control"
                                                     onkeyup="getPriceValue()" name="preco">
                                                 <label for="name-field">Preço por KG</label>
                                             </div>
