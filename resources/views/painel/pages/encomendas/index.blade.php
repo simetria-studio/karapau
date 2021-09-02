@@ -64,6 +64,11 @@
 
                                         @endif
 
+                                        <div class="ml-3">
+                                            <a href="{{route('admin.encomenda.remover', $order->id)}}" class="btn-trash">
+                                                <i class="fas fa-trash text-danger"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
