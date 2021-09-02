@@ -212,9 +212,10 @@ Route::middleware(['auth:consultor'])->group(function () {
 /*  Login Pescador */
 
 Route::get('login-pescador', [PescadorController::class, 'index'])->name('login.pescador');
-Route::get('pescador-create', [PescadorRegController::class, 'index']);
+Route::get('pescador-create', [PescadorRegController::class, 'index'])->name("pescador.create");
 Route::post('pescadores-store', [PescadorRegController::class, 'store'])->name('pescador.store');
 Route::post('pescador-login', [PescadorController::class, 'store'])->name('pescador.login');
+Route::get('pescadores-sucesso', [PescadorRegController::class, 'successo'])->name('pescador.successo');
 
 Route::middleware('auth:pescador')->group(function () {
     Route::get('pescador', [PainelPescadorController::class, 'index'])->name('pescador.index');
