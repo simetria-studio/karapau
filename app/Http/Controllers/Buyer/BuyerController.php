@@ -25,7 +25,7 @@ class BuyerController extends Controller
     public function logout()
     {
 
-        Auth::logout();
+        Auth::guard('buyer')->logout();
 
         return redirect('store-login-page');
     }

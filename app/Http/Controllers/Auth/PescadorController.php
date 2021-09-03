@@ -101,7 +101,7 @@ class PescadorController extends Controller
     public function logout()
     {
 
-        Auth::logout();
+        Auth::guard('pescador')->logout();
 
         return redirect('login-pescador');
     }

@@ -165,7 +165,7 @@ class LoginConsultorController extends Controller
     public function logout()
     {
 
-        Auth::logout();
+        Auth::guard('consultor')->logout();
 
         return redirect('consultor-login');
     }
