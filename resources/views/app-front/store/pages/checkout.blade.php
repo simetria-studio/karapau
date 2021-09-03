@@ -219,20 +219,21 @@
             </div>
         </div>
         {{-- <div class="top_4">
-        <div class="container">
-            <div class="metodos">
-                <div class="logo-metodos">
-                    <img for="multibanco" src="{{ url('front-app/store/assets/img/mb.png') }}" alt="">
-                </div>
-                <div class="nome-metodos">
-                    <label for="multibanco">Multibanco</label>
-                </div>
-                <div class="form-check check">
-                    <input id="multibanco" class="form-check-input" type="radio" name="escolha">
+            <div class="container">
+                <div class="metodos">
+                    <div class="logo-metodos">
+                        <img for="multibanco" src="{{ url('front-app/store/assets/img/mb.png') }}" alt="">
+                    </div>
+                    <div class="nome-metodos">
+                        <label for="multibanco">Multibanco</label>
+                    </div>
+                    <div class="form-check check">
+                        <input id="multibanco" class="form-check-input" type="radio" value="referencia"
+                            name="payment_mothod">
+                    </div>
                 </div>
             </div>
-        </div>
-    </div> --}}
+        </div> --}}
 
         </div>
         <div class="container">

@@ -91,12 +91,39 @@ class CheckoutController extends Controller
         curl_close($curl);
 
         return $result;
-
     }
 
     public function urlTeste()
     {
         print_r($this->getStatus('nMfFCj6eqyyPkQhkPeQ3'));
+    }
+
+    public function mbref($checkout_response)
+    {
+        $checkout_response = json_decode($checkout_response);
+        $transactionID = $checkout_response->transactionID;
+        $transactionSig = $checkout_response->transactionSignature;
+
+        $curl = curl_init();
+
+        $post_url = 'https://spg.qly.site1.sibs.pt/api/v1/payments/' . $transactionID . '/service-reference/generate';
+        curl_setopt($curl, CURLOPT_URL, $post_url);
+        $headers = array(
+            'X-IBM-Client-Id: 681275a2-4647-4e95-b090-98637e7a2bd0',
+            'Content-type: application/json; charset=utf-8',
+            'Authorization: Digest ' . $transactionSig
+        );
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        $payload = json_encode(array());
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        $result = curl_exec($curl);
+
+        curl_close($curl);
+
+        return $result;
     }
 
     public function mbway($checkout_response, $phone)
@@ -134,7 +161,7 @@ class CheckoutController extends Controller
         $status = 0;
         $status2 = 0;
 
-        if ($request->payment_mothod == 'mbway') {
+        if ($request->payment_mothod != 'transferencia') {
             $dados = [
                 'merchant' => [
                     "terminalId" => 50999,
@@ -145,9 +172,9 @@ class CheckoutController extends Controller
                     "transactionTimestamp" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
                     "description" => "Pagamento pela sibs",
                     "moto" => false,
-                    "paymentType" => "PURS",
+                    "paymentType" => "",
                     "amount" => [
-                        "value" => (int)$request->total,
+                        "value" => (float)(number_format($request->total, 2 , '.', '')),
                         "currency" => "EUR"
                     ],
                     "paymentMethod" => [
@@ -157,13 +184,13 @@ class CheckoutController extends Controller
                     ],
                     "paymentReference" => [
                         "initialDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
-                        "finalDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
+                        "finalDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp+(24*60*60)),
                         "maxAmount" => [
-                            "value" => (int)$request->total,
+                            "value" => (float)(number_format($request->total, 2 , '.', '')),
                             "currency" => "EUR"
                         ],
                         "minAmount" => [
-                            "value" => (int)$request->total,
+                            "value" => (float)(number_format($request->total, 2 , '.', '')),
                             "currency" => "EUR"
                         ],
                         "entity" => "24000"
@@ -174,104 +201,121 @@ class CheckoutController extends Controller
 
             $phone = $request->phone;
 
-            $sibsDados = $this->sibs($dados);
-            if (empty(json_decode($sibsDados)->transactionID)) {
-                return response()->json('idnulo', 412);
+
+            if($request->payment_mothod == 'referencia'){
+                $dados['transaction']['paymentType'] = 'AUTH';
+                $sibsDados = $this->sibs($dados);
+                if (empty(json_decode($sibsDados)->transactionID)) {
+                    return response()->json(['checkout', $sibsDados], 412);
+                }
+                $mbref = $this->mbref($sibsDados);
+                // return response()->json($mbref, 412);
+            }elseif($request->payment_mothod == 'mbway'){
+                $dados['transaction']['paymentType'] = 'PURS';
+                $sibsDados = $this->sibs($dados);
+                if (empty(json_decode($sibsDados)->transactionID)) {
+                    return response()->json($sibsDados, 412);
+                }
+
+                $mbwayDados = $this->mbway($sibsDados, $phone);
+
+                // dd($mbwayDados);
+                if (empty(json_decode($mbwayDados)->paymentStatus)) {
+                    return response()->json(['erro', $mbwayDados], 412);
+                }
+                if (json_decode($mbwayDados)->paymentStatus != 'Success') {
+                    return response()->json(['erro', $mbwayDados], 412);
+                }
             }
 
-            $mbwayDados = $this->mbway($sibsDados, $phone);
 
-            // dd($mbwayDados);
-            if (empty(json_decode($mbwayDados)->paymentStatus)) {
-                return response()->json(['erro', $mbwayDados], 412);
-            }
-            if (json_decode($mbwayDados)->paymentStatus != 'Success') {
-                return response()->json(['erro', $mbwayDados], 412);
-            }
 
             $status = 0;
             $status2 = 1;
         }
 
-            $date = new \DateTime();
-            $codigo = $request->sigla. '-' . $date->getTimestamp();
-            $user_order = UserOrder::create([
-                'adress' => $request->adress,
-                'payment_mothod' => $request->payment_mothod,
-                'shipping_mothod' => $request->shipment,
+
+        $date = new \DateTime();
+        $codigo = $request->sigla . '-' . $date->getTimestamp();
+        $user_order = UserOrder::create([
+            'adress' => $request->adress,
+            'payment_mothod' => $request->payment_mothod,
+            'shipping_mothod' => $request->shipment,
+            'user_id' => auth()->user()->id,
+            'user_name' => auth()->user()->name,
+            'email' => auth()->user()->email,
+            'telemovel' => auth()->user()->telemovel,
+            'total' => $request->total,
+            'frete' => $request->freteval,
+            'sub_total' => \Cart::getSubTotal(),
+            'status' => $status,
+            'codigo' => $codigo,
+            'transaction_id' => $request->payment_mothod != 'transferencia' ? json_decode($sibsDados)->transactionID : null,
+            'reference' => $request->payment_mothod == 'referencia' ? json_decode($mbref)->paymentReference->reference : null,
+            'expiration' => $request->payment_mothod == 'referencia' ? date('Y-m-d H:i:s', strtotime(json_decode($mbref)->paymentReference->expireDate)) : null,
+        ]);
+
+
+        $count = 1;
+        foreach (\Cart::getContent() as $key => $item) {
+
+
+            $itemQty = $item->price * $item->quantity;
+            $value = $itemQty - $itemQty * ($item->attributes->margem / 100);
+            $subir = $count++;
+
+
+            $produtos = UserProduct::create([
+                'product_id' => $item->id,
+                'item' => $subir,
+                'name' => $item->name,
+                'price' => $item->price,
+                'value' => $value,
+                'total_value' => $itemQty,
+                'quantity' => $item->quantity,
+                'caixas' => $request->caixas,
+                'origem' => $item->attributes->porto,
+                'image' => $item->attributes->image,
                 'user_id' => auth()->user()->id,
-                'user_name' => auth()->user()->name,
-                'email' => auth()->user()->email,
-                'telemovel' => auth()->user()->telemovel,
-                'total' => $request->total,
-                'frete' => $request->freteval,
-                'sub_total' => \Cart::getSubTotal(),
-                'status' => $status,
-                'codigo' => $codigo,
-                'transaction_id' => $request->payment_mothod == 'mbway' ? json_decode($sibsDados)->transactionID : null,
+                'order_id' => $user_order->id,
+                'pescador_id' => $item->attributes->pescador_id,
+                'stutus' => $status2,
             ]);
 
+            $wallet = SellToWallet::create([
+                'pescador_id' => $item->attributes->pescador_id,
+                'product_id' =>  $item->id,
+                'value' => $value,
+            ]);
 
-            $count = 1;
-            foreach (\Cart::getContent() as $key => $item) {
+            $id = auth()->user()->id;
+            $comprador = Comprador::with('comercial')->find($id);
+            $valor = \Cart::getTotal() * (2 / 100);
 
+            $walletCom = WalletCom::create([
+                'user_id' => $comprador->comercial->id,
+                'comprador_id' => $id,
+                'pescador_id' => $item->attributes->pescador_id,
+                'order_id' => $user_order->id,
+                'product_id' => $item->id,
+                'total' => \Cart::getTotal(),
+                'value' => $valor,
+            ]);
 
-                $itemQty = $item->price * $item->quantity;
-                $value = $itemQty - $itemQty * ($item->attributes->margem / 100);
-                $subir = $count++;
+            $quantidade = Produto::find($item->id);
+            $quantidade->quantidade_kg = $quantidade->quantidade_kg - $item->quantity;
+            $quantidade->save();
 
+            $pedido =  PescadorPedido::create([
+                'pescador_id' => $item->attributes->pescador_id,
+                'order_id' => $user_order->id,
+                'adress' => $request->adress,
+                'produtos' => $produtos->id,
+                'wallet' => $wallet->id,
+                'user_id' => auth()->user()->id,
 
-                $produtos = UserProduct::create([
-                    'product_id' => $item->id,
-                    'item' => $subir,
-                    'name' => $item->name,
-                    'price' => $item->price,
-                    'value' => $value,
-                    'total_value' => $itemQty,
-                    'quantity' => $item->quantity,
-                    'caixas' => $request->caixas,
-                    'origem' => $item->attributes->porto,
-                    'image' => $item->attributes->image,
-                    'user_id' => auth()->user()->id,
-                    'order_id' => $user_order->id,
-                    'pescador_id' => $item->attributes->pescador_id,
-                    'stutus' => $status2,
-                ]);
-
-                $wallet = SellToWallet::create([
-                    'pescador_id' => $item->attributes->pescador_id,
-                    'product_id' =>  $item->id,
-                    'value' => $value,
-                ]);
-
-                $id = auth()->user()->id;
-                $comprador = Comprador::with('comercial')->find($id);
-                $valor = \Cart::getTotal() * (2 / 100);
-
-                $walletCom = WalletCom::create([
-                    'user_id' => $comprador->comercial->id,
-                    'comprador_id' => $id,
-                    'pescador_id' => $item->attributes->pescador_id,
-                    'order_id' => $user_order->id,
-                    'product_id' => $item->id,
-                    'total' => \Cart::getTotal(),
-                    'value' => $valor,
-                ]);
-
-                $quantidade = Produto::find($item->id);
-                $quantidade->quantidade_kg = $quantidade->quantidade_kg - $item->quantity;
-                $quantidade->save();
-
-                $pedido =  PescadorPedido::create([
-                    'pescador_id' => $item->attributes->pescador_id,
-                    'order_id' => $user_order->id,
-                    'adress' => $request->adress,
-                    'produtos' => $produtos->id,
-                    'wallet' => $wallet->id,
-                    'user_id' => auth()->user()->id,
-
-                ]);
-            }
+            ]);
+        }
 
 
 
