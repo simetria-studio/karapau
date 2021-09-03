@@ -238,7 +238,6 @@
                         <div class="col-12 py-2 px-3"><b>Nome:</b> {{ $comprador->name }} {{ $comprador->lastname }}
                         </div>
                         <div class="col-12 py-2 px-3"><b>Email:</b> {{ $comprador->email }}</div>
-                        <div class="col-12 py-2 px-3"><b>Telemóvel:</b> {{ $comprador->telemovel }}</div>
                         <div class="col-12 py-2 px-3">
                             <b>NIF:</b>
                             @if ($comprador->type == 'coletivo')
@@ -247,6 +246,7 @@
                                 {{$comprador->individuais->last()->nif ?? ''}}
                             @endif
                         </div>
+                        <div class="col-12 py-2 px-3"><b>Telemóvel:</b> {{ $comprador->telemovel }}</div>
                         <div class="col-12 py-2 px-3"><b>Morada:</b> {{ $address->morada }}, {{ $address->porta }} /
                             {{ $address->codigo_postal }} / {{ $address->conselho }}</div>
                     </div>
