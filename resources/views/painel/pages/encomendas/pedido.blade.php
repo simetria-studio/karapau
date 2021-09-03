@@ -335,7 +335,7 @@
                             <div class="col-12 py-2 px-3"><b>Nome:</b> {{ $userProduct->pescador->name ?? '' }}
                                 {{ $userProduct->pescador->lastname ?? '' }}</div>
                             <div class="col-12 py-2 px-3"><b>Email:</b> {{ $userProduct->pescador->email ?? '' }}</div>
-                            <div class="col-12 py-2 px-3"><b>Email:</b> {{ $userProduct->pescador->nif ?? '' }}</div>
+                            <div class="col-12 py-2 px-3"><b>NIF:</b> {{ $userProduct->pescador->nif ?? '' }}</div>
                             <div class="col-12 py-2 px-3"><b>Telemóvel:</b> {{ $userProduct->pescador->telefone ?? '' }}
                             </div>
                             <div class="col-12 py-2 px-3"><b>Morada:</b> {{ $userProduct->pescador->morada ?? '' }}</div>
