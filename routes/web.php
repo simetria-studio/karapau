@@ -48,6 +48,8 @@ use App\Http\Controllers\Admin\PescadorController as AdminPescadorController;
 
 Route::get('url-teste', [CheckoutController::class, 'urlTeste']);
 
+Route::any('notification', [CheckoutController::class, 'webhook']);
+
 Route::get('/', function () {
     return view('auth.login');
 });

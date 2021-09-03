@@ -350,4 +350,18 @@ class CheckoutController extends Controller
 
         return redirect()->back()->with('success', 'Comprovante Enviado');
     }
+
+    public function webhook()
+    {
+        $dados =  file_get_contents('php://input');
+        // Para gravar log se necessario
+        $data_hora = date('Y-m-d H:i:s');
+        $quebra = chr(13).chr(10);
+        $fp = fopen("./log.log", "a");
+        $escreve = fwrite($fp, '['.$data_hora.']-------->>>>>>');
+        $escreve = fwrite($fp, $dados.$quebra);
+        fclose($fp);
+
+        return $dados;
+    }
 }
