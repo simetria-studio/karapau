@@ -47,6 +47,7 @@
       <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
       <script src="{{ url('js/jquery.countdown.min.js') }}"></script>
       <script src="{{ url('painel/js/timer.js') }}"></script>
+      <script src="{{ url('js/global.js') }}"></script>
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
       <script src="{{ url('app-comercial/js/script.js') }}"></script>
       <script src="{{ url('app-pescador/js/script.js') }}"></script>

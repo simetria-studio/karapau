@@ -261,7 +261,7 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('plugin/AdminLTE/js/adminlte.min.js') }}"></script>
     {{-- fullcalendar --}}
-
+    <script src="{{ url('js/global.js') }}"></script>
     {{-- <script src="{{ url('tarefa/fullcalendar/js/scripts.js') }}"></script> --}}
     {{-- Outros --}}
     {{-- <script src="{{ url('tarefa/js/script.js') }}"></script> --}}

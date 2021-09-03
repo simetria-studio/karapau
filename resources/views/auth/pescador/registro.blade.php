@@ -35,7 +35,7 @@
                     <h2 class="mt-2 mb-5 text-white"><b>CONTINUE COM O CADASTRO</b></h2>
                     <div class="text-label">SEU NIF</div>
                     <div class="form-group mt-3 mb-5 input-material">
-                        <input type="text" placeholder="Seu NIF" name="nif" oninput="this.className = ''">
+                        <input type="text" placeholder="Seu NIF" name="nif" id="NIF" oninput="this.className = ''">
                     </div>
                 </div>
 

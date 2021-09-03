@@ -49,6 +49,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{{ url('painel/js/timer.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ url('js/global.js') }}"></script>
     <script src="{{ url('app-comercial/js/script.js') }}"></script>
     <script>
         $('#ceping').mask('0000-000');

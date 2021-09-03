@@ -46,7 +46,7 @@
                                                       </div>
                                                       <div class="form-group col-12 col-md-6">
                                                             <label for="exampleInputEmail1">NIF</label>
-                                                            <input type="text" class="form-control" value="{{ $pescador->nif }}" name="nif">
+                                                            <input type="text" class="form-control" id="NIF" value="{{ $pescador->nif }}" name="nif">
                                                       </div>
 
                                                       <div class="form-group col-12 col-md-6">
