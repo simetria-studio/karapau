@@ -116,4 +116,13 @@ class EncomendasController extends Controller
 
         return response()->json(['anexo' => $image, 'status' => $userProduct->anexo ? true : false]);
     }
+
+    public function encomendaRemover($id)
+    {
+        UserOrder::find($id)->delete();
+        UserProduct::where('order_id', $id)->delete();
+        PescadorPedido::where('order_id', $id)->delete();
+
+        return redirect()->back()->with('success', 'Encomenda Excluida com sucesso!');
+    }
 }

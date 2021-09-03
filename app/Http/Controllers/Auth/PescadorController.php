@@ -39,16 +39,18 @@ class PescadorController extends Controller
     public function store(Request $request)
     {
         if(Auth::guard('pescador')->validate(['email' => $request->email, 'password' => $request->password, 'status' => 0])){
-            // return response()->json(['invalid' => 'Cadastro inativo!'], 422);
-            return redirect('login-pescador');
+            return response()->json(['invalid' => 'Cadastro inativo!'], 422);
         }
 
-        if (Auth::guard('pescador')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        $authValid = Auth::guard('pescador')->validate(['email' => $request->email, 'password' => $request->password]);
 
-            return redirect()->intended('pescador');
+        if($authValid){
+            if (Auth::guard('pescador')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                return response()->json('pescador', 200);
+            }
+        }else{
+            return response()->json(['invalid' => 'Email ou senha invalidos'], 422);
         }
-
-        return redirect('login-pescador');
     }
 
     /**
@@ -99,7 +101,7 @@ class PescadorController extends Controller
     public function logout()
     {
 
-        Auth::logout();
+        Auth::guard('pescador')->logout();
 
         return redirect('login-pescador');
     }

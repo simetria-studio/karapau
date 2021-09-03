@@ -1,4 +1,7 @@
-body,
+body {
+  background: #03568a;
+}
+
 html {
   height: 100%;
 }
@@ -169,10 +172,6 @@ main a {
           box-sizing: border-box;
 }
 
-body {
-  background: #424242;
-}
-
 form {
   width: 320px;
   margin: 45px auto;
@@ -243,6 +242,33 @@ textarea:valid ~ label {
 
 input:focus ~ .bar:before,
 textarea:focus ~ .bar:before {
+  width: 320px;
+}
+
+.cep-input {
+  background: none;
+  color: #c6c6c6;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 220px !important;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.cep-input:focus {
+  outline: none;
+}
+
+.cep-input:focus ~ label,
+.cep-input:valid ~ label {
+  top: -14px;
+  font-size: 12px;
+  color: #2196f3;
+}
+
+.cep-input:focus ~ .bar:before {
   width: 320px;
 }
 
@@ -890,5 +916,23 @@ select option {
 /* Mark the steps that are finished and valid: */
 .step.finish {
   background-color: #04aa6d;
+}
+
+.add-embarcacao {
+  position: absolute;
+  right: 0;
+  top: 15px;
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.add-embarcacao {
+  position: absolute;
+  right: 0;
+  top: 15px;
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */

@@ -228,6 +228,24 @@ $(document).ready(function(){
             }
         });
     });
+
+    $(document).on('click', '.btn-trash', function(e){
+        e.preventDefault();
+
+        var btn = $(this);
+
+        Swal.fire({
+            icon: 'info',
+            title: 'Gostaria de apagar essa encomenda?',
+            showCancelButton: true,
+            confirmButtonText: 'SIM',
+            cancelButtonText: 'NÃO',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = btn.attr('href');
+            }
+        });
+    })
 });
 
 

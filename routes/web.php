@@ -156,6 +156,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('consultor-email-coletivo/{id}', [ComercialController::class, 'emailColetivo'])->name('admin.consultores.email.coletivo');
 
     Route::get('encomendas', [EncomendasController::class, 'index'])->name('admin.encomendas');
+    Route::get('encomenda/remover/{id}', [EncomendasController::class, 'encomendaRemover'])->name('admin.encomenda.remover');
     Route::get('faturados', [EncomendasController::class, 'faturados'])->name('admin.faturas');
     Route::get('encomendas/download/{id}', [EncomendasController::class, 'download'])->name('admin.encomendas.download');
     Route::any('user/order/status/{id}', [EncomendasController::class, 'status']);
@@ -211,9 +212,10 @@ Route::middleware(['auth:consultor'])->group(function () {
 /*  Login Pescador */
 
 Route::get('login-pescador', [PescadorController::class, 'index'])->name('login.pescador');
-Route::get('pescador-create', [PescadorRegController::class, 'index']);
+Route::get('pescador-create', [PescadorRegController::class, 'index'])->name("pescador.create");
 Route::post('pescadores-store', [PescadorRegController::class, 'store'])->name('pescador.store');
 Route::post('pescador-login', [PescadorController::class, 'store'])->name('pescador.login');
+Route::get('pescadores-sucesso', [PescadorRegController::class, 'successo'])->name('pescador.successo');
 
 Route::middleware('auth:pescador')->group(function () {
     Route::get('pescador', [PainelPescadorController::class, 'index'])->name('pescador.index');

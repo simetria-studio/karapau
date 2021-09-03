@@ -17,6 +17,8 @@ class PescadorRegController extends Controller
      */
     public function index()
     {
+        $portos = Porto::all();
+        return view('auth.pescador.registro', compact('portos'));
     }
 
     /**
@@ -37,31 +39,36 @@ class PescadorRegController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validated = $request->validate([
-            'email' => 'required',
-            'name' => 'required',
-            'nif' => 'required',
-            'iban' => 'required',
-        ]);
-    
         $dados = Pescador::create([
-            'name' =>          $request->name,
-            'lastname' =>       $request->lastname,
-            'email' =>         $request->email,
-            'password' => Hash::make($request->password),
-            'telefone' =>       $request->telefone,
-            'morada' =>         $request->morada,
-            'nif' =>            $request->nif,
-            'iban' =>           $request->iban,
-            'porto' =>          $request->porto,
-            'nome_embarcacao' => $request->nome_embarcacao,
-            'nome_embarcacao2' => $request->nome_embarcacao2,
-            'nome_embarcacao3' => $request->nome_embarcacao3,
-
+            'name'              => $request->name,
+            'lastname'          => $request->lastname,
+            'email'             => $request->email,
+            'password'          => Hash::make($request->password),
+            'telefone'          => $request->ddd_telemovel.' '.$request->telemovel,
+            'nif'               => $request->nif,
+            'iban'              => $request->iban,
+            'porto'             => $request->porto,
+            'nome_embarcacao'   => $request->nome_embarcacao_1,
+            'nome_embarcacao2'  => $request->nome_embarcacao_2 ?? null,
+            'nome_embarcacao3'  => $request->nome_embarcacao_3 ?? null,
+            'codigo_postal'     => $request->codigo_postal,
+            'morada'            => $request->morada,
+            'regiao'            => $request->regiao,
+            'porta'             => $request->porta,
+            'distrito'          => $request->distrito,
+            'conselho'          => $request->conselho,
+            'freguesia'         => $request->freguesia,
+            'latitude'          => $request->latitude,
+            'longitude'         => $request->longitude,
+            'nome_embarcacao3'  => $request->nome_embarcacao3,
         ]);
 
-        return redirect()->back()->with('success', 'Usuario criado com sucesso');
+        return redirect()->route('pescador.successo');
+    }
+
+    public function successo()
+    {
+        return view('auth.pescador.registro-okay');
     }
 
     /**
