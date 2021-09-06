@@ -9,7 +9,7 @@
     <div class="botao-v">
         <a class="btn btn-voltar" href="/store-porto">TROCAR</a>
     </div>
-    <div class="container" >
+    <div class="container">
         <div class="filtrar_1 mt-4">
             <div>
                 <button class="btn btn-filtro" data-bs-toggle="modal" data-bs-target="#exampleModal">FILTRAR</button>
@@ -18,9 +18,32 @@
         <div class="portos mt-4 text-center">
             <div class="row my-5" style="margin-bottom: 150px !important;">
                 @foreach ($produtos as $produto)
-
-                    @if (!$produto->quantidade_unidade)
-                        @if ($produto->quantidade_kg >= 10)
+                    @if ($produto->status == 0)
+                        @if (!$produto->quantidade_unidade)
+                            @if ($produto->quantidade_kg >= 10)
+                                <div class="col-6 mb-5">
+                                    <div class="porto">
+                                        <a href="{{ route('store.produto.single', $produto->id) }}"> <img
+                                                src="{{ url('storage/especies/' . $produto->especies->image) }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div>
+                                        <p>{{ $produto->especies->nome_portugues }}</p>
+                                    </div>
+                                    <div class="mt-2">
+                                        <p id="clock"
+                                            data-countdown="{{ date('Y-m-d H:i:s', strtotime('+1 days', strtotime($produto->created_at))) }}">
+                                        </p>
+                                    </div>
+                                    <div class="valor-monetario mt-2">
+                                        <span>{{ '€ ' . number_format($produto->preco, 2, ',', '.') }} - KG</span>
+                                    </div>
+                                    <div class="valor-kg mt-2">
+                                        <span>STOCK - {{ $produto->quantidade_kg }} KG</span>
+                                    </div>
+                                </div>
+                            @endif
+                        @elseif ($produto->quantidade_kg >= 1)
                             <div class="col-6 mb-5">
                                 <div class="porto">
                                     <a href="{{ route('store.produto.single', $produto->id) }}"> <img
@@ -42,27 +65,6 @@
                                 </div>
                             </div>
                         @endif
-                    @elseif ($produto->quantidade_kg >= 1)
-                        <div class="col-6 mb-5">
-                            <div class="porto">
-                                <a href="{{ route('store.produto.single', $produto->id) }}"> <img
-                                        src="{{ url('storage/especies/' . $produto->especies->image) }}" alt=""></a>
-                            </div>
-                            <div>
-                                <p>{{ $produto->especies->nome_portugues }}</p>
-                            </div>
-                            <div class="mt-2">
-                                <p id="clock"
-                                    data-countdown="{{ date('Y-m-d H:i:s', strtotime('+1 days', strtotime($produto->created_at))) }}">
-                                </p>
-                            </div>
-                            <div class="valor-monetario mt-2">
-                                <span>{{ '€ ' . number_format($produto->preco, 2, ',', '.') }} - KG</span>
-                            </div>
-                            <div class="valor-kg mt-2">
-                                <span>STOCK - {{ $produto->quantidade_kg }} KG</span>
-                            </div>
-                        </div>
                     @endif
                 @endforeach
 

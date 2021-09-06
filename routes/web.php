@@ -25,6 +25,7 @@ use App\Http\Controllers\Auth\StoreLoginController;
 use App\Http\Controllers\Admin\EncomendasController;
 use App\Http\Controllers\Admin\EntregadorController;
 use App\Http\Controllers\Auth\PescadorRegController;
+use App\Http\Controllers\Comercial\WalletController;
 use App\Http\Controllers\Pescador\ProdutoController;
 use App\Http\Controllers\Checkout\CheckoutController;
 use App\Http\Controllers\Auth\LoginConsultorController;
@@ -119,6 +120,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('pescador/update/produto/{id}', [AdminPescadorController::class, 'updateProduto'])->name('admin.pescador.produto.update');
     Route::get('pescador/pedidos/{id}', [AdminPescadorController::class, 'pedidos'])->name('admin.pescador.pedidos');
     Route::get('pedidos/completo/{id}', [EncomendasController::class, 'pedidoDatalheUser'])->name('admin.pedidos.completo');
+    Route::any('pescador/delete/{id}', [AdminPescadorController::class, 'destroy'])->name('admin.pescador.produtos.delete');
 
     Route::post('pedidos/anexar', [EncomendasController::class, 'pedidoAnexar'])->name('admin.pedidos.anexar');
     Route::get('pedidos/anexo/{id?}', [EncomendasController::class, 'pedidoAnexo'])->name('admin.pedidos.anexo');
@@ -183,6 +185,8 @@ Route::middleware(['auth:consultor'])->group(function () {
 
     Route::get('comprador-status/{filter?}', [ComercialPainelController::class, 'compradorStatus'])->name('comprador.status');
     Route::get('comprador-detalhe/{id}/{filter?}', [ComercialPainelController::class, 'compradorDetalhe'])->name('comprador.detalhe');
+
+    Route::get('wallet', [WalletController::class, 'index'])->name('wallet');
 
     Route::get('consultor-compradores-ativos', [ComercialPainelController::class, 'compradorListAtivo'])->name('consultor.compradores.ativo');
     Route::get('consultor-compradores-inativos', [ComercialPainelController::class, 'compradorListInativo'])->name('consultor.compradores.inativo');

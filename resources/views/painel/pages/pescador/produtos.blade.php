@@ -48,6 +48,9 @@
 
                                           </form>
                                     </div>
+                                    <div class="mx-1">
+                                        <a href="{{ route('admin.pescador.produtos.delete', $item->id) }}" class="btn-delete"> <button class="btn btn-danger  btn-sm">Excluir</button></a>
+                                   </div>
 
                               </div>
                         </td>

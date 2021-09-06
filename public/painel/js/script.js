@@ -245,7 +245,24 @@ $(document).ready(function(){
                 window.location.href = btn.attr('href');
             }
         });
-    })
+    });
+    $(document).on('click', '.btn-delete', function(e){
+        e.preventDefault();
+
+        var btn = $(this);
+
+        Swal.fire({
+            icon: 'info',
+            title: 'Gostaria de apagar esse produto?',
+            showCancelButton: true,
+            confirmButtonText: 'SIM',
+            cancelButtonText: 'NÃO',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = btn.attr('href');
+            }
+        });
+    });
 });
 
 

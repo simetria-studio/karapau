@@ -180,7 +180,8 @@ class PescadorController extends Controller
 
     public function destroy($id)
     {
-        //
+        Produto::find($id)->delete();
+        return redirect()->back()->with('success', 'Produto Excluido com sucesso!');
     }
 
     public function pecadorCadastroProduto($id)
