@@ -10,6 +10,7 @@ use App\Models\UserOrder;
 use App\Models\AdressBuyer;
 use App\Models\UserProduct;
 use App\Models\SellToWallet;
+use App\Models\Consultor;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\PescadorPedido;
@@ -20,9 +21,22 @@ class EncomendasController extends Controller
 {
     public function index()
     {
+        if(!empty($_GET['filtro']) && !empty($_GET['status'])){
+            $orders = UserOrder::where($_GET['coluna'], 'like', '%'.$_GET['filtro'].'%');
 
-        $orders = UserOrder::with('payimage')->where('fatura', 0)->orderBy('created_at', 'desc')->get();
-        return view('painel.pages.encomendas.index', compact('orders'));
+            $orders->where('status', $_GET['status']);
+        }else if(!empty($_GET['filtro'])){
+            $orders = UserOrder::where($_GET['coluna'], 'like', '%'.$_GET['filtro'].'%');
+        }else if(!empty($_GET['status'])){
+            $orders = UserOrder::where('status', $_GET['status']);
+        }else{
+            $orders = new UserOrder;
+        }
+        $orders = $orders->with('payimage', 'user')->where('fatura', 0)->orderBy('created_at', 'desc')->paginate(15);
+
+        $comercial = new Consultor;
+
+        return view('painel.pages.encomendas.index', compact('orders', 'comercial'));
     }
 
     public function faturados()

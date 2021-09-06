@@ -38,4 +38,8 @@ class UserOrder extends Model
         return $this->hasOne(PayImage::class, 'order_id');
     }
 
+    public function user()
+    {
+        return $this->hasOne(Comprador::class, 'id', 'user_id');
+    }
 }

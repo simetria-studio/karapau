@@ -35,7 +35,7 @@
             @csrf
             <div class="mt-3">
                   <div class="form-group input-material">
-                        <select class="form-control" name="especie_id" id="margem">
+                        <select class="form-control select2" name="especie_id" id="margem">
                               <option>Escolha a Espécie</option>
                               @foreach ($especies as $especie)
                               <option value="{{ $especie->id }}" data-margem="{{ $especie->margem }}">{{ $especie->nome_portugues }}</option>
@@ -46,7 +46,7 @@
 
                   <div class="form-group input-material">
 
-                        <select class="form-control" name="porto_id" id="exampleFormControlSelect1">
+                        <select class="form-control select2" name="porto_id" id="exampleFormControlSelect1">
                               <option>Escolha o Porto de descarga</option>
                               @foreach ($portos as $porto)
                               <option value="{{ $porto->id }}">{{ $porto->nome }}</option>
