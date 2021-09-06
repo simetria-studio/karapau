@@ -95,7 +95,27 @@ class CheckoutController extends Controller
 
     public function urlTeste()
     {
-        print_r($this->getStatus('nMfFCj6eqyyPkQhkPeQ3'));
+        function sodium_decrypt( $webhookSecret, $iv_from_http_header, $http_body , $auth_tag_from_http_header ){
+            $key = mb_convert_encoding($webhookSecret, "UTF-8", "BASE64");
+            $iv = mb_convert_encoding($iv_from_http_header, "UTF-8", "BASE64");
+            $cipher_text = mb_convert_encoding($http_body, "UTF-8", "BASE64") . mb_convert_encoding($auth_tag_from_http_header, "UTF-8", "BASE64");
+
+            $result = sodium_crypto_aead_aes256gcm_decrypt($cipher_text, "", $iv, $key);
+
+            return $result;
+
+        }
+
+
+        $webhookSecret = "LtUJ2WG3SymTpAe2WPdDGyiVubzv6BIuh6j4+OKG6As=";
+        $iv_from_http_header = "";
+        $auth_tag_from_http_header = "";
+        $http_body = "oomYiygmQgkbZUc9A+d8F5Q9nTey+q9lHnn19z/iy9CgvZXt0YF+uK9/Apm9/lBP0/trPNoa3a1wOr8c3W5AUCmN7P6T+cleMhjOP+NUzdSnU5Qn7MSN7B1PDLtvur5zGOCheNF/JpQu1Z+1vTdE05on9EkrUxaIbBvOVtf2yVqzwnq9Dy3bOz24GThKHVEzSbeF15CwJ2N7hAJn2yX410id+3mnKw83KBesoOHGokNLZpPlEUODT76lwejr3bCjW5LmqHa1TBrijWhaOx0+AIP1dydND9UwDRtKi0EKcaVuEZSREhDsULAKy5acCaDkl3Xz63hP/iZmckePIz8XKKYK+LKZDjQpAMBk5lQ3143cRWRTvhjytwiWbmsaDQDq2zVErORceQ0uuL6L9mI4O9GRtf/3/2uqaIoV/UHF2l7+DEkh";
+
+        // Decrypt message
+        $result = sodium_decrypt($webhookSecret, $iv_from_http_header, $http_body , $auth_tag_from_http_header);
+
+        print($result);
     }
 
     public function mbref($checkout_response)
@@ -143,7 +163,7 @@ class CheckoutController extends Controller
         );
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_POST, 1);
-        $payload = json_encode(array('customerPhone' => '351#'.$phone));
+        $payload = json_encode(array('customerPhone' => '351#' . $phone));
         // echo $payload . "\n";
         curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -174,7 +194,7 @@ class CheckoutController extends Controller
                     "moto" => false,
                     "paymentType" => "",
                     "amount" => [
-                        "value" => (float)(number_format($request->total, 2 , '.', '')),
+                        "value" => (float)(number_format($request->total, 2, '.', '')),
                         "currency" => "EUR"
                     ],
                     "paymentMethod" => [
@@ -184,13 +204,13 @@ class CheckoutController extends Controller
                     ],
                     "paymentReference" => [
                         "initialDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
-                        "finalDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp+(24*60*60)),
+                        "finalDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp + (24 * 60 * 60)),
                         "maxAmount" => [
-                            "value" => (float)(number_format($request->total, 2 , '.', '')),
+                            "value" => (float)(number_format($request->total, 2, '.', '')),
                             "currency" => "EUR"
                         ],
                         "minAmount" => [
-                            "value" => (float)(number_format($request->total, 2 , '.', '')),
+                            "value" => (float)(number_format($request->total, 2, '.', '')),
                             "currency" => "EUR"
                         ],
                         "entity" => "24000"
@@ -202,7 +222,7 @@ class CheckoutController extends Controller
             $phone = $request->phone;
 
 
-            if($request->payment_mothod == 'referencia'){
+            if ($request->payment_mothod == 'referencia') {
                 $dados['transaction']['paymentType'] = 'AUTH';
                 $sibsDados = $this->sibs($dados);
                 if (empty(json_decode($sibsDados)->transactionID)) {
@@ -210,7 +230,7 @@ class CheckoutController extends Controller
                 }
                 $mbref = $this->mbref($sibsDados);
                 // return response()->json($mbref, 412);
-            }elseif($request->payment_mothod == 'mbway'){
+            } elseif ($request->payment_mothod == 'mbway') {
                 $dados['transaction']['paymentType'] = 'PURS';
                 $sibsDados = $this->sibs($dados);
                 if (empty(json_decode($sibsDados)->transactionID)) {
@@ -351,27 +371,35 @@ class CheckoutController extends Controller
         return redirect()->back()->with('success', 'Comprovante Enviado');
     }
 
-    public function webhook()
+    public function webhook(Request $request)
     {
 
-        $dados =  file_get_contents('php://input');
+
+
+        $payload = $request->getContent();
+        $payload = json_decode( $payload, true);
+
+        $key_from_configuration = "xxxx"; // webhook secret key
+        $iv_from_http_header = $request->header('x-initialization-vector'); // x-initialization-vector
+        $auth_tag_from_http_header = $request->header('x-authentication-tag'); // x-authentication-tag
+        $http_body = $payload['encryptedBody']; // encripted body
+
+        $key = hex2bin($key_from_configuration);
+        $iv = hex2bin($iv_from_http_header);
+        $auth_tag = hex2bin($auth_tag_from_http_header);
+        $cipher_text = hex2bin($http_body);
+        $result = openssl_decrypt($cipher_text, "aes-256-gcm", $key, OPENSSL_RAW_DATA, $iv, $auth_tag);
+
+
         // Para gravar log se necessario
         $data_hora = date('Y-m-d H:i:s');
-        $quebra = chr(13).chr(10);
+        $quebra = chr(13) . chr(10);
         $fp = fopen("./log.log", "a");
-        $escreve = fwrite($fp, '['.$data_hora.']-------->>>>>>');
-        $escreve = fwrite($fp, $dados.$quebra);
+        $escreve = fwrite($fp, '[' . $data_hora . ']-------->>>>>>');
+        $escreve = fwrite($fp, json_encode($result) . $quebra);
         fclose($fp);
-        $data = json_decode($dados);
-        $array = [
-            'statusCode' => '000',
-            'statusMsg' => 'Success',
-            'notificationID' => $data->notificationID,
-        ];
 
-        return response()->json($array, 200);
+
+        return response()->json($result, 200);
     }
-
-
-
 }
