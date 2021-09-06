@@ -40,7 +40,7 @@ class PescadorController extends Controller
 
     public function showProducts($id)
     {
-        $produtos = Produto::with('especies')->where('pescador_id', $id)->get();
+        $produtos = Produto::with('especies')->where('pescador_id', $id)->orderBy('created_at', 'desc')->paginate(15);
         return view('painel.pages.pescador.produtos', compact('produtos'));
     }
 

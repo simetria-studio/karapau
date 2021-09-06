@@ -61,7 +61,7 @@
             </tbody>
       </table>
 
-
+      {{ $produtos->links }}
 </div>
 
 @endsection
