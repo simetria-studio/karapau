@@ -90,9 +90,7 @@
                                                         <tbody>
                                                             <tr class="table-light">
                                                                 <td>{{ str_pad($ordemPedido, 2, '0', STR_PAD_LEFT) }}</td>
-                                                                <td><button type="button" data-toggle="modal"
-                                                                        data-target="#pescadorModal"
-                                                                        class="btn btn-dark btn-sm">{{ $userProduct->pescador->name }}</button>
+                                                                <td><button type="button" data-toggle="modal" data-target="#pescadorModal-{{$userProduct->pescador->id}}" class="btn btn-dark btn-sm">{{ $userProduct->pescador->name }}</button>
                                                                 </td>
                                                                 <td>{{ $userProduct->caixas }}</td>
                                                                 <td>{{ $userProduct->name }}</td>
@@ -225,32 +223,6 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="pescadorModal" tabindex="-1" aria-labelledby="pescadorModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="pescadorModalLabel">Dados do Pescador</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12 py-2 px-3"><b>Nome:</b> {{ $userProduct->pescador->name ?? '' }}
-                            {{ $userProduct->pescador->lastname ?? '' }}</div>
-                        <div class="col-12 py-2 px-3"><b>Email:</b> {{ $userProduct->pescador->email ?? '' }}</div>
-                        <div class="col-12 py-2 px-3"><b>Telemóvel:</b> {{ $userProduct->pescador->telefone ?? '' }}
-                        </div>
-                        <div class="col-12 py-2 px-3"><b>Morada:</b> {{ $userProduct->pescador->morada ?? '' }}</div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <div class="modal fade" id="compradorModal" tabindex="-1" aria-labelledby="compradorModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -266,6 +238,14 @@
                         <div class="col-12 py-2 px-3"><b>Nome:</b> {{ $comprador->name }} {{ $comprador->lastname }}
                         </div>
                         <div class="col-12 py-2 px-3"><b>Email:</b> {{ $comprador->email }}</div>
+                        <div class="col-12 py-2 px-3">
+                            <b>NIF:</b>
+                            @if ($comprador->type == 'coletivo')
+                                {{$comprador->coletivos->last()->nif ?? ''}}
+                            @else
+                                {{$comprador->individuais->last()->nif ?? ''}}
+                            @endif
+                        </div>
                         <div class="col-12 py-2 px-3"><b>Telemóvel:</b> {{ $comprador->telemovel }}</div>
                         <div class="col-12 py-2 px-3"><b>Morada:</b> {{ $address->morada }}, {{ $address->porta }} /
                             {{ $address->codigo_postal }} / {{ $address->conselho }}</div>
@@ -339,4 +319,33 @@
             </div>
         </div>
     </div>
+
+    @foreach ($orders->products2 as $pescador)
+        <div class="modal fade" id="pescadorModal-{{$pescador->pescador->id}}" tabindex="-1" aria-labelledby="pescadorModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="pescadorModalLabel">Dados do Pescador</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 py-2 px-3"><b>Nome:</b> {{ $userProduct->pescador->name ?? '' }}
+                                {{ $userProduct->pescador->lastname ?? '' }}</div>
+                            <div class="col-12 py-2 px-3"><b>Email:</b> {{ $userProduct->pescador->email ?? '' }}</div>
+                            <div class="col-12 py-2 px-3"><b>NIF:</b> {{ $userProduct->pescador->nif ?? '' }}</div>
+                            <div class="col-12 py-2 px-3"><b>Telemóvel:</b> {{ $userProduct->pescador->telefone ?? '' }}
+                            </div>
+                            <div class="col-12 py-2 px-3"><b>Morada:</b> {{ $userProduct->pescador->morada ?? '' }}</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection

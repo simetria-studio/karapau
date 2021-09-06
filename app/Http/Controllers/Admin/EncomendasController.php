@@ -38,7 +38,7 @@ class EncomendasController extends Controller
         $user_order = UserOrder::with('enderecos')->find($id);
         $entregadores = User::where('permission', '3')->get();
         $orders  = PescadorPedido::where('order_id', $id)->with('adresses', 'pescador', 'orders', 'products', 'products2')->first();
-        $comprador = Comprador::find($user_order->user_id);
+        $comprador = Comprador::with(['coletivos', 'individuais'])->find($user_order->user_id);
         $address = AdressBuyer::find($user_order->adress);
         if ($orders->products2->count() > 0) {
             foreach ($orders->products2 as $products) {
