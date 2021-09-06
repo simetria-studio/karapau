@@ -35,7 +35,7 @@
             @csrf
             <div class="mt-3">
                   <div class="form-group input-material">
-                        <select class="form-control" name="especie_id" id="margem">
+                        <select class="form-control select2" name="especie_id" id="margem">
                               <option>Escolha a Espécie</option>
                               @foreach ($especies as $especie)
                               <option value="{{ $especie->id }}" data-margem="{{ $especie->margem }}">{{ $especie->nome_portugues }}</option>

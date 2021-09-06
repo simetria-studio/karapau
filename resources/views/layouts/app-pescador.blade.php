@@ -22,10 +22,12 @@
       <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
             integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous">
       </script>
+      <link rel="stylesheet" href="{{asset('plugin/select2/css/select2.min.css')}}">
       <!-- Styles -->
       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
       <link rel="stylesheet" href="{{ url('app-comercial/css/main.min.css') }}">
       <link rel="stylesheet" href="{{ url('app-pescador/css/main.min.css') }}">
+
 
 </head>
 
@@ -51,8 +53,10 @@
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
       <script src="{{ url('app-comercial/js/script.js') }}"></script>
       <script src="{{ url('app-pescador/js/script.js') }}"></script>
+      <script src="{{asset('plugin/select2/js/select2.full.min.js')}}"></script>
       <script>
             $('#ceping').mask('0000-000');
+            $('.select2').select2();
       </script>
       @if(Session::has('success'))
       <script type="text/javascript">

@@ -306,3 +306,23 @@ input#check_unidade {
 input#check_kg {
     margin: 0 -20px;
 }
+
+.select2-container {
+      border-bottom: 2px solid #fff;
+
+      .select2-selection {
+            background-color: transparent;
+            border: none;
+            border-radius: 0;
+
+            .select2-selection__rendered {
+                  color: #fff;
+            }
+
+            .select2-selection__arrow {
+                  b {
+                        border-color: #fff transparent transparent transparent;
+                  }
+            }
+      }
+}

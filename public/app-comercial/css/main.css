@@ -935,4 +935,35 @@ select option {
   color: #fff;
   cursor: pointer;
 }
+
+.wallet-1 {
+  width: 100%;
+  height: 153px;
+  text-align: center;
+  margin: 5px 0;
+  background: #0472b7;
+  color: #fff;
+}
+
+.wallet-1 h3 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 131.5%;
+  letter-spacing: -0.015em;
+}
+
+.wallet-1 p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 131.5%;
+  letter-spacing: -0.015em;
+}
+
+.wallet-1 .textos {
+  padding-top: 50px;
+}
 /*# sourceMappingURL=main.css.map */
