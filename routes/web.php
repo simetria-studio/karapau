@@ -3,17 +3,18 @@
 use App\Models\CompradorIndividual;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TesteController;
+use App\Http\Middleware\EnsureTokenIsValid;
 use App\Http\Controllers\Admin\KmController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ArtesController;
 use App\Http\Controllers\Admin\PortoController;
+
 use App\Http\Controllers\Buyer\BuyerController;
 
 use App\Http\Controllers\Store\StoreController;
 
 use App\Http\Controllers\Admin\PainelController;
-
 use App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\EspecieController;
 use App\Http\Controllers\Adress\AdressController;
@@ -49,7 +50,7 @@ use App\Http\Controllers\Admin\PescadorController as AdminPescadorController;
 
 Route::get('url-teste', [CheckoutController::class, 'urlTeste']);
 
-Route::any('notification', [CheckoutController::class, 'webhook']);
+Route::any('notification', [CheckoutController::class, 'webhook'])->middleware(EnsureTokenIsValid::class);;
 
 Route::get('/', function () {
     return view('auth.login');

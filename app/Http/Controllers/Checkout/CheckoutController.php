@@ -143,7 +143,7 @@ class CheckoutController extends Controller
         );
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_POST, 1);
-        $payload = json_encode(array('customerPhone' => $phone));
+        $payload = json_encode(array('customerPhone' => '351#'.$phone));
         // echo $payload . "\n";
         curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -353,6 +353,7 @@ class CheckoutController extends Controller
 
     public function webhook()
     {
+
         $dados =  file_get_contents('php://input');
         // Para gravar log se necessario
         $data_hora = date('Y-m-d H:i:s');
@@ -361,7 +362,16 @@ class CheckoutController extends Controller
         $escreve = fwrite($fp, '['.$data_hora.']-------->>>>>>');
         $escreve = fwrite($fp, $dados.$quebra);
         fclose($fp);
+        $data = json_decode($dados);
+        $array = [
+            'statusCode' => '000',
+            'statusMsg' => 'Success',
+            'notificationID' => $data->notificationID,
+        ];
 
-        return $dados;
+        return response()->json($array, 200);
     }
+
+
+
 }
