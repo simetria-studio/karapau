@@ -377,16 +377,16 @@ class CheckoutController extends Controller
 
         $data =  file_get_contents('php://input');
 
-        $key_from_configuration = "4c74554a3257473353796d5470416532575064444779695675627a763642497568366a342b4f4b473641733d"; // webhook secret key
+        $key_from_configuration = "LtUJ2WG3SymTpAe2WPdDGyiVubzv6BIuh6j4+OKG6As="; // webhook secret key
         $iv_from_http_header = $request->header('x-initialization-vector'); // x-initialization-vector
         $auth_tag_from_http_header = $request->header('x-authentication-tag'); // x-authentication-tag
         $http_body = $data; // encripted body
 
-        $key = hex2bin($key_from_configuration);
-        $iv = hex2bin($iv_from_http_header);
-        $auth_tag = hex2bin($auth_tag_from_http_header);
-        $cipher_text = hex2bin($http_body);
-        $result = openssl_decrypt($cipher_text, "aes-256-gcm", $key, OPENSSL_RAW_DATA, $iv, $auth_tag);
+        // $key = hex2bin($key_from_configuration);
+        // $iv = hex2bin($iv_from_http_header);
+        // $auth_tag = hex2bin($auth_tag_from_http_header);
+        // $cipher_text = hex2bin($http_body);
+        $result = openssl_decrypt($http_body, "aes-256-gcm", $key_from_configuration, OPENSSL_RAW_DATA, $iv_from_http_header, $auth_tag_from_http_header);
 
 
         // Para gravar log se necessario
