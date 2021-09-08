@@ -379,7 +379,7 @@ class CheckoutController extends Controller
 
         $dados = $request->getContent();
 
-        $key_from_configuration = "LtUJ2WG3SymTpAe2WPdDGyiVubzv6BIuh6j4+OKG6As="; // webhook secret key
+        $webhookSecret = "LtUJ2WG3SymTpAe2WPdDGyiVubzv6BIuh6j4+OKG6As="; // webhook secret key
         $iv_from_http_header = $request->header('x-initialization-vector'); // x-initialization-vector
         $auth_tag_from_http_header = $request->header('x-authentication-tag'); // x-authentication-tag
         $http_body = $dados; // encripted body
@@ -389,8 +389,22 @@ class CheckoutController extends Controller
         // $iv = hex2bin($iv_from_http_header);
         // $auth_tag = hex2bin($auth_tag_from_http_header);
         // $cipher_text = hex2bin($http_body);
-        $result = openssl_decrypt($http_body, "aes-256-gcm", $key_from_configuration, OPENSSL_RAW_DATA, $iv_from_http_header, $auth_tag_from_http_header);
+        function sodium_decrypt( $webhookSecret, $iv_from_http_header, $http_body , $auth_tag_from_http_header ){
+            $key = mb_convert_encoding($webhookSecret, "UTF-8", "BASE64");
+            $iv = mb_convert_encoding($iv_from_http_header, "UTF-8", "BASE64");
+            $cipher_text = mb_convert_encoding($http_body, "UTF-8", "BASE64") . mb_convert_encoding($auth_tag_from_http_header, "UTF-8", "BASE64");
 
+            $result = sodium_crypto_aead_aes256gcm_decrypt($cipher_text, "", $iv, $key);
+
+            return $result;
+
+        }
+
+
+
+
+        // Decrypt message
+        $result = sodium_decrypt($webhookSecret, $iv_from_http_header, $http_body , $auth_tag_from_http_header);
 
         // Para gravar log se necessario
         $data_hora = date('Y-m-d H:i:s');
