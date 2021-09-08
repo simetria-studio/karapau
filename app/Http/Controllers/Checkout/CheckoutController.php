@@ -96,7 +96,8 @@ class CheckoutController extends Controller
 
     public function urlTeste()
     {
-        function sodium_decrypt( $webhookSecret, $iv_from_http_header, $http_body , $auth_tag_from_http_header ){
+        function sodium_decrypt($webhookSecret, $iv_from_http_header, $http_body, $auth_tag_from_http_header)
+        {
             $key = mb_convert_encoding($webhookSecret, "UTF-8", "BASE64");
             $iv = mb_convert_encoding($iv_from_http_header, "UTF-8", "BASE64");
             $cipher_text = mb_convert_encoding($http_body, "UTF-8", "BASE64") . mb_convert_encoding($auth_tag_from_http_header, "UTF-8", "BASE64");
@@ -104,7 +105,6 @@ class CheckoutController extends Controller
             $result = sodium_crypto_aead_aes256gcm_decrypt($cipher_text, "", $iv, $key);
 
             return $result;
-
         }
 
 
@@ -114,7 +114,7 @@ class CheckoutController extends Controller
         $http_body = "oomYiygmQgkbZUc9A+d8F5Q9nTey+q9lHnn19z/iy9CgvZXt0YF+uK9/Apm9/lBP0/trPNoa3a1wOr8c3W5AUCmN7P6T+cleMhjOP+NUzdSnU5Qn7MSN7B1PDLtvur5zGOCheNF/JpQu1Z+1vTdE05on9EkrUxaIbBvOVtf2yVqzwnq9Dy3bOz24GThKHVEzSbeF15CwJ2N7hAJn2yX410id+3mnKw83KBesoOHGokNLZpPlEUODT76lwejr3bCjW5LmqHa1TBrijWhaOx0+AIP1dydND9UwDRtKi0EKcaVuEZSREhDsULAKy5acCaDkl3Xz63hP/iZmckePIz8XKKYK+LKZDjQpAMBk5lQ3143cRWRTvhjytwiWbmsaDQDq2zVErORceQ0uuL6L9mI4O9GRtf/3/2uqaIoV/UHF2l7+DEkh";
 
         // Decrypt message
-        $result = sodium_decrypt($webhookSecret, $iv_from_http_header, $http_body , $auth_tag_from_http_header);
+        $result = sodium_decrypt($webhookSecret, $iv_from_http_header, $http_body, $auth_tag_from_http_header);
 
         print($result);
     }
@@ -375,33 +375,38 @@ class CheckoutController extends Controller
     public function webhook(Request $request)
     {
 
+        $data = $request->all();
+        if (empty($data)) {
+            $data = json_decode($request->getContent());
+            $data = json_decode($data);
+
+            if (is_null($data)) {
+                return response()->json("Not valid json", 400);
+            }
 
 
-        $payload = $request->getOriginalContent();
-        $payload = json_decode( $payload, true);
+            $key_from_configuration = "LtUJ2WG3SymTpAe2WPdDGyiVubzv6BIuh6j4+OKG6As="; // webhook secret key
+            $iv_from_http_header = $request->header('x-initialization-vector'); // x-initialization-vector
+            $auth_tag_from_http_header = $request->header('x-authentication-tag'); // x-authentication-tag
+            $http_body = $data['encryptedBody']; // encripted body
 
-        $key_from_configuration = "LtUJ2WG3SymTpAe2WPdDGyiVubzv6BIuh6j4+OKG6As="; // webhook secret key
-        $iv_from_http_header = $request->header('x-initialization-vector'); // x-initialization-vector
-        $auth_tag_from_http_header = $request->header('x-authentication-tag'); // x-authentication-tag
-        $http_body = $payload['encryptedBody']; // encripted body
-
-        $key = hex2bin($key_from_configuration);
-        $iv = hex2bin($iv_from_http_header);
-        $auth_tag = hex2bin($auth_tag_from_http_header);
-        $cipher_text = hex2bin($http_body);
-        $result = openssl_decrypt($cipher_text, "aes-256-gcm", $key, OPENSSL_RAW_DATA, $iv, $auth_tag);
+            $key = hex2bin($key_from_configuration);
+            $iv = hex2bin($iv_from_http_header);
+            $auth_tag = hex2bin($auth_tag_from_http_header);
+            $cipher_text = hex2bin($http_body);
+            $result = openssl_decrypt($cipher_text, "aes-256-gcm", $key, OPENSSL_RAW_DATA, $iv, $auth_tag);
 
 
-        // Para gravar log se necessario
-        $data_hora = date('Y-m-d H:i:s');
-        $quebra = chr(13) . chr(10);
-        $fp = fopen("./log.log", "a");
-        $escreve = fwrite($fp, '[' . $data_hora . ']-------->>>>>>');
-        $escreve = fwrite($fp, json_encode($result) . $quebra);
-        fclose($fp);
+            // Para gravar log se necessario
+            $data_hora = date('Y-m-d H:i:s');
+            $quebra = chr(13) . chr(10);
+            $fp = fopen("./log.log", "a");
+            $escreve = fwrite($fp, '[' . $data_hora . ']-------->>>>>>');
+            $escreve = fwrite($fp, json_encode($result) . $quebra);
+            fclose($fp);
 
-        \Log::info(json_encode($result));
-
+            \Log::info(json_encode($result));
+        }
         return response()->json($result, 200);
     }
 }
