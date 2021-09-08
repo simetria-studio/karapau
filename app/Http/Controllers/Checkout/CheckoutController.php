@@ -389,22 +389,9 @@ class CheckoutController extends Controller
         // $iv = hex2bin($iv_from_http_header);
         // $auth_tag = hex2bin($auth_tag_from_http_header);
         // $cipher_text = hex2bin($http_body);
-        function sodium_decrypt( $webhookSecret, $iv_from_http_header, $http_body , $auth_tag_from_http_header ){
-            $key = mb_convert_encoding($webhookSecret, "UTF-8", "BASE64");
-            $iv = mb_convert_encoding($iv_from_http_header, "UTF-8", "BASE64");
-            $cipher_text = mb_convert_encoding($http_body, "UTF-8", "BASE64") . mb_convert_encoding($auth_tag_from_http_header, "UTF-8", "BASE64");
-
-            $result = sodium_crypto_aead_aes256gcm_decrypt($cipher_text, "", $iv, $key);
-
-            return $result;
-
-        }
-
-
-
 
         // Decrypt message
-        $result = sodium_decrypt($webhookSecret, $iv_from_http_header, $http_body , $auth_tag_from_http_header);
+        $result = $this->sodium_decrypt($webhookSecret, $iv_from_http_header, $http_body, $auth_tag_from_http_header);
 
         // Para gravar log se necessario
         $data_hora = date('Y-m-d H:i:s');
@@ -417,5 +404,16 @@ class CheckoutController extends Controller
         \Log::info(json_encode($result));
 
         return response()->json($result, 200);
+    }
+
+    public function sodium_decrypt($webhookSecret, $iv_from_http_header, $http_body, $auth_tag_from_http_header)
+    {
+        $key = mb_convert_encoding($webhookSecret, "UTF-8", "BASE64");
+        $iv = mb_convert_encoding($iv_from_http_header, "UTF-8", "BASE64");
+        $cipher_text = mb_convert_encoding($http_body, "UTF-8", "BASE64") . mb_convert_encoding($auth_tag_from_http_header, "UTF-8", "BASE64");
+
+        $result = sodium_crypto_aead_aes256gcm_decrypt($cipher_text, "", $iv, $key);
+
+        return $result;
     }
 }
