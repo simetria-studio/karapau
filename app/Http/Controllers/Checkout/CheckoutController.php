@@ -375,38 +375,30 @@ class CheckoutController extends Controller
     public function webhook(Request $request)
     {
 
-        $data = $request->all();
-        if (empty($data)) {
-            $data = json_decode($request->getContent());
-            $data = json_decode($data);
+        $data =  file_get_contents('php://input');
 
-            if (is_null($data)) {
-                return response()->json("Not valid json", 400);
-            }
+        $key_from_configuration = "LtUJ2WG3SymTpAe2WPdDGyiVubzv6BIuh6j4+OKG6As="; // webhook secret key
+        $iv_from_http_header = $request->header('x-initialization-vector'); // x-initialization-vector
+        $auth_tag_from_http_header = $request->header('x-authentication-tag'); // x-authentication-tag
+        $http_body = $data; // encripted body
 
-
-            $key_from_configuration = "LtUJ2WG3SymTpAe2WPdDGyiVubzv6BIuh6j4+OKG6As="; // webhook secret key
-            $iv_from_http_header = $request->header('x-initialization-vector'); // x-initialization-vector
-            $auth_tag_from_http_header = $request->header('x-authentication-tag'); // x-authentication-tag
-            $http_body = $data['encryptedBody']; // encripted body
-
-            $key = hex2bin($key_from_configuration);
-            $iv = hex2bin($iv_from_http_header);
-            $auth_tag = hex2bin($auth_tag_from_http_header);
-            $cipher_text = hex2bin($http_body);
-            $result = openssl_decrypt($cipher_text, "aes-256-gcm", $key, OPENSSL_RAW_DATA, $iv, $auth_tag);
+        $key = hex2bin($key_from_configuration);
+        $iv = hex2bin($iv_from_http_header);
+        $auth_tag = hex2bin($auth_tag_from_http_header);
+        $cipher_text = hex2bin($http_body);
+        $result = openssl_decrypt($cipher_text, "aes-256-gcm", $key, OPENSSL_RAW_DATA, $iv, $auth_tag);
 
 
-            // Para gravar log se necessario
-            $data_hora = date('Y-m-d H:i:s');
-            $quebra = chr(13) . chr(10);
-            $fp = fopen("./log.log", "a");
-            $escreve = fwrite($fp, '[' . $data_hora . ']-------->>>>>>');
-            $escreve = fwrite($fp, json_encode($result) . $quebra);
-            fclose($fp);
+        // Para gravar log se necessario
+        $data_hora = date('Y-m-d H:i:s');
+        $quebra = chr(13) . chr(10);
+        $fp = fopen("./log.log", "a");
+        $escreve = fwrite($fp, '[' . $data_hora . ']-------->>>>>>');
+        $escreve = fwrite($fp, json_encode($result) . $quebra);
+        fclose($fp);
 
-            \Log::info(json_encode($result));
-        }
+        \Log::info(json_encode($result));
+
         return response()->json($result, 200);
     }
 }
