@@ -382,9 +382,9 @@ class CheckoutController extends Controller
         $key_from_configuration = "LtUJ2WG3SymTpAe2WPdDGyiVubzv6BIuh6j4+OKG6As="; // webhook secret key
         $iv_from_http_header = $request->header('x-initialization-vector'); // x-initialization-vector
         $auth_tag_from_http_header = $request->header('x-authentication-tag'); // x-authentication-tag
-        $http_body = $data; // encripted body
+        $http_body = $dados; // encripted body
 
-        \Log::info(json_encode([$iv_from_http_header, $auth_tag_from_http_header, $dados]));
+        \Log::info(json_encode([$iv_from_http_header, $auth_tag_from_http_header, $dados, $data]));
         // $key = hex2bin($key_from_configuration);
         // $iv = hex2bin($iv_from_http_header);
         // $auth_tag = hex2bin($auth_tag_from_http_header);
