@@ -17,6 +17,7 @@ use Illuminate\Support\Str;
 use App\Models\SellToWallet;
 use Illuminate\Http\Request;
 use App\Models\PescadorPedido;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic;
 
@@ -379,7 +380,7 @@ class CheckoutController extends Controller
         $payload = $request->getContent();
         $payload = json_decode( $payload, true);
 
-        $key_from_configuration = "xxxx"; // webhook secret key
+        $key_from_configuration = "LtUJ2WG3SymTpAe2WPdDGyiVubzv6BIuh6j4+OKG6As="; // webhook secret key
         $iv_from_http_header = $request->header('x-initialization-vector'); // x-initialization-vector
         $auth_tag_from_http_header = $request->header('x-authentication-tag'); // x-authentication-tag
         $http_body = $payload['encryptedBody']; // encripted body
@@ -399,6 +400,7 @@ class CheckoutController extends Controller
         $escreve = fwrite($fp, json_encode($result) . $quebra);
         fclose($fp);
 
+        \Log::info(json_encode($result));
 
         return response()->json($result, 200);
     }
