@@ -377,7 +377,7 @@ class CheckoutController extends Controller
 
 
 
-        $payload = $request->getContent();
+        $payload = $request->getOriginalContent();
         $payload = json_decode( $payload, true);
 
         $key_from_configuration = "LtUJ2WG3SymTpAe2WPdDGyiVubzv6BIuh6j4+OKG6As="; // webhook secret key
