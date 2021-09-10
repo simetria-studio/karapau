@@ -188,6 +188,8 @@ Route::middleware(['auth:consultor'])->group(function () {
     Route::get('comprador-detalhe/{id}/{filter?}', [ComercialPainelController::class, 'compradorDetalhe'])->name('comprador.detalhe');
 
     Route::get('wallet', [WalletController::class, 'index'])->name('wallet');
+    Route::post('wallet-draw', [WalletController::class, 'store'])->name('wallet.draw');
+    Route::get('draw-requested', [WalletController::class, 'requested'])->name('draw.requested');
 
     Route::get('consultor-compradores-ativos', [ComercialPainelController::class, 'compradorListAtivo'])->name('consultor.compradores.ativo');
     Route::get('consultor-compradores-inativos', [ComercialPainelController::class, 'compradorListInativo'])->name('consultor.compradores.inativo');

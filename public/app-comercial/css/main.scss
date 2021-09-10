@@ -907,8 +907,8 @@ select {
         font-size: 20px;
         line-height: 131.5%;
         letter-spacing: -0.015em;
-    } 
-    p{
+    }
+    p {
         font-family: Poppins;
         font-style: normal;
         font-weight: 500;
@@ -919,4 +919,48 @@ select {
     .textos {
         padding-top: 50px;
     }
+}
+.wallet-3 {
+    width: 100%;
+    height: 170px;
+    text-align: center;
+    margin: 15px 0;
+    background: #fff;
+
+    h3 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 131.5%;
+        letter-spacing: -0.015em;
+        color: #4f3a57;
+    }
+    p {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 131.5%;
+        letter-spacing: -0.015em;
+    }
+    span {
+        color: rgb(252, 0, 0);
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 20px;
+        line-height: 131.5%;
+        /* or 26px */
+
+        letter-spacing: -0.015em;
+    }
+    .textos {
+        padding-top: 50px;
+    }
+}
+h3 {
+    font-family: Poppins;
+    font-style: normal;
+    color: #fff;
 }

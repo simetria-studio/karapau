@@ -15,6 +15,10 @@ class CreateDrawComsTable extends Migration
     {
         Schema::create('draw_coms', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('qty')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

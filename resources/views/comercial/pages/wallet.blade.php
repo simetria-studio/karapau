@@ -16,12 +16,18 @@
     $value = 0;
     @endphp
     @foreach ($wallet as $wal)
+
         @if ($wal->orders)
             @if ($wal->orders->status != 0 and $wal->orders->status != 1 and $wal->orders->status != 4)
                 @php
                     $value += $wal->value;
                 @endphp
             @endif
+        @endif
+        @if ($wal->order_id == 0)
+            @php
+                $value += $wal->value;
+            @endphp
         @endif
     @endforeach
     <div class="container mt-2">
@@ -41,12 +47,28 @@
         </div>
     </div>
     <div class="container">
-        <div class="d-flex justify-content-center  pt-4 pb-4">
-            <div>
-                <a class="btn btn-filter-novo" href="#">RETIRAR</a>
+        <form action="{{ route('wallet.draw') }}" method="post">
+            @csrf
+            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+            <input type="hidden" name="name" value="{{ auth()->user()->name }}">
+            <input type="hidden" name="qty" value="{{ $value }}">
+            <div class="d-flex justify-content-center  pt-4 pb-4">
+                <div>
+                    <button class="btn btn-filter-novo" type="submit">RETIRAR</button>
+                </div>
             </div>
+        </form>
+    </div>
+    @if ($draws->status == 0)
+    <div class="wallet-3">
+        <div class="textos">
+            <h3>SOLICITAÇÃO</h3>
+            <p>VALOR {{ '€ ' . number_format($draws->qty, 2, ',', '.') }}</p>
+            <span >AGUARDANDO PAGAMENTO</span>
         </div>
     </div>
+    @endif
+
     <div class="wallet-1">
         <div class="textos">
             <h3>TOTAL RECEBIDO ATÉ HOJE</h3>

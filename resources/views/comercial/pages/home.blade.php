@@ -31,12 +31,17 @@
                     @endphp
                 @endif
             @endif
+            @if ($wal->order_id == 0)
+                @php
+                    $value += $wal->value;
+                @endphp
+            @endif
         @endforeach
         <div class="container mt-2">
             <div class="wallet d-flex px-4">
                 <a href="{{ route('wallet') }}">
                     <div class="py-4 ">
-                      <i class="fas fa-wallet a-2"></i> Seu Wallet
+                        <i class="fas fa-wallet a-2"></i> Seu Wallet
                         <h3 class="balance"> {{ '€ ' . number_format($value, 2, ',', '.') }}</h3>
                     </div>
                 </a>
