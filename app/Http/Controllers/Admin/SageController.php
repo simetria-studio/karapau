@@ -11,7 +11,7 @@ class SageController extends Controller
 {
     public function sageConect($url_token)
     {
-        $curl = curl_init();
+        $curl = \curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url_token,
             CURLOPT_RETURNTRANSFER => true,
