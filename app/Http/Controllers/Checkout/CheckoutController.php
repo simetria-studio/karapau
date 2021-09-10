@@ -384,7 +384,7 @@ class CheckoutController extends Controller
         $auth_tag_from_http_header = $request->header('x-authentication-tag'); // x-authentication-tag
         $http_body = $dados; // encripted body
 
-        \Log::info(json_encode([$iv_from_http_header, $auth_tag_from_http_header, $dados, $data]));
+        // \Log::info(json_encode([$iv_from_http_header, $auth_tag_from_http_header, $dados, $data]));
         // $key = hex2bin($key_from_configuration);
         // $iv = hex2bin($iv_from_http_header);
         // $auth_tag = hex2bin($auth_tag_from_http_header);
@@ -401,7 +401,7 @@ class CheckoutController extends Controller
         $escreve = fwrite($fp, json_encode($result) . $quebra);
         fclose($fp);
 
-        \Log::info(json_encode($result));
+        // \Log::info(json_encode($result));
 
         return response()->json($result, 200);
     }
