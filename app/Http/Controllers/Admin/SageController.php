@@ -41,6 +41,7 @@ class SageController extends Controller
             $url_token = "https://api.sageone.com/oauth2/token?client_id=$client_id&client_secret=$client_secret&code=$code&grant_type=$grant_type&redirect_uri=$redirect_uri";
 
             $sage = $this->sageConect($url_token);
+            dd($sage);
             $sage = json_decode($sage);
 
             SageToken::create([
