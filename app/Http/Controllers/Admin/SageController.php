@@ -61,13 +61,13 @@ class SageController extends Controller
         $grant_type = 'refresh_token';
         $redirect_uri = 'https://138.68.183.161/callback';
 
-        $url_token = "https://api.sageone.com/oauth2/token?client_id=$client_id&client_secret=$client_secret&refresh_token=".$sage_token[0]->refresh_token."&grant_type=$grant_type";
-
         if($sage_token->count() > 0){
 
             if(date('Y-m-d H:i:s') < date('Y-m-d H:i:s', strtotime('+1 hours', strtotime($sage_token[0]->created_at)))){
                 return response()->json($sage_token);
             }else{
+                $url_token = "https://api.sageone.com/oauth2/token?client_id=$client_id&client_secret=$client_secret&refresh_token=".$sage_token[0]->refresh_token."&grant_type=$grant_type";
+
                 SageToken::where('ativo', 'S')->update(['ativo' => 'N']);
 
                 $sage = $this->sageToken($url_token);
