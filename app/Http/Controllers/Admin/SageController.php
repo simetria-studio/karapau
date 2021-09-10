@@ -64,6 +64,7 @@ class SageController extends Controller
         if($sage_token->count() > 0){
 
             if(date('Y-m-d H:i:s') < date('Y-m-d H:i:s', strtotime('+1 hours', strtotime($sage_token[0]->created_at)))){
+                // aqui gerencia a insercção de dados
                 return response()->json($sage_token);
             }else{
                 $url_token = "https://api.sageone.com/oauth2/token?client_id=$client_id&client_secret=$client_secret&refresh_token=".$sage_token[0]->refresh_token."&grant_type=$grant_type";
@@ -73,7 +74,7 @@ class SageController extends Controller
                 $sage = $this->sageToken($url_token);
                 $sage = json_decode($sage);
 
-                if($sage->access_token){
+                if(empty($sage->access_token)){
                     return response()->json(['icon' => 'info', 'title' => 'Sem Permissão', 'msg' => 'Solicite a permissão para continuar.', 'url' => 'https://app.pt.sageone.com/oauth2/auth?response_type=code&client_id='.$client_id.'&redirect_uri='.$redirect_uri.'&scope=full_access'],412);
                 }
 
@@ -82,6 +83,7 @@ class SageController extends Controller
                     'refresh_token' => $sage->refresh_token,
                 ]);
 
+                // aqui gerencia a insercção de dados
                 return response()->json($sage_token);
             }
 
