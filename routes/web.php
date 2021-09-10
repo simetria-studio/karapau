@@ -15,6 +15,7 @@ use App\Http\Controllers\Buyer\BuyerController;
 use App\Http\Controllers\Store\StoreController;
 
 use App\Http\Controllers\Admin\PainelController;
+use App\Http\Controllers\Admin\SageController;
 use App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\EspecieController;
 use App\Http\Controllers\Adress\AdressController;
@@ -48,7 +49,7 @@ use App\Http\Controllers\Admin\PescadorController as AdminPescadorController;
 |
 */
 
-Route::get('/callback', [SageCOntroller::class, 'callback']);
+Route::get('/callback', [SageController::class, 'callback']);
 
 Route::get('url-teste', [CheckoutController::class, 'urlTeste']);
 
