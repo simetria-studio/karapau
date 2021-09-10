@@ -263,6 +263,50 @@ $(document).ready(function(){
             }
         });
     });
+
+    $(document).on('click', '.btn-enviar-sage', function(){
+        Swal.fire({
+            title: 'Carregado',
+            html: 'Aguarde enquanto as informações são carregadas!',
+            allowOutsideClick: false,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
+        $.ajax({
+            url: $(this).data('url'),
+            type: 'POST',
+            data: {user_id: $(this).data('id')},
+            success: (data) => {
+                console.log(data);
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Conexão bem sucedida',
+                    html: 'Dados enviados com sucesso!',
+                });
+            },
+            error: (err) => {
+                console.log(err);
+
+                Swal.fire({
+                    icon: err.responseJSON.icon,
+                    title: err.responseJSON.title,
+                    text: err.responseJSON.msg,
+                    allowOutsideClick: false,
+                    showCancelButton: true,
+                    confirmButtonText: 'SOLICITAR',
+                    cancelButtonText: 'CANCELAR',
+                }).then((result) => {
+                    if(result.isConfirmed){
+                        window.open(err.responseJSON.url, '_blank');
+                    }
+                });
+            }
+        });
+    });
 });
 
 

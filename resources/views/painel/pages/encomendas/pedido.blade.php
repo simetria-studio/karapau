@@ -157,8 +157,9 @@
                                                                         @endif
                                                                     </button>
                                                                 </td>
-                                                                <td><button type="button"
-                                                                        class="btn btn-dark btn-sm">ENVIAR</button></td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-dark btn-sm btn-enviar-sage" data-url="{{route('admin.sage')}}" data-id="{{$user_order->id}}">ENVIAR</button>
+                                                                </td>
                                                                 <td><button type="button"
                                                                         class="btn {{ $userProduct->anexo ? 'btn-success' : 'btn-dark' }} btn-sm"
                                                                         data-toggle="modal" data-target="#anexarPDF"
